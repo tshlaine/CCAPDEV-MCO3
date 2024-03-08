@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <link rel="stylesheet" href="/styles/index.css">
+    <script src="/script/index.js" defer></script>
+</head>
+<body>
+    <header>
+        <div id="navbar" class="navbar">
+            <img src="../../images/Logo.png" class="cafestlogo" alt="Cafe St. Logo">
+            <a href="#" class="webname">
+                <span class="cafe">Cafe</span>
+                <span class="st"> St.</span>
+            </a>
+            <ul>
+                <li id="home-link"><a href="#">Home</a></li>
+                <li><a href="view-establishments.html">View Establishments</a></li>
+                <li><a href="login.html">Log In</a></li>
+            </ul>
+            <div class="user-icon-container">
+                <div class="dropdown">
+                    <button class="user-button" onclick="toggleDropdown()">
+                        <img src="../../images/usericon.png" alt="User Icon" id="icon" class="user">
+                    </button>
+                    <div class="dropdown-content" id="dropdownContent">
+                        <a href="sign-up.html">Sign Up</a>
+                        <a href="profile.html">View Profile</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+</body>
+</html>

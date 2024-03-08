@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cafe St.</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../public/styles/login.css">
+</head>
+<body>
+<div id="container" class="container">
+  <!-- Website Branding -->
+  <div class="website-branding">
+    <img src="../../images/Logo.png" alt="Cafe St. Logo" class="website-logo">
+    <span class="cafe">Cafe</span>
+    <span class="st">St.</span>
+  </div>
+  <!-- FORM SECTION -->
+  <div class="row">
+    <!-- SIGN UP -->
+    <div class="col align-items-center flex-col sign-up">
+      <div class="form-wrapper align-items-center">
+        <div class="form sign-up">
+          <!-- Profile Picture Upload and About Me Section on the left -->
+          <div class="left-section">
+            <div class="input-group profile-pic-upload">
+              <img id="profilePic" src="../../images/user.png" alt="Profile Picture" />
+              <label for="profileImageUpload" class="edit-profile-pic">
+                <img src="../../images/draw.png" alt="Edit" />
+              </label>
+              <input id="profileImageUpload" type="file" accept="image/*" onchange="loadFile(event)" style="display: none;">
+            </div>
+            <div class="input-group">
+              <input type="text" class="about-me-input" placeholder="About me..." maxlength="50" required>
+            </div>
+          </div>
+          <!-- User Details Section on the right -->
+          <div class="right-section">
+            <div class="input-group">
+              <input type="text" placeholder="First Name" required>
+            </div>
+            <div class="input-group">
+              <input type="text" placeholder="Last Name" required>
+            </div>
+            <div class="input-group">
+              <input type="text" placeholder="Username" required>
+            </div>
+            <div class="input-group">
+              <input type="password" placeholder="Password" required>
+            </div>
+            <div class="input-group">
+              <input type="password" placeholder="Confirm Password" required>
+            </div>
+            <button onclick="location.href='index.html'">Sign up</button>
+          </div>
+          <p class="signin-redirect">
+            <span>Already have an account?</span>
+            <b onclick="toggle()" class="pointer sign-in-toggle">Sign in here</b>
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- END SIGN UP -->
+    <!-- SIGN IN -->
+    <div class="col align-items-center flex-col sign-in">
+      <div class="form-wrapper align-items-center">
+        <div class="form sign-in">
+          <div class="input-group">
+            <i class='bx bxs-user'></i>
+            <input type="text" placeholder="Username">
+          </div>
+          <div class="input-group">
+            <i class='bx bxs-lock-alt'></i>
+            <input type="password" placeholder="Password">
+          </div>
+          <button onclick="location.href='popup.html'">Sign in</button>
+          <p><b>Forgot password?</b></p>
+          <p>
+            <span>Don't have an account?</span>
+            <b onclick="toggle()" class="pointer sign-up-toggle" style="font-weight: bold;">Sign up here</b>
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- END SIGN IN -->
+  </div>
+  <!-- CONTENT SECTION -->
+  <div class="row content-row">
+    <!-- SIGN IN CONTENT -->
+    <div class="col align-items-center flex-col">
+      <div class="text sign-in">
+        <h2>Welcome back</h2>
+      </div>
+      <div class="img sign-in">
+        <!-- Optional: Insert sign-in related image here -->
+      </div>
+    </div>
+    <!-- END SIGN IN CONTENT -->
+    <!-- SIGN UP CONTENT -->
+    <div class="col align-items-center flex-col">
+      <div class="img sign-up">
+        <!-- Optional: Insert sign-up related image here -->
+      </div>
+      <div class="text sign-up">
+        <h2>Join us</h2>
+      </div>
+    </div>
+    <!-- END SIGN UP CONTENT -->
+  </div>
+  <!-- END CONTENT SECTION -->
+</div>
+<script src="../../public/script/login.js"></script>
+<script>
+function loadFile(event) {
+  var reader = new FileReader();
+  reader.onload = function(){
+    var output = document.getElementById('profilePic');
+    output.src = reader.result;
+  };
+  reader.readAsDataURL(event.target.files[0]);
+}
+</script>
+</body>
+</html>

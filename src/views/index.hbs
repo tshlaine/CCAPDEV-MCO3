@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Homepage</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="text/html; charset=iso-8859-2" http-equiv="Content-Type">
+    <link rel="stylesheet" href="/styles/index.css">
+    <script src="/script/index.js" defer></script>
+</head>
+<body>
+       <div class="upperpanel">
+        <div class="rightpanel">
+            <p class = "tagline">Find the best cafe for you,<br>
+                <span class="dlsu">around De La Salle University</span>
+            </p>
+            <div class = "button">
+                <button class = "explore"  onclick="scrollToSection()">Explore</button>
+                <button class="suggestion" onclick="window.location.href = 'view-establishments.html';">Find Suggestions</button>
+
+            </div>
+        </div>
+        <img class = "designdot" src="/images/dots.png">
+        <img class = "designdot2" src="/images/dots.png">
+        <img class = "designdot3" src="/images/dots.png">
+        <img class = "designdot4" src="/images/dots.png">
+        {{> navbar}}
+        <div class = "leftpanel">
+            <div class="slideshow-container">
+                {{#each cafes}}
+                <div class="slide">
+                    <img src="{{cafe_image}}" class="pics" />
+                    <div><a class="resto" href="#">{{name}}</a></div>
+                    <div><a class="lugar" href="{{locationLink}}">{{location}}</a></div>
+                </div>
+                {{/each}}
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+                <div class="dot-container">
+                    {{#each Cafes}}
+                    <span class="dot" onclick="currentSlide({{@index}})"></span>
+                    {{/each}}
+                </div>
+            </div>
+    </div>
+    <div class="lowerpanel" id="lowerpanel">
+        <div class="lowernavbar">
+            <div class="searchbar"> 
+                <form action="searchpage.html" method="GET">
+                    <input type="text" placeholder="Search Cafes" class="type">
+                    <button type="submit" class="search">Search</button>
+                </form>
+            </div>
+        </div>
+        <p class = "top">Top Rated Cafes &#11088;</p>
+        <p class="rated">The top bets of students around Taft</p>
+         <div class = "toprated">
+            <div class="top1container">
+                <button id="view-sb" class="top1header" style="background-image: url('{{topThreeCafes.[0].cafe-header }}')" onclick="showSummarysb()">
+                    <div class="infos-sb">
+                        <div class="logo-sb">
+                            <img src="{{topThreeCafes.[0].logo-image}}" alt="Logo">
+                        </div>
+                        <div>
+                            <a class="sb" href="#">{{topThreeCafes.[0].name}}</a>
+                        </div>
+                        <div>
+                            <a class="greencourt"  href="{{topThreeCafes.[0].location_link}}">
+                            {{topThreeCafes.[0].location}}
+                            </a>
+                        </div>
+                        <p class ="desc">
+                           {{topThreeCafes.[0].description}}
+                        </p>
+                        <p class="rating-sb">
+                            Rating: <span id="i-sb" class="i-sb"> {{topThreeCafes.[0].averageRating}}</span>  out of <span class="total">5</span>
+                        </p>
+                    </div>
+                </button>
+                <a class="view-establishment-sb" href="view-establishments.html">View Establishment</a>
+                <div id="popupsb" class="popupsb">
+                    <div class="sbcontent">
+                        <div class = "uppersidesb">
+                            <div class="logo-popup">
+                                <img src="{{topThreeCafes.[0].logo-image}}" alt="Logo">
+                                <a class = "view-all" href="view-establishments.html">View All</a>
+                                </div>
+                            <div class="infos-popup">
+                                <div class="name-popup"><a class="name" href="#">{{topThreeCafes.[0].name}}</a></div>
+                                <div class="loc-popup"><a class="loc" href="{{topThreeCafes.[0].location_link}}">
+                                {{topThreeCafes.[0].location}}</a></div>
+                            </div>
+                        </div>
+                        <div class = "lowerside">
+                            <p class="rating-popup">
+                                Rating: <span id="i-popup" class="i-popup"> {{topThreeCafes.[0].averageRating}}</span>  out of <span class="total"> 5</span>
+                            </p>
+                            <hr>
+                            <div class="topreview-container">
+                                <p class="topreview">Top Review</p>
+                                <a class="write" href="reviewpage.html">Write a Review</a>
+                            </div>
+                            <div class = "comment-container"> 
+                                <img src="../../images/dog.jpg" class="user-icon">
+                                <a class ="username" href="profile.html"><h4>Rami</h4></a>
+                                <p class = "comment">Nice Place, Amazing! Lit!</p>
+                            </div>
+                            <div class="bottom-container">
+                                <button class="helpful">
+                                    <!-- TO EDIT/ ADD LIKE AND DISLIKE, THEN AD WRITE A REVIEW -->
+                                    <img src="../../images/thumb.png">
+                                    <span class = "numberofreact">{{topThreeCafes.[0].noOfLike}}</span>
+                                </button>
+                                <button class="unhelpful">
+                                    <!-- TO EDIT/ ADD LIKE AND DISLIKE, THEN AD WRITE A REVIEW -->
+                                    <img src="../../images/thumbdown.png">
+                                    <span class = "numberofreact">{{topThreeCafes.[0].noOfDislike}}</span>
+                                </button>
+                            </div>  
+                        
+                        </div>
+                        <!-- Close button -->
+                        <button id="closePopupBtnsb" onclick="closeSummarysb()"><img src="../../images/xicon.png"></button>
+                    </div>
+                </div>
+            </div>
+            <div class="top2container">
+                <button id="view-tomo" class="top2header" style="background-image: url('{{topThreeCafes.[1].cafe-header }}')" onclick="showSummarytomo()">
+                    <div class="infos-tomo">
+                        <div class="logo-tomo">
+                            <img src="{{topThreeCafes.[1].logo-image}}" alt="Logo">
+                        </div>
+                        <div>
+                            <a class="tomo" href="#">{{topThreeCafes.[1].name}}</a>
+                        </div>
+                        <div>
+                            <a class="loc4"  href="{{topThreeCafes.[1].location_link}}">
+                                {{topThreeCafes.[1].location}}
+                            </a>
+                        </div>
+                        <p class="rating-tomo">
+                            Rating: <span id="i-tomo" class="i-tomo"> {{topThreeCafes.[1].averageRating}}</span>  out of <span class="total">5</span>
+                        </p>
+                        <p class ="desct">
+                            {{topThreeCafes.[1].description}}
+                        </p>
+                    </div>
+                </button>
+                <a class="view-establishment-tomo" href="view-establishments.html">View Establishment</a>
+                <div id="popuptomo" class="popuptomo">
+                    <div class="tomocontent">
+                        <div class = "uppersidetomo">
+                            <div class="logo-popup">
+                                <img src="{{topThreeCafes.[1].logo-image}}" alt="Logo">
+                                <a class = "view-all" href="view-establishments.html">View All</a>
+                            </div>
+                            <div class="infos-popup">
+                                <div class="tomo-popup"><a class="name" href="#">{{topThreeCafes.[1].name}}</a></div>
+                                <div class="tomo-popup"><a a class="loc" href="{{topThreeCafes.[1].location_link}}">
+                                    {{topThreeCafes.[1].location}}</a></div>
+                            </div>
+                        </div>
+                        <div class = "lowerside">
+                            <p class="rating-popup">
+                                Rating: <span id="i-popup" class="i-popup"> {{topThreeCafes.[1].averageRating}}</span>  out of <span class="total"> 5</span>
+                            </p>
+                            <hr>
+                            <div class="topreview-container">
+                                <p class="topreview">Top Review</p>
+                                <a class="write" href="reviewpage.html">Write a Review</a>
+                            </div>
+                            <div class = "comment-container"> 
+                                <img src="../../images/dog.jpg" class="user-icon">
+                                <a class ="username" href="other-profile.html"><h4>puppie</h4></a>
+                                <p class = "comment">Had an amazaing time to drink coffee!</p>
+                            </div>
+                            <div class="bottom-container">
+                                <button class="helpful">
+                                    <img src="../../images/thumb.png">
+                                    <span class = "numberofreact">{{topThreeCafes.[1].noOfLike}}</span><button id="closePopupBtntomo" onclick="closeSummarytomo()"><img src="../../images/xicon.png"></button>
+                                </button>
+                                <button class="unhelpful">
+                                    <img src="../../images/thumbdown.png">
+                                    <span class = "numberofreact">{{topThreeCafes.[1].noOfDislike}}</span>
+                                </button>
+                            </div>  
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="top3container">
+                <button id="view" class="cafe1header" style="background-image: url('{{topThreeCafes.[2].cafe-header }}')" onclick="showSummary()">
+                    <div class="logo-pre">
+                        <img src="{{topThreeCafes.[2].logo-image}}" alt="Logo">
+                    </div>
+                    <div class="infos">
+                        <div class="name1"><a class="name" href="#">{{topThreeCafes.[2].name}}</a></div>
+                        <div class="loc2"><a class="loc6" href="{{topThreeCafes.[2].location_link}}">
+                            {{topThreeCafes.[2].location}}</a></div>
+                            <p class="rating-prelude">
+                                Rating: <span id="i-prelude" class="i-prelude">{{topThreeCafes.[2].averageRating}}</span>  out of <span class="total">5</span>
+                            </p>
+                            <p class ="descp">
+                                {{topThreeCafes.[2].description}}
+                            </p>
+                    </div>
+                </button> 
+                <a class="view-establishment" href="view-establishments.html">View Establishment</a>
+                <div id="popupprelude" class="popupprelude">
+                    <div class="preludecontent">
+                        <div class = "upperside">
+                            <div class="logo-popup">
+                                <img src="{{topThreeCafes.[2].logo-image}}" alt="Logo">
+                                <a class = "view-all" href="view-establishments.html">View All</a>
+                            </div>
+                            <div class="infos-popup">
+                                <div class="prelude"><a class="name" href="#">{{topThreeCafes.[2].name}}</a></div>
+                                <div class="prelude-popup"><a a class="loc" href="{{topThreeCafes.[2].location_link}}">
+                                    {{topThreeCafes.[2].location}}</a></div>
+                            </div>
+                        </div>
+                        <div class = "lowerside">
+                            <p class="rating-popup">
+                                Rating: <span id="i-popup" class="i-popup"> {{topThreeCafes.[2].averageRating}}</span>  out of <span class="total"> 5</span>
+                            </p>
+                            <hr>
+                            <div class="topreview-container">
+                                <p class="topreview">Top Review</p>
+                                <a class="write" href="reviewpage.html">Write a Review</a>
+                            </div>
+                            <div class = "comment-container"> 
+                                <img src="../../images/dog.jpg" class="user-icon">
+                                <a class ="username" href="#"><h4>mamammia</h4></a>
+                                <p class = "comment">Shesh</p>
+                            <div class="bottom-container">
+                                <button class="helpful">
+                                    <!-- TO EDIT/ ADD LIKE AND DISLIKE, THEN AD WRITE A REVIEW -->
+                                    <img src="../../images/thumb.png">
+                                    <span class = "numberofreact">{{topThreeCafes.[2].noOfLike}}</span>
+                                </button>
+                                <button class="unhelpful">
+                                    <!-- TO EDIT/ ADD LIKE AND DISLIKE, THEN AD WRITE A REVIEW -->
+                                    <img src="../../images/thumbdown.png">
+                                    <span class = "numberofreact">{{topThreeCafes.[2].noOfDislike}}</span>
+                                </button>
+                            </div>  
+                        </div>
+                        <!-- Close button -->
+                        <button id="closePopupBtnprelude" onclick="closeSummary()"><img src="../../images/xicon.png"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <p class = "budget">Looking for Budget Friendly Cafe? &#128176;</p>
+        <p class="budget1">Cafes that offers snacks and bevarages in a affordable price</p>
+            <div class = "cafelists">
+                <div class="next-slidecontainer">
+                    <button class="next-slide">
+                        <img src="../../images/nextlight.png" alt="NextLight">
+                    </button>
+                </div>
+                <div class = "cafe1container" id="cafe1">
+                    <button id="view" class="cafe1header"  onclick="showSummary()">
+                        <div class="logo-pre">
+                            <img src="../../images/preludelogo.jpg" alt="Logo">
+                        </div>
+                        <div class="infos">
+                            <div class="name1"><a class="name" href="#">Prelude Cafe and Restaurant</a></div>
+                        <div class="loc2"><a class="loc6" href="https://www.google.com/maps/place/810+Castro,+Malate,+Manila,+1004+Metro+Manila/@14.5649701,120.9905822,17z/data=!3m1!4b1!4m6!3m5!1s0x3397c97f49f2da09:0x5be89d0f6b8156e!8m2!3d14.5663182!4d120.9929197!16s%2Fg%2F11f3rgfy9c?entry=ttu">
+                            810 Castro Street, Manila, Philippines</a></div>
+                                <p class="rating-prelude">
+                                    Rating: <span id="i-prelude" class="i-prelude"> 5</span>  out of <span class="total">5</span>
+                                </p>
+                                <p class ="descp">
+                                    Feel a cozy atmosphere perfect for enjoying delicious meals and quality time with friends. From their aromatic coffee to their mouthwatering dishes, it's a delightful spot for coffee lovers and food enthusiasts alike.
+                                </p>
+                        </div>
+                    </button> 
+                    <a class="view-establishment" href="view-establishments.html">View Establishment</a>                   
+                    <div id="popupprelude" class="popupprelude">
+                        <div class="preludecontent">
+                            <div class = "upperside">
+                                <div class="logo-popup">
+                                    <img src="../../images/preludelogo.jpg" alt="Logo">
+                                    <a class = "view-all" href="view-establishments.html">View All</a>
+                                  </div>
+                                  <div class="infos-popup">
+                                    <div class="name-popup"><a class="name" href="#">Prelude Cafe and Restaurant</a></div>
+                                    <div class="loc-popup"><a  class="loc" href="https://www.google.com/maps/place/810+Castro,+Malate,+Manila,+1004+Metro+Manila/@14.5649701,120.9905822,17z/data=!3m1!4b1!4m6!3m5!1s0x3397c97f49f2da09:0x5be89d0f6b8156e!8m2!3d14.5663182!4d120.9929197!16s%2Fg%2F11f3rgfy9c?entry=ttu">
+                                        810 Castro Street, Manila, Philippines</a></div>
+                                  </div>
+                            </div>
+                            <div class = "lowerside">
+                                <p class="rating-popup">
+                                    Rating: <span id="i-popup" class="i-popup"> 4</span>  out of <span class="total"> 5</span>
+                                </p>
+                                <hr>
+                                <div class="topreview-container">
+                                    <p class="topreview">Top Review</p>
+                                    <a class="write" href="reviewpage.html">Write a Review</a>
+                                </div>
+                                <div class = "comment-container"> 
+                                    <img src="../../images/dog.jpg" class="user-icon">
+                                    <a class ="username" href="#"><h4>yu_mazin</h4></a>
+                                    <p class = "comment">Warm and inviting atmosphere!</p>
+                                    <div>
+                                        <button class="response5" onclick="showResponses5()">
+                                            4 Response | View Response 
+                                            <div class="popupresponse5">
+                                                <div class="responsecontainer">
+                                                    <div class="topbar">
+                                                        <div id="returnButton">
+                                                            <img src="../../images/return.png" class="return">
+                                                        </div>
+                                                        <p class="thread">Top Review's Thread</p>
+                                                    </div>
+                                                    <div class="scrollable-comments">
+                                                        <div class="discussion-comments">
+                                                            <div class="reply5">
+                                                                <div class="profile-container">
+                                                                    <img src="../../images/elgatto.jpg" class="profile">
+                                                                    <a class="pangalan">poppins_01</a>
+                                                                </div>
+                                                                <p class="say">The pour-over coffee was rich and flavorful</p>
+                                                            </div> 
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </button>                                    
+                                    </div>
+                                </div>
+                                <div class="bottom-container">
+                                    <button class="helpful">
+                                        <!-- TO EDIT/ ADD LIKE AND DISLIKE, THEN AD WRITE A REVIEW -->
+                                        <img src="../../images/thumb.png">
+                                        <span class = "numberofreact">8</span>
+                                    </button>
+                                    <button class="unhelpful">
+                                        <!-- TO EDIT/ ADD LIKE AND DISLIKE, THEN AD WRITE A REVIEW -->
+                                        <img src="../../images/thumbdown.png">
+                                        <span class = "numberofreact">4</span>
+                                    </button>
+                                </div>  
+                               
+                            </div>
+                            <!-- Close button -->
+                            <button id="closePopupBtnprelude" onclick="closeSummary()"><img src="../../images/xicon.png"></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="cafe2container" id="cafe2">
+                    <button id="view-drip" class="cafe2header" onclick="showSummarydrip()">
+                        <div class="infos-drip">
+                            <div class="logo-drip">
+                                <img src="../../images/dripkofilogo.jpg" alt="Logo">
+                            </div>
+                            <div>
+                                <a class="drip" href="#">Drip Kofi</a>
+                            </div>
+                            <div>
+                                <a class="burgundy" href="https://www.google.com/maps/place/One+Archers'+Place/@14.5666852,120.9903726,17z/data=!4m10!1m2!2m1!1s1%2FF,+One+Archer+Place,+Taft+Avenue+Corner+Castro+Street,+Manila,+Metro+Manila+Philippines!3m6!1s0x3397c97f4f0cf917:0x67ecb17bc2ebf8ca!8m2!3d14.5666693!4d120.9927121!15sClkxL0YsIE9uZSBBcmNoZXIgUGxhY2UsIFRhZnQgQXZlbnVlIENvcm5lciBDYXN0cm8gU3RyZWV0LCBNYW5pbGEsIE1ldHJvIE1hbmlsYSBQaGlsaXBwaW5lc5IBEmFwYXJ0bWVudF9idWlsZGluZ-ABAA!16s%2Fg%2F11r9xlqtf?entry=ttu">
+                                    Unit G5, Burgundy Transpacific Place, Taft Avenue
+                                </a>
+                            </div>
+                            <p class="rating-drip">
+                                Rating: <span id="i-drip" class="i-drip"> 4</span>out of <span class="total">5</span>
+                            </p>
+                            <p class="desct">
+                                A Vietnamese-inspired cafe that is also a minimalist cafe that offers authentic Vietnamese coffee, which is made by letting hot water drip through finely-ground coffee.
+                            </p>
+                        </div>
+                    </button>
+                    <a class="view-establishment-drip" href="view-establishments.html">View Establishment</a>
+                    <div id="popupdrip" class="popupdrip">
+                        <div class="dripcontent">
+                            <div class = "uppersidedrip">
+                                <div class="logo-popup">
+                                    <img src="../../images/dripkofilogo.jpg" alt="Logo">
+                                    <a class = "view-all" href="view-establishments.html">View All</a>
+                                  </div>
+                                  <div class="infos-popup">
+                                    <div class="name-popup"><a class="name" href="#">Drip Kofi</a></div>
+                                    <div class="loc-popup"><a a class="loc" href="https://www.google.com/maps/place/Burgundy+TransPacific+Condominium/@14.5652252,120.9916137,17z/data=!3m1!4b1!4m6!3m5!1s0x3397c978dbb9edf7:0x3b8d9138d38a973f!8m2!3d14.5652252!4d120.9941886!16s%2Fg%2F11c0rj1d11?entry=ttu">
+                                        Unit G5, Burgundy Transpacific Place, Taft Avenue</a></div>
+                                  </div>
+                            </div>
+                            <div class = "lowerside">
+                                <p class="rating-popup">
+                                    Rating: <span id="i-popup" class="i-popup"> 4</span>  out of <span class="total"> 5</span>
+                                </p>
+                                <hr>
+                                <div class="topreview-container">
+                                    <p class="topreview">Top Review</p>
+                                    <a class="write" href="reviewpage.html">Write a Review</a>
+                                </div>
+                                <div class = "comment-container"> 
+                                    <img src="../../images/dog.jpg" class="user-icon">
+                                    <a class ="username" href="#"><h4>sasa_i</h4></a>
+                                    <p class = "comment">I liked the food!</p>
+                                    <div>
+                                        <button class="response6" onclick="showResponses6()">
+                                            4 Response | View Response 
+                                            <div class="popupresponse6">
+                                                <div class="responsecontainer">
+                                                    <div class="topbar">
+                                                        <div id="returnButton">
+                                                            <img src="../../images/return.png" class="return">
+                                                        </div>
+                                                        <p class="thread">Top Review's Thread</p>
+                                                    </div>
+                                                    <div class="scrollable-comments">
+                                                        <div class="discussion-comments">
+                                                            <div class="reply1">
+                                                                <div class="profile-container">
+                                                                    <img src="../../images/elgatto.jpg" class="profile">
+                                                                    <a class="pangalan">pepper_shu</a>
+                                                                </div>
+                                                                <p class="say">Their breakfast sandwiches are a must-try</p>
+                                                            </div> 
+                                                            <div class="reply2">
+                                                                <div class="profile-container">
+                                                                    <img src="../../images/elgatto.jpg" class="profile">
+                                                                    <a class="pangalan">hulk_smsh</a>
+                                                                </div>
+                                                                <p class="say">Loved their latte art</p>
+                                                            </div> 
+                                                            <div class="reply4">
+                                                                <div class="profile-container">
+                                                                    <img src="../../images/elgatto.jpg" class="profile">
+                                                                    <a class="pangalan">qwertyui_op</a>
+                                                                </div>
+                                                                <p class="say">Charming little cafe with a lovely outdoor seating area</p>
+                                                            </div> 
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </button>                                    
+                                    </div>
+                                </div>
+                                <div class="bottom-container">
+                                    <button class="helpful">
+                                        <!-- TO EDIT/ ADD LIKE AND DISLIKE, THEN AD WRITE A REVIEW -->
+                                        <img src="../../images/thumb.png">
+                                        <span class = "numberofreact">4</span>
+                                    </button>
+                                    <button class="unhelpful">
+                                        <!-- TO EDIT/ ADD LIKE AND DISLIKE, THEN AD WRITE A REVIEW -->
+                                        <img src="../../images/thumbdown.png">
+                                        <span class = "numberofreact">3</span>
+                                    </button>
+                                </div>  
+                               
+                            </div>
+                            <!-- Close button -->
+                            <button id="closePopupBtndrip" onclick="closeSummarydrip()"><img src="../../images/xicon.png"></button>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="cafe3container" id="cafe3">
+                    <div id="view-obsecure" class="cafe3header" onclick="showSummaryobsecure()">
+                        <div class="infos-obsecure">
+                            <div class="logo-obsecure">
+                                <img src="../../images/obsecurelogo.jpg" alt="Logo">
+                            </div>
+                            <div>
+                                <a class="obsecure" href="#">Obscure Cafe</a>
+                            </div>
+                            <div>
+                                <a class="loc3" href="https://www.google.com/maps/place/One+Archers'+Place/@14.5666852,120.9903726,17z/data=!4m10!1m2!2m1!1s1%2FF,+One+Archer+Place,+Taft+Avenue+Corner+Castro+Street,+Manila,+Metro+Manila+Philippines!3m6!1s0x3397c97f4f0cf917:0x67ecb17bc2ebf8ca!8m2!3d14.5666693!4d120.9927121!15sClkxL0YsIE9uZSBBcmNoZXIgUGxhY2UsIFRhZnQgQXZlbnVlIENvcm5lciBDYXN0cm8gU3RyZWV0LCBNYW5pbGEsIE1ldHJvIE1hbmlsYSBQaGlsaXBwaW5lc5IBEmFwYXJ0bWVudF9idWlsZGluZ-ABAA!16s%2Fg%2F11r9xlqtf?entry=ttu">
+                                    1/F, One Archer Place, Taft Avenue Corner Castro Street, Manila, Metro Manila Philippines</a>
+                            </div>
+                            <p class="rating-obsecure">
+                                Rating: <span id="i-obsecure" class="i-obsecure"> 3.4</span>  out of <span class="total">5</span>
+                            </p>
+                            <p class="desco1">
+                                Obscure Cafe in Taft, Manila is a hidden gem known for its unique ambiance. Step into this charming space for specialty brews, delectable treats, and a touch of mystery.
+                            </p>
+                        </div>
+                    </div>
+                    <a class="view-establishment-obsecure" href="view-establishments.html">View Establishment</a>
+                    <div id="popupobsecure" class="popupobsecure">
+                        <div class="obsecurecontent">
+                            <div class = "uppersideobsecure">
+                                <div class="logo-popup">
+                                    <img src="../../images/obsecurelogo.jpg" alt="Logo">
+                                    <a class = "view-all" href="view-establishments.html">View All</a>
+                                  </div>
+                                  <div class="infos-popup">
+                                    <div class="name-popup"><a class="name" href="#">Obsecure Cafe'</a></div>
+                                    <div class="loc-popup"><a a class="loc"  href="https://www.google.com/maps/place/One+Archers'+Place/@14.5666852,120.9903726,17z/data=!4m10!1m2!2m1!1s1%2FF,+One+Archer+Place,+Taft+Avenue+Corner+Castro+Street,+Manila,+Metro+Manila+Philippines!3m6!1s0x3397c97f4f0cf917:0x67ecb17bc2ebf8ca!8m2!3d14.5666693!4d120.9927121!15sClkxL0YsIE9uZSBBcmNoZXIgUGxhY2UsIFRhZnQgQXZlbnVlIENvcm5lciBDYXN0cm8gU3RyZWV0LCBNYW5pbGEsIE1ldHJvIE1hbmlsYSBQaGlsaXBwaW5lc5IBEmFwYXJ0bWVudF9idWlsZGluZ-ABAA!16s%2Fg%2F11r9xlqtf?entry=ttu">
+                                        1/F, One Archer Place, Taft Avenue Corner Castro Street, Manila, Metro Manila Philippines</a></div>
+                                  </div>
+                            </div>
+                            <div class = "lowerside">
+                                <p class="rating-popup">
+                                    Rating: <span id="i-popup" class="i-popup"> 3.4</span>  out of <span class="total"> 5</span>
+                                </p>
+                                <hr>
+                                <div class="topreview-container">
+                                    <p class="topreview">Top Review</p>
+                                    <a class="write" href="reviewpage.html">Write a Review</a>
+                                </div>
+                                <div class = "comment-container"> 
+                                    <img src="../../images/dog.jpg" class="user-icon">
+                                    <a class ="username" href="#"><h4>rosie_roses</h4></a>
+                                    <p class = "comment">Nice Place, Amazing! Lit!</p>
+                                    <div>
+                                        <button class="response7" onclick="showResponses7()">
+                                            4 Response | View Response 
+                                            <div class="popupresponse7">
+                                                <div class="responsecontainer">
+                                                    <div class="topbar">
+                                                        <div id="returnButton">
+                                                            <img src="../../images/return.png" class="return">
+                                                        </div>
+                                                        <p class="thread">Top Review's Thread</p>
+                                                    </div>
+                                                    <div class="scrollable-comments">
+                                                        <div class="discussion-comments">
+                                                            <div class="reply1">
+                                                                <div class="profile-container">
+                                                                    <img src="../../images/elgatto.jpg" class="profile">
+                                                                    <a class="pangalan">gelalato</a>
+                                                                </div>
+                                                                <p class="say"> Staff were attentive and knowledgeable about their brews</p>
+                                                            </div> 
+                                                            <div class="reply2">
+                                                                <div class="profile-container">
+                                                                    <img src="../../images/elgatto.jpg" class="profile">
+                                                                    <a class="pangalan">rubyjane</a>
+                                                                </div>
+                                                                <p class="say">Quirky decor and a relaxed vibe</p>
+                                                            </div> 
+                                                            <div class="reply4">
+                                                                <div class="profile-container">
+                                                                    <img src="../../images/elgatto.jpg" class="profile">
+                                                                    <a class="pangalan">lalalisa</a>
+                                                                </div>
+                                                                <p class="say">Great spot for remote work</p>
+                                                            </div> 
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </button>                                    
+                                    </div>
+                                </div>
+                                <div class="bottom-container">
+                                    <button class="helpful">
+                                        <img src="../../images/thumb.png">
+                                        <span class = "numberofreact">6</span>
+                                    </button>
+                                    <button class="unhelpful">
+                                        <img src="../../images/thumbdown.png">
+                                        <span class = "numberofreact">10</span>
+                                    </button>
+                                </div>  
+                            </div>
+                            <button id="closePopupBtnobsecure" onclick="closeSummaryobsecure()"><img src="../../images/xicon.png"></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="cafe4container" id="cafe4">
+                    <div id="view-tomo" class="cafe4header" onclick="showSummarytomo()">
+                        <div class="infos-tomo">
+                            <div class="logo-tomo">
+                                <img src="../../images/tomologo.jpg" alt="Logo">
+                            </div>
+                            <div>
+                                <a class="tomo" href="#">TOMO Coffee</a>
+                            </div>
+                            <div>
+                                <a class="loc4" href="https://www.google.com/maps/place/One+Archers'+Place/@14.5666852,120.9903726,17z/data=!4m10!1m2!2m1!1s1%2FF,+One+Archer+Place,+Taft+Avenue+Corner+Castro+Street,+Manila,+Metro+Manila+Philippines!3m6!1s0x3397c97f4f0cf917:0x67ecb17bc2ebf8ca!8m2!3d14.5666693!4d120.9927121!15sClkxL0YsIE9uZSBBcmNoZXIgUGxhY2UsIFRhZnQgQXZlbnVlIENvcm5lciBDYXN0cm8gU3RyZWV0LCBNYW5pbGEsIE1ldHJvIE1hbmlsYSBQaGlsaXBwaW5lc5IBEmFwYXJ0bWVudF9idWlsZGluZ-ABAA!16s%2Fg%2F11r9xlqtf?entry=ttu">
+                                    Unit G5, Burgundy Transpacific Place, Taft Avenue
+                                </a>
+                            </div>
+                            <p class="rating-tomo">
+                                Rating: <span id="i-tomo" class="i-tomo"> 4.6</span>  out of <span class="total">5</span>
+                            </p>
+                            <p class ="desct2">
+                                With its trendy decor and artisanal coffee blends, Tomo Coffee in Taft, Manila provides a modern yet relaxed setting for coffee enthusiasts to savor their favorite brews and unwind.
+                            </p>
+                        </div>
+                    </div>
+                    <a class="view-establishment-tomo" href="view-establishments.html">View Establishment</a>
+                    <div id="popuptomo" class="popuptomo">
+                        <div class="tomocontent">
+                            <div class = "uppersidetomo">
+                                <div class="logo-popup">
+                                    <img src="../../images/tomologo.jpg" alt="Logo">
+                                    <a class = "view-all" href="view-establishments.html">View All</a>
+                                  </div>
+                                  <div class="infos-popup">
+                                    <div class="name-popup"><a class="name" href="#">TOMO Coffee</a></div>
+                                    <div class="loc-popup"><a a class="loc" href="https://www.google.com/maps/place/Burgundy+TransPacific+Condominium/@14.5652252,120.9916137,17z/data=!3m1!4b1!4m6!3m5!1s0x3397c978dbb9edf7:0x3b8d9138d38a973f!8m2!3d14.5652252!4d120.9941886!16s%2Fg%2F11c0rj1d11?entry=ttu">
+                                        Unit G5, Burgundy Transpacific Place, Taft Avenue</a></div>
+                                  </div>
+                            </div>
+                            <div class = "lowerside">
+                                <p class="rating-popup">
+                                    Rating: <span id="i-popup" class="i-popup"> 4.6</span>  out of <span class="total"> 5</span>
+                                </p>
+                                <hr>
+                                <div class="topreview-container">
+                                    <p class="topreview">Top Review</p>
+                                    <a class="write" href="reviewpage.html">Write a Review</a>
+                                </div>
+                                <div class = "comment-container"> 
+                                    <img src="../../images/dog.jpg" class="user-icon">
+                                    <a class ="username" href="#"><h4>bbmo</h4></a>
+                                    <p class = "comment">Affordable for us</p>
+                                    <div>
+                                        <button class="response" onclick="showResponses()">
+                                            3 Response | View Response 
+                                            <div class="popupresponse">
+                                                <div class="responsecontainer">
+                                                    <div class="topbar">
+                                                        <div id="returnButton">
+                                                            <img src="../../images/return.png" class="return">
+                                                        </div>
+                                                        <p class="thread">Top Review's Thread</p>
+                                                    </div>
+                                                    <div class="scrollable-comments">
+                                                        <div class="discussion-comments">
+                                                            <div class="reply1">
+                                                                <div class="profile-container">
+                                                                    <img src="../../images/elgatto.jpg" class="profile">
+                                                                    <a class="pangalan">crazyrich</a>
+                                                                </div>
+                                                                <p class="say">Their breakfast sandwiches are a must-try</p>
+                                                            </div> 
+                                                            <div class="reply2">
+                                                                <div class="profile-container">
+                                                                    <img src="../../images/elgatto.jpg" class="profile">
+                                                                    <a class="pangalan">poppyro</a>
+                                                                </div>
+                                                                <p class="say">The iced mocha was refreshing</p>
+                                                            </div> 
+                                                            <div class="reply4">
+                                                                <div class="profile-container">
+                                                                    <img src="../../images/elgatto.jpg" class="profile">
+                                                                    <a class="pangalan">druiz</a>
+                                                                </div>
+                                                                <p class="say">Loved their avocado toast was delicious! </p>
+                                                            </div> 
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </button>                                    
+                                    </div>
+                                </div>
+                                <div class="bottom-container">
+                                    <button class="helpful">
+                                        <!-- TO EDIT/ ADD LIKE AND DISLIKE, THEN AD WRITE A REVIEW -->
+                                        <img src="../../images/thumb.png">
+                                        <span class = "numberofreact">53</span>
+                                    </button>
+                                    <button class="unhelpful">
+                                        <!-- TO EDIT/ ADD LIKE AND DISLIKE, THEN AD WRITE A REVIEW -->
+                                        <img src="../../images/thumbdown.png">
+                                        <span class = "numberofreact">0</span>
+                                    </button>
+                                </div>  
+                               
+                            </div>
+                            <!-- Close button -->
+                            <button id="closePopupBtntomo" onclick="closeSummarytomo()"><img src="../../images/xicon.png"></button>
+                        </div>
+                    </div>
+                </div>
+                <p class = "Discover">Discover Cafes That Embrace Your Study Sessions &#128218;</p>
+                <p class="student-friendly">Cafe with Quiet ambiance, free Wi-Fi, and delicious drinks to fuel your focus </p>
+                <div class = "cafelists2">
+
+                    <div class="cafe1containercl2">
+                        <div id="view-tomo" class="cafe1headercl2" onclick="showSummarycloudscape()">
+                            <div class="infos-cloudscape">
+                                <div class="logo-cloudscape">
+                                    <img src="../../images/cloudscapelogo.jpg" alt="Logo">
+                                </div>
+                                <div>
+                                    <a class="cloudscape" href="#">Cloudscape</a>
+                                </div>
+                                <div>
+                                    <a class="studentplace" href="https://www.google.com/maps/dir/?api=1&destination=14.589600198357%2C120.98079681396&fbclid=IwAR0dKlfYwA9jiz-0JzVxywZS-0QTw2nABYqKzDPrbqRDO7mo3L1j_U9G9TE">
+                                        3rd Floor D' Students Place, Vito Cruz Taft Avenue, Malate, Manila, Philippines
+                                    </a>
+                                </div>
+                                <p class="rating-cloudscape">
+                                    Rating: <span id="i-cloudscape" class="i-cloudscape"> 5</span>  out of <span class="total">5</span>
+                                </p>
+                                <p class="descc">
+                                    Cloudscape, located high above Taft, Manila, offers panoramic views and a serene ambiance. Escape the hustle and bustle as you sip on freshly brewed coffee and indulge in heavenly pastries in this tranquil rooftop oasis.
+
+                                </p>
+                            </div>
+                        </div>
+                        <a class="view-establishment-cloudscape" href="view-establishments.html">View Establishment</a>
+                        <div id="popupcloudscape" class="popupcloudscape">
+                            <div class="cloudscapecontent">
+                                <div class = "uppersidecloudscape">
+                                    <div class="logo-popup">
+                                        <img src="../../images/cloudscapelogo.jpg" alt="Logo">
+                                        <a class = "view-all" href="view-establishments.html">View All</a>
+                                      </div>
+                                      <div class="infos-popup">
+                                        <div class="name-popup"><a class="name" href="#">Cloudscape</a></div>
+                                        <div class="loc-popup"><a a class="loc" href="https://www.google.com/maps/dir/?api=1&destination=14.589600198357%2C120.98079681396&fbclid=IwAR0dKlfYwA9jiz-0JzVxywZS-0QTw2nABYqKzDPrbqRDO7mo3L1j_U9G9TE">
+                                            3rd Floor D' Students Place, Vito Cruz Taft Avenue, Malate, Manila, Philippines</a></div>
+                                      </div>
+                                </div>
+                                <div class = "lowerside">
+                                    <p class="rating-popup">
+                                        Rating: <span id="i-popup" class="i-popup"> 5</span>  out of <span class="total"> 5</span>
+                                    </p>
+                                    <hr>
+                                    <div class="topreview-container">
+                                        <p class="topreview">Top Review</p>
+                                        <a class="write" href="reviewpage.html">Write a Review</a>
+                                    </div>
+                                    <div class = "comment-container"> 
+                                        <img src="../../images/dog.jpg" class="user-icon">
+                                        <a class ="username" href="#"><h4>helloword</h4></a>
+                                        <p class = "comment">Love It!</p>
+                                        <div>
+                                            <button class="response8" onclick="showResponses8()">
+                                                1 Response | View Response 
+                                                <div class="popupresponse8">
+                                                    <div class="responsecontainer">
+                                                        <div class="topbar">
+                                                            <div id="returnButton">
+                                                                <img src="../../images/return.png" class="return">
+                                                            </div>
+                                                            <p class="thread">Top Review's Thread</p>
+                                                        </div>
+                                                        <div class="scrollable-comments">
+                                                            <div class="discussion-comments">
+                                                                <div class="reply4">
+                                                                    <div class="profile-container">
+                                                                        <img src="../../images/elgatto.jpg" class="profile">
+                                                                        <a class="pangalan">leejung</a>
+                                                                    </div>
+                                                                    <p class="say">the vegan options on the menu were a pleasant surprise</p>
+                                                                </div> 
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </button>                                    
+                                        </div>
+                                    </div>
+                                    <div class="bottom-container">
+                                        <button class="helpful">
+                                            <!-- TO EDIT/ ADD LIKE AND DISLIKE, THEN AD WRITE A REVIEW -->
+                                            <img src="../../images/thumb.png">
+                                            <span class = "numberofreact">1</span>
+                                        </button>
+                                        <button class="unhelpful">
+                                            <!-- TO EDIT/ ADD LIKE AND DISLIKE, THEN AD WRITE A REVIEW -->
+                                            <img src="../../images/thumbdown.png">
+                                            <span class = "numberofreact">2</span>
+                                        </button>
+                                    </div>  
+                                   
+                                </div>
+                                <!-- Close button -->
+                                <button id="closePopupBtncloudscape" onclick="closeSummarycloudscape()"><img src="../../images/xicon.png"></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cafe2containercl2" id="cafe2">
+                        <div id="view-obsecure" class="cafe2headercl2" onclick="showSummaryobsecure()">
+                            <div class="infos-obsecure">
+                                <div class="logo-obsecure">
+                                    <img src="../../images/obsecurelogo.jpg" alt="Logo">
+                                </div>
+                                <div>
+                                    <a class="obsecure" href="#">Obscure Cafe</a>
+                                </div>
+                                <div>
+                                    <a class="loc3" href="https://www.google.com/maps/place/One+Archers'+Place/@14.5666852,120.9903726,17z/data=!4m10!1m2!2m1!1s1%2FF,+One+Archer+Place,+Taft+Avenue+Corner+Castro+Street,+Manila,+Metro+Manila+Philippines!3m6!1s0x3397c97f4f0cf917:0x67ecb17bc2ebf8ca!8m2!3d14.5666693!4d120.9927121!15sClkxL0YsIE9uZSBBcmNoZXIgUGxhY2UsIFRhZnQgQXZlbnVlIENvcm5lciBDYXN0cm8gU3RyZWV0LCBNYW5pbGEsIE1ldHJvIE1hbmlsYSBQaGlsaXBwaW5lc5IBEmFwYXJ0bWVudF9idWlsZGluZ-ABAA!16s%2Fg%2F11r9xlqtf?entry=ttu">
+                                        1/F, One Archer Place, Taft Avenue Corner Castro Street, Manila, Metro Manila Philippines</a>
+                                </div>
+                                <p class="rating-obsecure2">
+                                    Rating: <span id="i-obsecure" class="i-obsecure"> 2</span>  out of <span class="total">5</span>
+                                </p>
+                                <p class="descd1">
+                                    Obscure Cafe in Taft, Manila is a hidden gem known for its unique ambiance and artistic vibe. Step into this charming space for specialty brews, delectable treats, and a touch of mystery.
+                                </p>
+                            </div>
+                        </div>
+                        <a class="view-establishment-obsecure" href="view-establishments.html">View Establishment</a>
+                        <div id="popupobsecure" class="popupobsecure">
+                            <div class="obsecurecontent">
+                                <div class = "uppersideobsecure">
+                                    <div class="logo-popup">
+                                        <img src="../../images/obsecurelogo.jpg" alt="Logo">
+                                        <a class = "view-all" href="view-establishments.html">View All</a>
+                                      </div>
+                                      <div class="infos-popup">
+                                        <div class="name-popup"><a class="name" href="#">Obsecure Cafe</a></div>
+                                        <div class="loc-popup"><a a class="loc"  href="https://www.google.com/maps/place/One+Archers'+Place/@14.5666852,120.9903726,17z/data=!4m10!1m2!2m1!1s1%2FF,+One+Archer+Place,+Taft+Avenue+Corner+Castro+Street,+Manila,+Metro+Manila+Philippines!3m6!1s0x3397c97f4f0cf917:0x67ecb17bc2ebf8ca!8m2!3d14.5666693!4d120.9927121!15sClkxL0YsIE9uZSBBcmNoZXIgUGxhY2UsIFRhZnQgQXZlbnVlIENvcm5lciBDYXN0cm8gU3RyZWV0LCBNYW5pbGEsIE1ldHJvIE1hbmlsYSBQaGlsaXBwaW5lc5IBEmFwYXJ0bWVudF9idWlsZGluZ-ABAA!16s%2Fg%2F11r9xlqtf?entry=ttu">
+                                            1/F, One Archer Place, Taft Avenue Corner Castro Street, Manila, Metro Manila Philippines</a></div>
+                                      </div>
+                                </div>
+                                <div class = "lowerside">
+                                    <p class="rating-popup">
+                                        Rating: <span id="i-popup" class="i-popup"> 2</span>  out of <span class="total"> 5</span>
+                                    </p>
+                                    
+                                    <hr>
+                                    <div class="topreview-container">
+                                        <p class="topreview">Top Review</p>
+                                        <a class="write" href="reviewpage.html">Write a Review</a>
+                                    </div>
+                                    <div class = "comment-container"> 
+                                        <img src="../../images/dog.jpg" class="user-icon">
+                                        <a class ="username" href="#"><h4>0anonymouaz</h4></a>
+                                        <p class = "comment">Bad Place</p>
+                                        <a class = "response" href="#">5 Response | View Response</a>
+                                    </div>
+                                    <div class="bottom-container">
+                                        <button class="helpful">
+                                            <img src="../../images/thumb.png">
+                                            <span class = "numberofreact">88</span>
+                                        </button>
+                                        <button class="unhelpful">
+                                            <img src="../../images/thumbdown.png">
+                                            <span class = "numberofreact">53</span>
+                                        </button>
+                                    </div>  
+                                </div>
+                                <button id="closePopupBtnobsecure" onclick="closeSummaryobsecure()"><img src="../../images/xicon.png"></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cafe3containercl2">
+                        <div id="view-drip" class="cafe3headercl2" onclick="showSummarydrip()">
+                            <div class="infos-drip">
+                                <div class="logo-drip">
+                                    <img src="../../images/dripkofilogo.jpg" alt="Logo">
+                                </div>
+                                <div>
+                                    <a class="drip" href="#">Drip Kofi</a>
+                                </div>
+                                <div>
+                                    <a class="burgundy" href="https://www.google.com/maps/place/One+Archers'+Place/@14.5666852,120.9903726,17z/data=!4m10!1m2!2m1!1s1%2FF,+One+Archer+Place,+Taft+Avenue+Corner+Castro+Street,+Manila,+Metro+Manila+Philippines!3m6!1s0x3397c97f4f0cf917:0x67ecb17bc2ebf8ca!8m2!3d14.5666693!4d120.9927121!15sClkxL0YsIE9uZSBBcmNoZXIgUGxhY2UsIFRhZnQgQXZlbnVlIENvcm5lciBDYXN0cm8gU3RyZWV0LCBNYW5pbGEsIE1ldHJvIE1hbmlsYSBQaGlsaXBwaW5lc5IBEmFwYXJ0bWVudF9idWlsZGluZ-ABAA!16s%2Fg%2F11r9xlqtf?entry=ttu">
+                                        Unit G5, Burgundy Transpacific Place, Taft Avenue
+                                    </a>
+                                </div>
+                                <p class="rating-drip">
+                                    Rating: <span id="i-drip" class="i-drip"> 1</span>  out of <span class="total">5</span>
+                                </p>
+                                <p class="desco">
+                                    A Vietnamese-inspired cafe that is also a minimalist cafe that offers authentic Vietnamese coffee, which is made by letting hot water drip through finely-ground coffee.
+                                </p>
+                            </div>
+                        </div>
+                        <a class="view-establishment-drip" href="view-establishments.html">View Establishment</a>
+                        <div id="popupdrip" class="popupdrip">
+                            <div class="dripcontent">
+                                <div class = "uppersidedrip">
+                                    <div class="logo-popup">
+                                        <img src="../../images/dripkofilogo.jpg" alt="Logo">
+                                        <a class = "view-all" href="view-establishments.html">View All</a>
+                                      </div>
+                                      <div class="infos-popup">
+                                        <div class="name-popup"><a class="name" href="#">Drip Kofi</a></div>
+                                        <div class="loc-popup"><a a class="loc" href="https://www.google.com/maps/place/Burgundy+TransPacific+Condominium/@14.5652252,120.9916137,17z/data=!3m1!4b1!4m6!3m5!1s0x3397c978dbb9edf7:0x3b8d9138d38a973f!8m2!3d14.5652252!4d120.9941886!16s%2Fg%2F11c0rj1d11?entry=ttu">
+                                            Unit G5, Burgundy Transpacific Place, Taft Avenue</a></div>
+                                      </div>
+                                </div>
+                                <div class = "lowerside">
+                                    <p class="rating-popup">
+                                        Rating: <span id="i-popup" class="i-popup"> 1</span>  out of <span class="total"> 5</span>
+                                    </p>
+                                    <hr>
+                                    <div class="topreview-container">
+                                        <p class="topreview">Top Review</p>
+                                        <a class="write" href="view-establishments.html">Write a Review</a>
+                                    </div>
+                                    <div class = "comment-container"> 
+                                        <img src="../../images/dog.jpg" class="user-icon">
+                                        <a class ="username" href="#"><h4>harshmo</h4></a>
+                                        <p class = "comment">Baddd place, worse</p>
+                                        <a class = "response" href="#">7 Response | View Response</a>
+                                    </div>
+                                    <div class="bottom-container">
+                                        <button class="helpful">
+                                            <!-- TO EDIT/ ADD LIKE AND DISLIKE, THEN AD WRITE A REVIEW -->
+                                            <img src="../../images/thumb.png">
+                                            <span class = "numberofreact">3</span>
+                                        </button>
+                                        <button class="unhelpful">
+                                            <!-- TO EDIT/ ADD LIKE AND DISLIKE, THEN AD WRITE A REVIEW -->
+                                            <img src="../../images/thumbdown.png">
+                                            <span class = "numberofreact">19</span>
+                                        </button>
+                                    </div>  
+                                   
+                                </div>
+                                <!-- Close button -->
+                                <button id="closePopupBtndrip" onclick="closeSummarydrip()"><img src="../../images/xicon.png"></button>
+    
+                            </div>
+                        </div>
+                    </div>
+                    
+                
+        </div>
+    </div>
+</body>
+</html>
