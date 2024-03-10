@@ -116,8 +116,7 @@ MongoClient.connect(uri)
             client.close(); // Close the MongoDB client if an error occurs
         });
 
-
-        //NOTE: THE USERID, CAFEID, REVIEWID THAT ARE REFERENCED MIGHT NOT REALLY CORRESPOND SA DOCUMENTS ABOVE
+        //NOTE: THESE DOCUMENTS ONLY REFERENCE THE INFORMAL IDS OF THOSE USERS AND CAFES
 
         db.collection('reviews').insertMany(reviews)
         .then(result => {

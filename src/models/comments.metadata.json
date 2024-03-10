@@ -1,58 +1,38 @@
 [{
-  "userID": {
-    "$oid": "65e71f9ea79d8bfc9a28ea67"
-  },
-  "reviewID": {
-    "$oid": "65e7e5b3bbeb71121ad88b8e"
-  },
+  "userID": "b1",
+  "reviewID": "c2",
   "textcontent": "That's cool! Haven't tried it but will do soon.",
   "timestamp": {
     "$date": "2024-03-05T10:30:12.000Z"
   }
 },
 {
-  "userID": {
-    "$oid": "65e71ef8a79d8bfc9a28ea64"
-  },
-  "reviewID": {
-    "$oid": "65e7e65ebbeb71121ad88b8f"
-  },
+  "userID": "b2",
+  "reviewID": "c5",
   "textcontent": "Can’t agree with you more.",
   "timestamp": {
     "$date": "2024-03-06T03:53:15.194Z"
   }
 },
 {
-  "userID": {
-    "$oid": "65e71f4fa79d8bfc9a28ea65"
-  },
-  "reviewID": {
-    "$oid": "65e7e3b0bbeb71121ad88b8b"
-  },
+  "userID": "b3",
+  "reviewID": "c1",
   "textcontent": "I’ve been hanging out in this establishment for months, where do you sit?",
   "timestamp": {
     "$date": "2024-03-06T03:57:08.249Z"
   }
 },
 {
-  "userID": {
-    "$oid": "65e71f78a79d8bfc9a28ea66"
-  },
-  "reviewID": {
-    "$oid": "65e7e4f0bbeb71121ad88b8d"
-  },
+  "userID": "b4",
+  "reviewID": "c4",
   "textcontent": "Yeah, their egg tasted weird, ugh.",
   "timestamp": {
     "$date": "2024-03-01T07:13:22.000Z"
   }
 },
 {
-  "userID": {
-    "$oid": "65e71fbfa79d8bfc9a28ea68"
-  },
-  "reviewID": {
-    "$oid": "65e7e494bbeb71121ad88b8c"
-  },
+  "userID": "b5",
+  "reviewID": "c3",
   "textcontent": "Hello",
   "timestamp": {
     "$date": "2024-03-06T04:02:36.812Z"

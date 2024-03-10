@@ -1,10 +1,7 @@
 [{
-  "userID": {
-    "$oid": "65e71fbfa79d8bfc9a28ea68"
-  },
-  "cafeID": {
-    "$oid": "65e7233ca79d8bfc9a28ea6a"
-  },
+  "inf_id": "c1",
+  "userID": "b1",
+  "cafeID": "a2",
   "caferating": 4,
   "reviewtitle": "Loyal Customer",
   "reviewbody": "My friend introduced me to this cafe. 2 years later, this has been my spot whenever I work on my academics.",
@@ -14,12 +11,9 @@
   "isEdited": false
 },
 {
-  "userID": {
-    "$oid": "65e71f4fa79d8bfc9a28ea65"
-  },
-  "cafeID": {
-    "$oid": "65e7238aa79d8bfc9a28ea6b"
-  },
+  "inf_id": "c2",
+  "userID": "b2",
+  "cafeID": "a4",
   "caferating": 5,
   "reviewtitle": "Great!",
   "reviewbody": "wow! what a great place and such a top-tier service!!!",
@@ -29,12 +23,9 @@
   "isEdited": true
 },
 {
-  "userID": {
-    "$oid": "65e71ef8a79d8bfc9a28ea64"
-  },
-  "cafeID": {
-    "$oid": "65e722cfa79d8bfc9a28ea69"
-  },
+  "inf_id": "c3",
+  "userID": "b3",
+  "cafeID": "a1",
   "caferating": 3.5,
   "reviewtitle": "Just for Instagram",
   "reviewbody": "The interior design, the food, and the drinks are all pleasing to the eye but it's quite overpriced.",
@@ -44,12 +35,9 @@
   "isEdited": false
 },
 {
-  "userID": {
-    "$oid": "65e71f78a79d8bfc9a28ea66"
-  },
-  "cafeID": {
-    "$oid": "65ed62823ee83e826f3d72b1"
-  },
+  "inf_id": "c4",
+  "userID": "b4",
+  "cafeID": "a3",
   "caferating": 3,
   "reviewtitle": "I Love Egg Coffee",
   "reviewbody": "Their egg coffee tastes similar to the one in Vietnam, it's my new favorite !",
@@ -59,12 +47,9 @@
   "isEdited": false
 },
 {
-  "userID": {
-    "$oid": "65e71f9ea79d8bfc9a28ea67"
-  },
-  "cafeID": {
-    "$oid": "65e72417a79d8bfc9a28ea6d"
-  },
+  "inf_id": "c5",
+  "userID": "b5",
+  "cafeID": "a5",
   "caferating": 2,
   "reviewtitle": "Overrated",
   "reviewbody": "Starbucks is really good at marketing, maybe the best in the world. However, their coffee tastes burnt to me, roasting in such large quantities ensures that.",
