@@ -72,23 +72,24 @@ app.get('/view-establishments', function(req, res) {
     });
 });
 
+app.get('/', function(req, res) {
+    res.redirect('/index');
+});
+
+
 MongoClient.connect(uri)
     .then(client => {
         console.log('Connected to MongoDB');
         const db = client.db(); // Get the database
 
-        // Define route to delete the database
-        app.get('/delete-database', function(req, res) {
-            db.dropDatabase()
-                .then(result => {
-                    console.log('Database deleted successfully');
-                    res.send('Database deleted successfully');
-                })
-                .catch(err => {
-                    console.error('Error deleting database:', err);
-                    res.status(500).send('Error deleting database');
-                });
-        });
+        db.dropDatabase()
+            .then(result => {
+                console.log('Database deleted successfully');
+            })
+            .catch(err => {
+                console.error('Error deleting database:', err);
+            });
+
 
         // Insert data into the database
         db.collection('cafes').insertMany(cafes)

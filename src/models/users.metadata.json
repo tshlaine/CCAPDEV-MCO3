@@ -1,1 +1,50 @@
-{"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_"},{"v":{"$numberInt":"2"},"key":{"username":{"$numberInt":"1"}},"name":"username_1","unique":true}],"uuid":"685afbd3a2184288875a277c9a674988","collectionName":"users","type":"collection"}
+[{
+  "fullname": {
+    "lastname": "Delos Reyes",
+    "firstname": "Carl Justin"
+  },
+  "username": "carljuDR",
+  "password": "cjdr",
+  "profilepicture": null,
+  "bio": "hello my name is ju!"
+},
+{
+  "fullname": {
+    "lastname": "Pidlaoan",
+    "firstname": "Atasha"
+  },
+  "username": "tashi",
+  "password": "ap",
+  "profilepicture": null,
+  "bio": "hello my name is tashi!"
+},
+{
+  "fullname": {
+    "lastname": "Sanchez",
+    "firstname": "Matthew"
+  },
+  "username": "matthewS",
+  "password": "mos",
+  "profilepicture": null,
+  "bio": "hello my name is matthew!"
+},
+{
+  "fullname": {
+    "lastname": "Sandoval",
+    "firstname": "Lee"
+  },
+  "username": "brien",
+  "password": "lbvs",
+  "profilepicture": null,
+  "bio": "hello my name is Lee!"
+},
+{
+  "fullname": {
+    "lastname": "Papi",
+    "firstname": "Doggy"
+  },
+  "username": "doggypapi",
+  "password": "papidoggy",
+  "profilepicture": null,
+  "bio": "bark!"
+}]
