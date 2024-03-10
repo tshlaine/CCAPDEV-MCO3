@@ -131,15 +131,17 @@ MongoClient.connect(uri)
         db.collection('comments').insertMany(comments)
         .then(result => {
             console.log(`${result.insertedCount} comments inserted`);
-            // Start the server after data insertion
-            app.listen(PORT, () => {
-                console.log(`Server is running on port ${PORT}`);
-            });
         })
         .catch(err => {
             console.error('Error inserting comments into the database:', err);
             client.close(); // Close the MongoDB client if an error occurs
         });
+
+        // Start the server after data insertion
+        app.listen(PORT, () => {
+            console.log(`Server is running on port ${PORT}`);
+        });
+        
     })
     .catch(err => {
         console.error('Error connecting to MongoDB:', err);

@@ -1,7 +1,4 @@
-db.dropDatabase()
-                .then(result => {
-                    console.log('Database deleted successfully');
-                })
-                .catch(err => {
-                    console.error('Error deleting database:', err);
-                });
+// Start the server after data insertion
+        app.listen(PORT, () => {
+            console.log(`Server is running on port ${PORT}`);
+        });
