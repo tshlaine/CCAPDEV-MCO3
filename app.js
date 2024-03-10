@@ -52,6 +52,7 @@ app.get('/index', function(req, res) {
     });
 });
 
+
 app.get('/login', function(req, res) {
     res.render('login', {
     });
@@ -72,11 +73,27 @@ app.get('/reviewpage', function(req, res) {
     });
 });
 
-app.get('/searchpage', function(req, res) {
-    res.render('searchpage', {
+app.get('/searchpage', async function(req, res) {
+    try {
+        let query = req.query.query || ''; // If no query parameter is provided, default to an empty string
 
-    });
+        // Check if the query is not empty
+        if (query.trim() !== '') {
+            const db = req.app.locals.db;
+            const result = await db.collection('cafes').find({ name: { $regex: query, $options: 'i' } }).toArray();
+            
+            // Render the searchpage.hbs template with the search results only
+            return res.render('searchpage', { result: result });
+        } else {
+            // If the query is empty, render the search page without any results
+            return res.render('searchpage', { result: [] });
+        }
+    } catch (err) {
+        console.error('Error searching cafes by name:', err);
+        return res.status(500).json({ message: 'Internal server error' });
+    }
 });
+
 
 app.get('/view-establishments', function(req, res) {
     res.render('view-establishments', {
@@ -93,6 +110,7 @@ MongoClient.connect(uri)
     .then(client => {
         console.log('Connected to MongoDB');
         const db = client.db(); // Get the database
+        app.locals.db = db; // Set the database connection to app.locals
 
         db.dropDatabase()
             .then(result => {
@@ -152,3 +170,6 @@ MongoClient.connect(uri)
         console.error('Error connecting to MongoDB:', err);
     });
 
+
+    
+    

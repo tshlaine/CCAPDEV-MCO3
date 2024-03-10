@@ -47,8 +47,8 @@
     <div class="lowerpanel" id="lowerpanel">
         <div class="lowernavbar">
             <div class="searchbar"> 
-                <form action="searchpage.html" method="GET">
-                    <input type="text" placeholder="Search Cafes" class="type">
+                <form  action="/searchpage" method="GET">
+                    <input type="text" placeholder="Search Cafes" class="type" name="query">
                     <button type="submit" class="search">Search</button>
                 </form>
             </div>
@@ -263,7 +263,7 @@
                 </div>
                 {{#each budgetFriendlyCafes}}
                 <div class="cafe2container" id="cafe2">
-                    <button id="view-drip" class="cafe2header"  style="background-image: url('{{ cafe-header}}')" onclick="showSummarydrip()">
+                    <button id="view-drip" class="cafe2header"  style="background-image: url('{{cafe-header}}')" onclick="showSummarydrip()">
                         <div class="infos-drip">
                             <div class="logo-drip">
                                 <img src="{{logo-image}}" alt="Logo">

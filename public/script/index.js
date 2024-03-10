@@ -36,13 +36,6 @@ function toggleDropdown() {
 
 
 
-document.querySelector('.next-slide').addEventListener('click', function() {
-    var nextSlideButton = document.querySelector('.next-slide');
-
-    nextSlideButton.src = '../../images/back.png';
-});
-
-
 document.addEventListener('DOMContentLoaded', function () {
 
     var nextSlideBtn = document.querySelector('.next-slide');
@@ -115,8 +108,6 @@ function currentSlide(index) {
     slides[index-1].style.display = "block";  
     dots[index-1].className += " active";
 }
-
-
 
 
 window.addEventListener('scroll', () => {
@@ -208,40 +199,6 @@ function showSummarysb() {
     popupprelude.style.display = 'block';
 }
 
-function showResponses() {
-    var popup = document.querySelector('.popupresponse');
-    popup.classList.toggle('show');
-}
-
-function showResponses1() {
-    var popup = document.querySelector('.popupresponse1');
-    popup.classList.toggle('show');
-}
-
-function showResponses3() {
-    var popup = document.querySelector('.popupresponse3');
-    popup.classList.toggle('show');
-}
-
-function showResponses4() {
-    var popup = document.querySelector('.popupresponse3');
-    popup.classList.toggle('show');
-}
-
-function showResponses5() {
-    var popup = document.querySelector('.popupresponse5');
-    popup.classList.toggle('show');
-}
-
-function showResponses6() {
-    var popup = document.querySelector('.popupresponse6');
-    popup.classList.toggle('show');
-}
-
-function showResponses7() {
-    var popup = document.querySelector('.popupresponse7');
-    popup.classList.toggle('show');
-}
 
 
 window.addEventListener('click', function(event) {
@@ -270,7 +227,7 @@ function scrollFunction() {
 document.addEventListener('DOMContentLoaded', function () {
     var homeLink = document.getElementById('home-link');
     var currentLocation = window.location.href;
-    if (currentLocation.includes('index.html')) {
+    if (currentLocation.includes('/index')) {
         homeLink.querySelector('a').classList.add('active-link');
     }
 });

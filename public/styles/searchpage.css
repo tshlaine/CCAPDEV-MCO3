@@ -112,6 +112,19 @@ body {
 
 .St.-title {
     color: #20683D;
+    margin-left: -5px;
+}
+
+.noResult{
+    margin-top: 260px; /* Adjust as needed */
+    margin-bottom: 20px; /* Add margin-bottom to create space below */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: absolute; /* Add position relative */
+
 }
 
 .logo {
@@ -221,6 +234,16 @@ ul li{
     opacity: 0.5;
 }
 
+h2{
+    color: #4D2D18;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 17px;
+    margin-top: 20px;
+    margin-left: 2px;
+    
+    }
+
 .header {
     width: 1224px;
     height: 30px;
@@ -261,6 +284,10 @@ ul li{
 
 .web-name {
     font-size: 40px;
+}
+
+.box{
+    text-decoration: none;
 }
 
 .contents {
@@ -324,7 +351,13 @@ ul li{
     box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.2);
     z-index: 1;
     margin: 50px;
+    margin-top: 20px;
     margin-bottom: -5px;
+    transition: transform 0.3s ease-in-out; /* Apply transition to the transform property */
+}
+
+.review-box:hover{
+    transform: scale(1.01); /* Apply the transformation on hover */
 }
 
 
@@ -427,6 +460,7 @@ ul li{
     font-size: 9px;
     width: 300px;
     height: 30px;
+    color: #4D2D18;
     background-color: #d3d3d3;
     margin-left: 10px;
     margin-top: 40px;

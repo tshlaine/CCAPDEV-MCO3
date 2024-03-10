@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Cafes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="/styles/searchpage.css">
+    <script src="/script/searchpage.js" defer></script>
+     <link rel="icon" type="image/png" href="/assets/Cafe St Logo.PNG">
+</head>
+<body>
+    {{>navbarsearchpage}}
+    {{#if result.length}}
+    <div class="contents">
+        <div class="searchbar"> 
+            <form  action="/searchpage" method="GET">
+                    <input type="text" placeholder="Search Cafes" class="type" name="query">
+                    <button type="submit" class="search">Search</button>
+            </form>
+        </div>
+        <hr class ="upperhr">
+
+        <p class = "result">Search Results: {{result.length}} out of 6 Cafes</p>
+        
+        <div class="main">
+            <a href="/reviewpage" class = "box">
+            <div class="review-box">
+                {{#each result}}
+                <div class="unit1" id="unit1-background1"  style="background-image: url('{{cafe-header}}')">
+                    <img src="{{logo-image}}" class="cafe-profile">
+                    <div class="info">
+                        <p class="cafe-name">{{name}}</p>
+                        <p class="cafe-address">{{location}}</p>
+                    </div>
+                </div>
+                <div class="unit2">
+                    <div class="ratings">
+                        <h2>RATINGS:</h2>
+                        <input type="radio" id="star1" name="rate" value="1">
+                        <label for="star1" title="text">1 star</label>
+    
+                        <input type="radio" id="star2" name="rate" value="2">
+                        <label for="star2" title="text">2 stars</label>
+    
+                        <input type="radio" id="star3" name="rate" value="3">
+                        <label for="star3" title="text">3 stars</label>
+    
+                        <input type="radio" id="star4" name="rate" value="4">
+                        <label for="star4" title="text">4 stars</label>
+    
+                        <input type="radio" id="star5" name="rate" value="5">
+                        <label for="star5" title="text">5 stars</label>
+                        <h2>{{averageRating}} out of 5</h2>
+                    </div>
+                    <hr>
+                    <div class="reviews">
+                        <h2>Top Review:</h2>
+                    </div>
+                </div>
+                <div class="unit3">
+                    <img src="/images/elgatto.jpg" class="reviewer">
+                    <div class="review-text">
+                        <p>wow! what a great place and such a top tier service!!!</p>
+                    </div>
+                    <div class="reaction">
+                        <button class="like"><img src="/images/dislike_light.png"></button>
+                        <button class="dislike"><img src="/images/like_light.png"></i></button>
+                    </div>
+                      {{/each}}
+                </div>
+            </div>
+
+        </div>
+    </div>
+     {{else}}
+      <div class="noResult">
+        <div class="searchbar"> 
+            <form  action="/searchpage" method="GET">
+                    <input type="text" placeholder="Search Cafes" class="type" name="query">
+                    <button type="submit" class="search">Search</button>
+                </form>
+        </div>
+        <hr class ="upperhr">
+        <p class = "result">No Results</p>
+    </div>
+    {{/if}}
+    </a>
+</body>
+</html>

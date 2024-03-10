@@ -13,6 +13,10 @@
     box-shadow: 0px 4px 8px 0 rgba(0, 0, 0, 0.5);
 }
 
+.searchbar a{
+    text-decoration: none;
+}
+
 .pics{
     height: 350px;
     width: 550px;
@@ -99,7 +103,7 @@
     width: 100%;
     text-align: center;
     margin-top: 325px; 
-    z-index: 1;
+    z-index: 5;
   }
   
 
@@ -829,7 +833,7 @@ hr{
   .cafelists{
     display:flex;
     margin-top: -170px;
-    margin-left: 20px;
+    margin-left: 100px;
     margin-right: 50px;
   }
 
@@ -871,7 +875,7 @@ hr{
     height: 350px;
     width: 275px;
     margin-top: 150px;
-    margin-left: 50px;
+    margin-left: 0px;
     margin-right: 50px;
     border-radius: 5px;
     box-shadow: 0px 4px 8px 0 rgba(0, 0, 0, 0.6);
@@ -948,9 +952,9 @@ hr{
     font-family: 'Poppins', sans-serif;
     color: #4D2D18;
     font-size: 25px;
-    margin-top: 65px; 
+    margin-top: 95px; 
     margin-bottom: 50px;
-    margin-left: 120px;
+    margin-left: 100px;
     font-weight: 800;
 }
 
@@ -960,7 +964,7 @@ hr{
     font-size: 17px;
     margin-top: -40px; 
     margin-bottom: 50px; 
-    margin-left: 120px;
+    margin-left: 100px;
     
 }
 
@@ -971,7 +975,7 @@ hr{
     margin-top: 590px;
     position: absolute;
     margin-bottom: 50px;
-    margin-left: 100px;
+    margin-left: 0px;
     font-weight: 800;
 }
 
@@ -982,7 +986,7 @@ hr{
     font-size: 17px;
    margin-top: 640px;
     margin-bottom: 50px;
-    margin-left: 100px;
+    margin-left: 0px;
 }
 
 .cafe2headercl2 {
