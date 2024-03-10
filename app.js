@@ -33,14 +33,20 @@ app.set('view engine', '.hbs');
 app.set('views', path.join(__dirname, 'src', 'views'));
 
 app.use(express.static(path.join(__dirname, 'public')));
-// Sort the cafes based on their averageRating property from highest to lowest
 const cafesSorted = cafes.sort((a, b) => b.averageRating - a.averageRating);
+
+const budgetFriendlyCafes = cafes.filter(cafe => cafe.category && cafe.category.includes('Budget-Friendly'));
+
+const studyFriendlyCafes = cafes.filter(cafe => cafe.category && cafe.category.includes('Study-Friendly'));
+
 // Select the top three cafes
 const topThreeCafes = cafesSorted.slice(0, 3);
 
 // Route handler for /index
 app.get('/index', function(req, res) {
     res.render('index', {
+        studyFriendlyCafes: studyFriendlyCafes,
+        budgetFriendlyCafes: budgetFriendlyCafes,
         cafes: cafes, // Pass all cafes
         topThreeCafes: topThreeCafes // Pass the top three cafes
     });
