@@ -1,1 +1,60 @@
-{"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_"}],"uuid":"63625729929e4416aff02278db087063","collectionName":"comments","type":"collection"}
+[{
+  "userID": {
+    "$oid": "65e71f9ea79d8bfc9a28ea67"
+  },
+  "reviewID": {
+    "$oid": "65e7e5b3bbeb71121ad88b8e"
+  },
+  "textcontent": "That's cool! Haven't tried it but will do soon.",
+  "timestamp": {
+    "$date": "2024-03-05T10:30:12.000Z"
+  }
+},
+{
+  "userID": {
+    "$oid": "65e71ef8a79d8bfc9a28ea64"
+  },
+  "reviewID": {
+    "$oid": "65e7e65ebbeb71121ad88b8f"
+  },
+  "textcontent": "Can’t agree with you more.",
+  "timestamp": {
+    "$date": "2024-03-06T03:53:15.194Z"
+  }
+},
+{
+  "userID": {
+    "$oid": "65e71f4fa79d8bfc9a28ea65"
+  },
+  "reviewID": {
+    "$oid": "65e7e3b0bbeb71121ad88b8b"
+  },
+  "textcontent": "I’ve been hanging out in this establishment for months, where do you sit?",
+  "timestamp": {
+    "$date": "2024-03-06T03:57:08.249Z"
+  }
+},
+{
+  "userID": {
+    "$oid": "65e71f78a79d8bfc9a28ea66"
+  },
+  "reviewID": {
+    "$oid": "65e7e4f0bbeb71121ad88b8d"
+  },
+  "textcontent": "Yeah, their egg tasted weird, ugh.",
+  "timestamp": {
+    "$date": "2024-03-01T07:13:22.000Z"
+  }
+},
+{
+  "userID": {
+    "$oid": "65e71fbfa79d8bfc9a28ea68"
+  },
+  "reviewID": {
+    "$oid": "65e7e494bbeb71121ad88b8c"
+  },
+  "textcontent": "Hello",
+  "timestamp": {
+    "$date": "2024-03-06T04:02:36.812Z"
+  }
+}]

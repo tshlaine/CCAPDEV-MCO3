@@ -6,8 +6,14 @@ const fs = require('fs');
 
 const app = express();
 const PORT = 3000;
-const rawData = fs.readFileSync('src/models/cafes.metadata.json');
-const cafes = JSON.parse(rawData);
+const rawCafe = fs.readFileSync('src/models/cafes.metadata.json');
+const cafes = JSON.parse(rawCafe);
+const rawUser = fs.readFileSync('src/models/users.metadata.json');
+const users = JSON.parse(rawUser);
+const rawReview = fs.readFileSync('src/models/reviews.metadata.json');
+const reviews = JSON.parse(rawReview);
+const rawComment = fs.readFileSync('src/models/comments.metadata.json');
+const comments = JSON.parse(rawComment);
 
 const uri = 'mongodb://localhost:27017/mydatabase';
 
@@ -95,15 +101,45 @@ MongoClient.connect(uri)
         db.collection('cafes').insertMany(cafes)
             .then(result => {
                 console.log(`${result.insertedCount} cafes inserted`);
-                // Start the server after data insertion
-                app.listen(PORT, () => {
-                    console.log(`Server is running on port ${PORT}`);
-                });
             })
             .catch(err => {
                 console.error('Error inserting cafes into the database:', err);
                 client.close(); // Close the MongoDB client if an error occurs
             });
+
+        db.collection('users').insertMany(users)
+        .then(result => {
+            console.log(`${result.insertedCount} users inserted`);
+        })
+        .catch(err => {
+            console.error('Error inserting users into the database:', err);
+            client.close(); // Close the MongoDB client if an error occurs
+        });
+
+
+        //NOTE: THE USERID, CAFEID, REVIEWID THAT ARE REFERENCED MIGHT NOT REALLY CORRESPOND SA DOCUMENTS ABOVE
+
+        db.collection('reviews').insertMany(reviews)
+        .then(result => {
+            console.log(`${result.insertedCount} reviews inserted`);
+        })
+        .catch(err => {
+            console.error('Error inserting reviews into the database:', err);
+            client.close(); // Close the MongoDB client if an error occurs
+        });
+
+        db.collection('comments').insertMany(comments)
+        .then(result => {
+            console.log(`${result.insertedCount} comments inserted`);
+            // Start the server after data insertion
+            app.listen(PORT, () => {
+                console.log(`Server is running on port ${PORT}`);
+            });
+        })
+        .catch(err => {
+            console.error('Error inserting comments into the database:', err);
+            client.close(); // Close the MongoDB client if an error occurs
+        });
     })
     .catch(err => {
         console.error('Error connecting to MongoDB:', err);
