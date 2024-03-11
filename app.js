@@ -63,10 +63,21 @@ app.get('/other-profile', function(req, res) {
     });
 });
 
-app.get('/profile', function(req, res) {
-    res.render('profile', {
-    });
+app.get('/profile', async function(req, res) {
+    try {
+        const db = req.app.locals.db;
+        const user = await db.collection('users').findOne({});
+        const reviews = await db.collection('reviews').find({ userID: user.inf_id }).toArray();
+        res.render('profile', { 
+            sampleUser : user,
+            sampleReviews: reviews
+        });
+    } catch (err) {
+        console.error('Error fetching user profile:', err);
+        res.status(500).json({ message: 'Internal server error' });
+    }
 });
+
 
 app.get('/reviewpage', function(req, res) {
     res.render('reviewpage', {

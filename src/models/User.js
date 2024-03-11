@@ -23,6 +23,9 @@ const userSchema = new Schema({
     profilepicture: {
         type: String 
     },
+    coverpicture: {
+        type: String
+    },
     bio: {
         type: String
     }
