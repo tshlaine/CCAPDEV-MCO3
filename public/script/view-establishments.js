@@ -96,7 +96,7 @@ function toggleDropdown() {
 document.addEventListener('DOMContentLoaded', function () {
     var reviewLink = document.getElementById('view-establishments-link');
     var currentLocation = window.location.href;
-    if (currentLocation.includes('view-establishments.html')) {
+    if (currentLocation.includes('/view-establishments')) {
         reviewLink.querySelector('a').classList.add('active-link');
     }
 });

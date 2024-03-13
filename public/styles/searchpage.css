@@ -8,6 +8,7 @@ body {
     justify-content: center;
     flex-direction: column;
     background-color: #F4E4C9;
+    margin-bottom: 100px;
 }
 
 .type {

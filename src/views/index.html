@@ -6,7 +6,6 @@
     <meta content="text/html; charset=iso-8859-2" http-equiv="Content-Type">
     <link rel="stylesheet" href="../../public/styles/index.css">
     <link rel="stylesheet" href="http://localhost/public/styles/index.css">
-    
     <script src="../../public/script/index.js" defer></script>
 </head>
 <body>
@@ -17,7 +16,7 @@
             </p>
             <div class = "button">
                 <button class = "explore"  onclick="scrollToSection()">Explore</button>
-                <button class="suggestion" onclick="window.location.href = 'view-establishments.html';">Find Suggestions</button>
+                <button class="suggestion" onclick="window.location.href = '/view-establishments';">Find Suggestions</button>
 
             </div>
         </div>
@@ -102,7 +101,7 @@
     <div class="lowerpanel" id="lowerpanel">
         <div class="lowernavbar">
             <div class="searchbar"> 
-                <form action="searchpage.html" method="GET">
+                <form action="/searchpage" method="GET">
                     <input type="text" placeholder="Search Cafes" class="type">
                     <button type="submit" class="search">Search</button>
                 </form>

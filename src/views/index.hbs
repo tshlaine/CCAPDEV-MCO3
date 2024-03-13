@@ -16,7 +16,7 @@
             </p>
             <div class = "button">
                 <button class = "explore"  onclick="scrollToSection()">Explore</button>
-                <button class="suggestion" onclick="window.location.href = 'view-establishments.html';">Find Suggestions</button>
+                <button class="suggestion" onclick="window.location.href = '/view-establishments';">Find Suggestions</button>
 
             </div>
         </div>
@@ -29,7 +29,7 @@
             <div class="slideshow-container">
                 {{#each cafes}}
                 <div class="slide">
-                    <img src="{{cafe_image}}" class="pics" />
+                    <img src="{{cafeimage}}" class="pics" />
                     <div><a class="resto" href="#">{{name}}</a></div>
                     <div><a class="lugar" href="{{locationLink}}">{{location}}</a></div>
                 </div>
@@ -38,11 +38,14 @@
                 <a class="next" onclick="plusSlides(1)">&#10095;</a>
 
                 <div class="dot-container">
-                    {{#each Cafes}}
-                    <span class="dot" onclick="currentSlide({{@index}})"></span>
-                    {{/each}}
-                </div>
+                    <span class="dot" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                    <span class="dot" onclick="currentSlide(3)"></span>
+                    <span class="dot" onclick="currentSlide(4)"></span>
+                    <span class="dot" onclick="currentSlide(5)"></span>
+                    <span class="dot" onclick="currentSlide(3)"></span>
             </div>
+        </div>
     </div>
     <div class="lowerpanel" id="lowerpanel">
         <div class="lowernavbar">
@@ -57,10 +60,10 @@
         <p class="rated">The top bets of students around Taft</p>
          <div class = "toprated">
             <div class="top1container">
-                <button id="view-sb" class="top1header" style="background-image: url('{{topThreeCafes.[0].cafe-header }}')" onclick="showSummarysb()">
+                <button id="view-sb" class="top1header" style="background-image: url('{{topThreeCafes.[0].cafeheader }}')" onclick="showSummarysb()">
                     <div class="infos-sb">
                         <div class="logo-sb">
-                            <img src="{{topThreeCafes.[0].logo-image}}" alt="Logo">
+                            <img src="{{topThreeCafes.[0].logoimage}}" alt="Logo">
                         </div>
                         <div>
                             <a class="sb" href="#">{{topThreeCafes.[0].name}}</a>
@@ -83,7 +86,7 @@
                     <div class="sbcontent">
                         <div class = "uppersidesb">
                             <div class="logo-popup">
-                                <img src="{{topThreeCafes.[0].logo-image}}" alt="Logo">
+                                <img src="{{topThreeCafes.[0].logoimage}}" alt="Logo">
                                 <a class = "view-all" href="view-establishments.html">View All</a>
                                 </div>
                             <div class="infos-popup">
@@ -126,10 +129,10 @@
                 </div>
             </div>
             <div class="top2container">
-                <button id="view-tomo" class="top2header" style="background-image: url('{{topThreeCafes.[1].cafe-header }}')" onclick="showSummarytomo()">
+                <button id="view-tomo" class="top2header" style="background-image: url('{{topThreeCafes.[1].cafeheader }}')" onclick="showSummarytomo()">
                     <div class="infos-tomo">
                         <div class="logo-tomo">
-                            <img src="{{topThreeCafes.[1].logo-image}}" alt="Logo">
+                            <img src="{{topThreeCafes.[1].logoimage}}" alt="Logo">
                         </div>
                         <div>
                             <a class="tomo" href="#">{{topThreeCafes.[1].name}}</a>
@@ -152,7 +155,7 @@
                     <div class="tomocontent">
                         <div class = "uppersidetomo">
                             <div class="logo-popup">
-                                <img src="{{topThreeCafes.[1].logo-image}}" alt="Logo">
+                                <img src="{{topThreeCafes.[1].logoimage}}" alt="Logo">
                                 <a class = "view-all" href="view-establishments.html">View All</a>
                             </div>
                             <div class="infos-popup">
@@ -190,9 +193,9 @@
                 </div>
             </div>
             <div class="top3container">
-                <button id="view" class="cafe1header" style="background-image: url('{{topThreeCafes.[2].cafe-header }}')" onclick="showSummary()">
+                <button id="view" class="cafe1header" style="background-image: url('{{topThreeCafes.[2].cafeheader }}')" onclick="showSummary()">
                     <div class="logo-pre">
-                        <img src="{{topThreeCafes.[2].logo-image}}" alt="Logo">
+                        <img src="{{topThreeCafes.[2].logoimage}}" alt="Logo">
                     </div>
                     <div class="infos">
                         <div class="name1"><a class="name" href="#">{{topThreeCafes.[2].name}}</a></div>
@@ -211,7 +214,7 @@
                     <div class="preludecontent">
                         <div class = "upperside">
                             <div class="logo-popup">
-                                <img src="{{topThreeCafes.[2].logo-image}}" alt="Logo">
+                                <img src="{{topThreeCafes.[2].logoimage}}" alt="Logo">
                                 <a class = "view-all" href="view-establishments.html">View All</a>
                             </div>
                             <div class="infos-popup">
@@ -263,10 +266,10 @@
                 </div>
                 {{#each budgetFriendlyCafes}}
                 <div class="cafe2container" id="cafe2">
-                    <button id="view-drip" class="cafe2header"  style="background-image: url('{{cafe-header}}')" onclick="showSummarydrip()">
+                    <button id="view-drip" class="cafe2header"  style="background-image: url('{{cafeheader}}')" onclick="showSummarydrip()">
                         <div class="infos-drip">
                             <div class="logo-drip">
-                                <img src="{{logo-image}}" alt="Logo">
+                                <img src="{{logoimage}}" alt="Logo">
                             </div>
                             <div>
                                 <a class="drip" href="#">{{name}}</a>
@@ -289,7 +292,7 @@
                         <div class="dripcontent">
                             <div class = "uppersidedrip">
                                 <div class="logo-popup">
-                                    <img src="{{logo-image}}" alt="Logo">
+                                    <img src="{{logoimage}}" alt="Logo">
                                     <a class = "view-all" href="view-establishments.html">View All</a>
                                   </div>
                                   <div class="infos-popup">
@@ -339,7 +342,7 @@
                         <div id="view-tomo" class="cafe1headercl2" onclick="showSummarycloudscape()">
                             <div class="infos-cloudscape">
                                 <div class="logo-cloudscape">
-                                    <img src="{{studyFriendlyCafes.[0].logo-image}}" alt="Logo">
+                                    <img src="{{studyFriendlyCafes.[0].logoimage}}" alt="Logo">
                                 </div>
                                 <div>
                                     <a class="cloudscape" href="#">{{studyFriendlyCafes.[0].name}}</a>
@@ -362,7 +365,7 @@
                             <div class="cloudscapecontent">
                                 <div class = "uppersidecloudscape">
                                     <div class="logo-popup">
-                                        <img src="{{studyFriendlyCafes.[0].logo-image}}" alt="Logo">
+                                        <img src="{{studyFriendlyCafes.[0].logoimage}}" alt="Logo">
                                         <a class = "view-all" href="view-establishments.html">View All</a>
                                       </div>
                                       <div class="infos-popup">
@@ -408,7 +411,7 @@
                         <div id="view-obsecure" class="cafe2headercl2" onclick="showSummaryobsecure()">
                             <div class="infos-obsecure">
                                 <div class="logo-obsecure">
-                                    <img src="{{studyFriendlyCafes.[1].logo-image}}" alt="Logo">
+                                    <img src="{{studyFriendlyCafes.[1].logoimage}}" alt="Logo">
                                 </div>
                                 <div>
                                     <a class="obsecure" href="#">{{studyFriendlyCafes.[1].name}}</a>
@@ -474,7 +477,7 @@
                         <div id="view-drip" class="cafe3headercl2" onclick="showSummarydrip()">
                             <div class="infos-drip">
                                 <div class="logo-drip">
-                                    <img src="{{studyFriendlyCafes.[2].logo-image}}" alt="Logo">
+                                    <img src="{{studyFriendlyCafes.[2].logoimage}}" alt="Logo">
                                 </div>
                                 <div>
                                     <a class="drip" href="#">{{studyFriendlyCafes.[2].name}}</a>
@@ -497,7 +500,7 @@
                             <div class="dripcontent">
                                 <div class = "uppersidedrip">
                                     <div class="logo-popup">
-                                        <img src="{{studyFriendlyCafes.[2].logo-image}}" alt="Logo">
+                                        <img src="{{studyFriendlyCafes.[2].logoimage}}" alt="Logo">
                                         <a class = "view-all" href="view-establishments.html">View All</a>
                                       </div>
                                       <div class="infos-popup">

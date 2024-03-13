@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Establishments</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="/styles/view-establishments.css">
+    <link rel="stylesheet" href="/styles/index.css">
+    <script src="/script/view-establishments.js" defer></script>
+    <link rel="icon" type="image/png" href="/assets/Cafe St Logo.PNG">
+</head>
+<body>
+    
+        {{> navbarviewestablishments}}
+
+    <div id="content" class="contents">
+        <div class="searchbar"> 
+                <form  action="/viewestablishments" method="GET">
+                    <input type="text" placeholder="Search Cafes" class="type" name="query">
+                    <button type="submit" class="search">Search</button>
+                </form>
+            </div>
+
+        <div class="filter">
+            <button class="buttons" data-filter="Top-recommendations">Top Recommendations</button>
+            <button class="buttons" data-filter="Budget-Friendly">Budget Friendly Cafes</button>
+            <button class="buttons" data-filter="Study-Friendly">Study Friendly Cafes</button>
+        </div>
+ 
+        <div class="main">
+            {{#each cafes}}
+            <a href="reviewpage.html" class = "box" data-category= "{{category}}">
+            <div class="review-box" >
+                <div class="unit1" id="unit1-background1">
+                    <img src="{{logoimage}}" class="cafe-profile">
+                    <div class="info">
+                        <p class="cafe-name">{{name}}</p>
+                        <p class="cafe-address">{{location}}</p>
+                    </div>
+                </div>
+                <div class="unit2">
+                    <div class="ratings">
+                        <h2>RATINGS:</h2>
+                        <input type="radio" id="star1" name="rate" value="1">
+                        <label for="star1" title="text">1 star</label>
+    
+                        <input type="radio" id="star2" name="rate" value="2">
+                        <label for="star2" title="text">2 stars</label>
+    
+                        <input type="radio" id="star3" name="rate" value="3">
+                        <label for="star3" title="text">3 stars</label>
+    
+                        <input type="radio" id="star4" name="rate" value="4">
+                        <label for="star4" title="text">4 stars</label>
+    
+                        <input type="radio" id="star5" name="rate" value="5">
+                        <label for="star5" title="text">5 stars</label>
+                        <h2>0 out of 5</h2>
+                    </div>
+                    <hr>
+                    <div class="reviews">
+                        <h2>Top Review:</h2>
+                    </div>
+                </div>
+                <div class="unit3">
+                    <img src="../../images/elgatto.jpg" class="reviewer">
+                    <div class="review-text">
+                        <p>wow! what a great place and such a top tier service!!!</p>
+                    </div>
+                    <div class="reaction">
+                        <button class="like"><img src="../../images/dislike_light.png"></button>
+                        <button class="dislike"><img src="../../images/like_light.png"></i></button>
+                    </div>
+                </div>
+            </div>
+            </a>
+            {{/each}}
+    </div>
+</body>
+</html>
+

@@ -139,7 +139,10 @@ app.get('/profile', async function(req, res) {
 
 app.get('/view-establishments', function(req, res) {
     res.render('view-establishments', {
-
+        studyFriendlyCafes: studyFriendlyCafes,
+        budgetFriendlyCafes: budgetFriendlyCafes,
+        cafes: cafes, // Pass all cafes
+        topThreeCafes: topThreeCafes // Pass the top three cafes
     });
 });
 
