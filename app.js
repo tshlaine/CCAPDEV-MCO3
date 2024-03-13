@@ -100,6 +100,43 @@ app.get('/searchpage', async function(req, res) {
 });
 
 
+app.get('/profile', async function(req, res) {
+    try {
+        const db = req.app.locals.db;
+        const user = await db.collection('users').findOne({});
+        const reviews = await db.collection('reviews').find({ userID: user.inf_id }).toArray();
+        
+        // Match cafeID of reviews and inf_id of cafe
+        const cafes = [];
+        for (const review of reviews) {
+            const cafe = await db.collection('cafes').findOne({ inf_id: review.cafeID });
+            if (cafe) {
+                // Add the cafe's logo-image to the review document (para madali for me huhu)
+                review.logoimage = cafe.logoimage;
+                cafes.push(cafe);
+            }
+        }
+        
+        const reviewsCount = reviews.length;
+        const numberOfDots = Math.ceil(reviewsCount / 3);
+        const dots = Array.from({ length: numberOfDots }, (_, index) => index);
+
+        console.log(reviews);
+        
+        res.render('profile', { 
+            sampleUser: user,
+            sampleReviews: reviews,
+            cafes: cafes,
+            dots: dots
+        });
+    } catch (err) {
+        console.error('Error fetching user profile:', err);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+});
+
+
+
 app.get('/view-establishments', function(req, res) {
     res.render('view-establishments', {
 
