@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins");
 
-
 * {
   box-sizing: border-box;
 }
@@ -13,41 +12,41 @@ body {
   flex-direction: column;
   overflow: hidden;
   height: 100vh;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   padding-top: 5%;
-  background-image: url(tomo.png);
+  background-image: url(../images/tomo.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
 }
 
-nav{
+nav {
   position: fixed;
-  font-family: 'Poppins';
+  font-family: "Poppins";
   top: 0;
   left: 0;
   width: 100%;
   height: 100px;
   padding: 10px 50px;
   box-sizing: border-box;
-  background:   #d1ae8d;
-  border-bottom: 1px solid   #eff7d3;
-  border-top: 1px solid   #eff7d3;
+  background: #d1ae8d;
+  border-bottom: 1px solid #eff7d3;
+  border-top: 1px solid #eff7d3;
   border-radius: 5px;
   z-index: 1000;
 }
 
-nav .title{
+nav .title {
   padding: 10px 10px;
   height: 80px;
   float: left;
   font-size: 24px;
   font-weight: bold;
   color: #000000;
-  font-family: 'Popppins';
+  font-family: "Popppins";
 }
 
-nav a{
+nav a {
   display: flex;
   float: right;
   margin: 0;
@@ -60,38 +59,38 @@ nav a{
   border-radius: 30px;
 }
 
-nav a:hover{
+nav a:hover {
   color: #eff7d3;
   background-color: #707955;
   border-radius: 30px;
 }
 
 .search-container {
-    display: flex;
-    align-items: right;
-    padding: 10px 100px;
-    font-family: 'Poppins';
-  }
-  
+  display: flex;
+  align-items: right;
+  padding: 10px 100px;
+  font-family: "Poppins";
+}
+
 .search-container input {
-    padding: 10px;
-    border-radius: 30px;
-    margin-right: 5px;
-    font-family: 'Poppins';
+  padding: 10px;
+  border-radius: 30px;
+  margin-right: 5px;
+  font-family: "Poppins";
 }
 
 .search-container button {
-    padding: 8px 25px;
-    background-color: #535a3b;
-    color: white;
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-    font-size: 18px;
+  padding: 8px 25px;
+  background-color: #535a3b;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 18px;
 }
 
 .search-container button:hover {
-    background-color: #a7b99e;
+  background-color: #a7b99e;
 }
 
 h1 {
@@ -106,7 +105,7 @@ h1.title {
   line-height: 45px;
   margin: 0;
   text-shadow: 0 0 10px rgba(234, 204, 83, 0.5);
-  font-family: 'Poppins';
+  font-family: "Poppins";
 }
 
 p {
@@ -175,26 +174,26 @@ button.ghost {
   color: #f9ffe4;
 }
 
-button.ghost i{
+button.ghost i {
   position: absolute;
   opacity: 0;
   transition: 0.3s ease-in-out;
 }
 
-button.ghost i.register{
+button.ghost i.register {
   right: 70px;
 }
 
-button.ghost i.login{
+button.ghost i.login {
   left: 70px;
 }
 
-button.ghost:hover i.register{
+button.ghost:hover i.register {
   right: 40px;
   opacity: 1;
 }
 
-button.ghost:hover i.login{
+button.ghost:hover i.login {
   left: 40px;
   opacity: 1;
 }
@@ -237,45 +236,45 @@ input {
   transition: all 0.6s ease-in-out;
 }
 
-.avatar{
+.avatar {
   position: relative;
   display: inline-block;
   margin-bottom: 20px;
 }
 .avatar label {
-    display: block;
-    border-radius: 60%;
-    overflow: hidden;
-    width: 100px; 
-    height: 100px;
-    cursor: pointer;
-  }
-  
+  display: block;
+  border-radius: 60%;
+  overflow: hidden;
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+}
+
 .avatar img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .avatar input {
-    display: none;
+  display: none;
 }
 
 .avatar label {
-    border: 2px solid #ab9a7c;
+  border: 2px solid #ab9a7c;
 }
 
 .avatar label:hover {
-    border-color: #d1ae8d;
+  border-color: #d1ae8d;
 }
 
-.form-card textarea{
+.form-card textarea {
   width: 100%;
   padding: 10px;
   margin-bottom: 10px;
   border: 1px solid #ccc;
   border-radius: 10px;
-  font-family: 'Poppins';
+  font-family: "Poppins";
 }
 
 .login-card {
@@ -285,7 +284,7 @@ input {
   color: #d1ae8d;
 }
 
-.card.right-panel-active .login-card{
+.card.right-panel-active .login-card {
   transform: translateX(100%);
 }
 
@@ -305,7 +304,7 @@ input {
 
 .overlay-card {
   position: absolute;
-  font-family: 'Poppins';
+  font-family: "Poppins";
   top: 0;
   left: 50%;
   width: 50%;
@@ -320,7 +319,7 @@ input {
 }
 
 .overlay {
-  background-image: url('image2.jpg');
+  background-image: url("../images/image2.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 0 0;
@@ -340,11 +339,7 @@ input {
   right: 0;
   top: 0;
   bottom: 0;
-  background: linear-gradient(
-    to top,
-    #ab9a7c 40%,
-    rgba(46, 109, 56, 0)
-  );
+  background: linear-gradient(to top, #ab9a7c 40%, rgba(46, 109, 56, 0));
   opacity: 50%;
 }
 
@@ -384,7 +379,6 @@ input {
   transform: translateX(20%);
 }
 
-
 .alert-container {
   display: none;
   position: fixed;
@@ -404,95 +398,88 @@ input {
 }
 
 .navbar {
-    width: 100%;
-    height: 30px;
-    position:fixed;
-    top: 0;
-    padding: 20px;
-    display: flex;
-    align-items: center;
-    background-color: #d1ae8d; 
-    transition: background-color 0.3s ease; 
-    z-index: 10; 
+  width: 100%;
+  height: 30px;
+  position: fixed;
+  top: 0;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  background-color: #d1ae8d;
+  transition: background-color 0.3s ease;
+  z-index: 10;
 }
 
 .navbar a {
-    font-size: medium;
-    font-family: 'Poppins', sans-serif;
-    text-decoration: none;
-    color: white;
-    margin-right: 15px;
-    padding: 8px 12px; 
-    background-color: transparent; 
-    border: none; 
-    cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
+  font-size: medium;
+  font-family: "Poppins", sans-serif;
+  text-decoration: none;
+  color: white;
+  margin-right: 15px;
+  padding: 8px 12px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
 }
 
 .navbar a:hover {
-    background-color: rgba(255, 255, 255, 0.2); 
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
-
 .webname {
-    margin-top: 5px;
-    text-decoration: none;
-    font-family: 'Poppins', sans-serif;
-    margin-left: 50px; 
-    color: #333; 
+  margin-top: 5px;
+  text-decoration: none;
+  font-family: "Poppins", sans-serif;
+  margin-left: 50px;
+  color: #333;
 }
 
 .user-icon-container {
-    margin-right: -30px; 
-    margin-left: 5px;
-    margin-bottom: 10px;
-    margin-top: 15px;
-      
+  margin-right: -30px;
+  margin-left: 5px;
+  margin-bottom: 10px;
+  margin-top: 15px;
 }
 
 .dropdown {
-    position: relative;
-    display: inline-block;
-    
+  position: relative;
+  display: inline-block;
 }
 
-
 .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #d1ae8d;
-    width:  150px;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.7);
-    z-index: 1;
-    left: -48px; /* Adjust the position as per your requirement */
-    border-radius: 10px;
-    border-width: 2px;
+  display: none;
+  position: absolute;
+  background-color: #d1ae8d;
+  width: 150px;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.7);
+  z-index: 1;
+  left: -48px; /* Adjust the position as per your requirement */
+  border-radius: 10px;
+  border-width: 2px;
 }
 
 .dropdown-content a {
-    color: #ffff;
-    padding: 14px 18px;
-    text-decoration: none;
-    display: block;
-    border: 1px solid transparent; /* Add border */
-    width:  113px;
+  color: #ffff;
+  padding: 14px 18px;
+  text-decoration: none;
+  display: block;
+  border: 1px solid transparent; /* Add border */
+  width: 113px;
 }
 
 .dropdown-content a:hover {
-    background-color: #F4E4C9;
-    border-radius: 10px;
+  background-color: #f4e4c9;
+  border-radius: 10px;
 }
 
 user-button img {
-    width: 50px; 
-    height: 50px;
+  width: 50px;
+  height: 50px;
 }
 
 .user-button img.scrolled {
-    content: url("../../images/usericon\ dark.png");
-    width: 50px;
-    height: 50x;
+  content: url("../../images/usericon\ dark.png");
+  width: 50px;
+  height: 50x;
 }
-
-
-

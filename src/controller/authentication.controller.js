@@ -70,7 +70,7 @@ const login = async (req, res) => {
       message: "Please provide a valid credentials that matched your account!",
     });
 
-  res.cookie("apdev-mco-user", username, {
+  res.cookie("mydatabase-users", username, {
     maxAge: 24 * 60 * 60 * 1000, //equivalent to one day
     path: "/",
   });
@@ -80,7 +80,7 @@ const login = async (req, res) => {
 };
 
 const logout = (req, res) => {
-  res.clearCookie("apdev-mco-user");
+  res.clearCookie("mydatabase-users");
 
   res.redirect("/index");
 };
