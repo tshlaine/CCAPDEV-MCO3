@@ -7,8 +7,8 @@
     "description": "Feel an atmosphere perfect for enjoying meals and quality time with friends. From their coffee to their mouthwatering dishes, it's a delightful spot for coffee lovers and food enthusiasts alike.",
     "averageRating": 4,
     "category": ["Budget-Friendly", "Study-Friendly"],
-    "logo-image": "/images/preludelogo.jpg",
-    "cafe_image": "/images/prelude.png",
+    "logoimage": "/images/preludelogo.jpg",
+    "cafeimage": "/images/prelude.png",
     "cafe-header": "/images/cafeheaders/preludeh.png",
     "noOfLike":10,
     "noOfDislike":11
