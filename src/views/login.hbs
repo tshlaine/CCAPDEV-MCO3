@@ -1,75 +1,96 @@
-<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login/Register</title>
-    <link rel="icon" type="image/png" href="/assets/Cafe St Logo.PNG">
-    <link rel="stylesheet" href="../styles/login.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <script src="/script/login.js" defer></script>
-    
-</head>
-<body>
+    <link rel="icon" type="image/png" href="/assets/Cafe St Logo.PNG" />
+    <link rel="stylesheet" href="/styles/login.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <script src="/script/login.js"></script>
+  </head>
+  <body>
 
-    {{> navbarlogin}}
-
+     {{> navbarlogin}} 
     <div id="alert-container" class="alert-container">
-        <p id="alert-message" class="alert-message"></p>
+      <p id="alert-message" class="alert-message"></p>
     </div>
 
-    <div class="card" id="card">
-        <div class="form-card register-card">
-            <form id="registration-form" method="POST" action="/register" enctype="multipart/form-data">
-                <h1 style="color: #ab9a7c; font-family: 'Poppins';">Register</h1>
-                <div class="avatar">
-                    <label for="avatar">
-                        <img id="avatar-preview" src="{{avatar}}" alt="Avatar">
-                        <input type="file" id="avatar" name="avatar" accept="image/*" onchange="updatePreview(event)">
-                    </label>                
-                </div>
-                <input type="text" name="fullname" placeholder="Full Name">
-                <input type="text" name="username" placeholder="Username">
-                <input type="password" name="password" placeholder="Password">
-                <textarea name="description" placeholder="Short Description (optional)"></textarea><br>
-                <button>Register</button>
-            </form>
-        </div>
+    <div class="card" id="form-container">
+      <div class="form-card register-card">
+        <form
+          id="registration-form"
+          method="POST" 
+          enctype="multipart/form-data"
+        >
+          <h1 style="color: #ab9a7c; font-family: 'Poppins';">Register</h1>
+          <div class="avatar">
+            <label for="avatar">
+              <img id="avatar-preview" src="/images/user.png" alt="Avatar" />
+              <input type="file" id="avatar" name="profilepicture" accept="image/*" />
+            </label>
+          </div>
+          <input type="text" name="fullname" placeholder="Full Name" />
+          <input type="text" name="username" placeholder="Username" />
+          <input type="password" name="password" placeholder="Password" />
+          <textarea
+            name="description"
+            placeholder="Short Description (optional)"
+          ></textarea><br />
+          <button>Register</button>
+        </form>
+      </div>
 
-        <div class="form-card login-card">
-            <form action="/login" method="post" id="login-form">
-                <h1 style="color: #ab9a7c; font-family: 'Poppins';">Login</h1>
-                <input class="form-control" name="username" id="username" placeholder="Username">
-                <input class="form-control" name="password" id="password" type="password" placeholder="Password">
-                <div class="content">
-                    <div class="checkbox">
-                        <input type="checkbox" name="checkbox" id="checkbox">
-                        <label for="checkbox">Remember me</label>
-                    </div>
-                </div>
-                <button type="submit">Login</button>
-            </form>
-        </div>
-
-        <div class="overlay-card">
-            <div class="overlay">
-                <div class="overlay-panel overlay-left">
-                    <h1 class="title">Cafe St.</h1>
-                    <p>If you have an account, login here</p>
-                    <button class="ghost" id="signIn">Login
-                        <i class="lni lni-arrow-left"></i>
-                    </button>
-                </div>
-                <div class="overlay-panel overlay-right">
-                    <h1 class="title">Cafe St.</h1>
-                    <p>If you haven't registered yet, join and embark on your journey with us.</p>
-                    <button class="ghost" id="signUp">Register
-                        <i class="lni lni-arrow-right"></i>
-                    </button>
-                </div>
+      <div class="form-card login-card">
+        <form method="POST" id="login-form">
+          <h1 style="color: #ab9a7c; font-family: 'Poppins';">Login</h1>
+          <input
+            class="form-control"
+            name="username"
+            id="username"
+            placeholder="Username"
+          />
+          <input
+            class="form-control"
+            name="password"
+            id="password"
+            type="password"
+            placeholder="Password"
+          />
+          <div class="content">
+            <div class="checkbox">
+              <input type="checkbox" name="checkbox" id="checkbox" />
+              <label for="checkbox">Remember me</label>
             </div>
+          </div>
+          <button type="submit">Login</button>
+        </form>
+      </div>
+
+      <div class="overlay-card">
+        <div class="overlay">
+          <div class="overlay-panel overlay-left">
+            <h1 class="title">Cafe St.</h1>
+            <p>If you have an account, login here</p>
+            <button class="ghost form-toggle-button" id="signIn">Login
+              <i class="lni lni-arrow-left"></i>
+            </button>
+          </div>
+          <div class="overlay-panel overlay-right">
+            <h1 class="title">Cafe St.</h1>
+            <p>If you haven't registered yet, join and embark on your journey
+              with us.</p>
+            <button class="ghost form-toggle-button" id="signUp">Register
+              <i class="lni lni-arrow-right"></i>
+            </button>
+          </div>
         </div>
+      </div>
     </div>
-</body>
+
+    <!-- Popup --> 
+    {{> popup }} 
 </html>
