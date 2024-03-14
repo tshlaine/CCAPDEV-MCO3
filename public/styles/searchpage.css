@@ -8,7 +8,7 @@ body {
     justify-content: center;
     flex-direction: column;
     background-color: #F4E4C9;
-    margin-bottom: 100px;
+    margin-bottom: 600px;
 }
 
 .type {
@@ -192,9 +192,8 @@ ul li{
 }
 
 .navbar {
-   
     height: 30px;
-    position:sticky;
+    position: sticky;
     top: 0;
     padding: 20px;
     display: flex;
@@ -226,6 +225,10 @@ ul li{
     top:0; 
     height:10px;
   }
+
+hr{
+    border-color: #4D2D18;
+}
 
 .upperhr{
     height: -30px;

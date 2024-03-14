@@ -10,6 +10,7 @@
     "logoimage": "/images/preludelogo.jpg",
     "cafeimage": "/images/prelude.png",
     "cafeheader": "/images/cafeheaders/preludeh.png",
+    "slideImages":["/images/preludeSlide1.png", "/images/preludeSlide2.png", "/images/preludeSlide3.png"],
     "noOfLike":10,
     "noOfDislike":11
     },
@@ -24,6 +25,7 @@
         "logoimage": "/images/obsecurelogo.jpg",
         "cafeimage": "/images/obsecure.png",
         "cafeheader": "/images/cafeheaders/obsecureh.png",
+        "slideImages":["/images/obscureSlide1.png", "/images/obscureSlide2.png", "/images/preludeSlide3.png"],
         "noOfLike":20,
         "noOfDislike":5
     },
@@ -37,7 +39,8 @@
         "category": ["Study-Friendly"],
         "logoimage": "/images/dripkofilogo.jpg",
         "cafeimage": "/images/dripkofi.png",
-        "cafeheader": "/images/cafeheqaders/dripkofih.png",
+        "cafeheader": "/images/cafeheaders/dripkofih.png",
+        "slideImages":["/images/dripSlide1.png", "/images/dripSlide2.png", "/images/dripSlide3.png"],
         "noOfLike":12,
         "noOfDislike":31
 
@@ -53,6 +56,7 @@
         "logoimage": "/images/cloudscapelogo.jpg",
         "cafeimage": "/images/cloudscape.png",
         "cafeheader": "/images/cafeheaders/cloudscapeh.png",
+        "slideImages":["/images/cloudscapeSlide1.png", "/images/cloudscapeSlide2.png", "/images/cloudscapeSlide3.png"],
         "noOfLike":18,
         "noOfDislike": 9
     },
@@ -66,6 +70,7 @@
         "logoimage": "/images/sblogo.jpg",
         "cafeimage": "/images/starbs.png",
         "cafeheader": "/images/cafeheaders/starbsh.png",
+        "slideImages":["/images/sbSlide1.png", "/images/sbSlide2.png", "/images/sbSlide3.png"],
         "noOfLike":12,
         "noOfDislike":6
     },
@@ -80,6 +85,7 @@
         "logoimage": "/images/tomologo.jpg",
         "cafeimage": "/images/tomo.png",
         "cafeheader": "/images/cafeheaders/tomoh.png",
+        "slideImages":["/images/tomoSlide1.png", "/images/tomoSlide2.png", "/images/tomoSlide3.png"],
         "noOfLike":12,
         "noOfDislike":12
     }

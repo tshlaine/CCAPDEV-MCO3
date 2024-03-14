@@ -41,8 +41,8 @@ hr {
 .slideshow-container {
     position: absolute;
     z-index: 1;
-    height: 300px;
-    width: 480px;
+    height: 350px;
+    width: 550px;
     margin-left: 635px;
     margin-top: 155px;
     border-radius: 5px;

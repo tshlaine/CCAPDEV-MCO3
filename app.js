@@ -68,10 +68,33 @@ app.get('/other-profile', function(req, res) {
     });
 });
 
-app.get('/reviewpage', function(req, res) {
-    res.render('reviewpage', {
+app.get('/reviewpage', (req, res) => {
+    // Ensure slideImages is an array of image paths
+    let slideImagesString = req.query.slideImages || '';
+    let slideImagesArray = slideImagesString.split(', ');
+
+    // Ensure category is an array
+    let category = req.query.category || [];
+
+    const cafeDetails = {
+        name: req.query.name,
+        location: req.query.location,
+        description: req.query.description,
+        averageRating: req.query.averageRating,
+        slideImages: slideImagesArray, // Use the array of image paths
+        category: category // No need to stringify
+    };
+
+    console.log("Slide Images:", slideImagesArray); // Log the slideImagesArray
+
+    res.render('reviewpage', { 
+        cafes: cafes,
+        cafe: cafeDetails,
+        reviews: reviews,
+        users: users 
     });
 });
+
 
 app.get('/searchpage', async function(req, res) {
     try {

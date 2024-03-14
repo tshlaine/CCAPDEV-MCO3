@@ -34,32 +34,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Function to open the edit popup
-    function openEditPopup() {
-        var editPopup = document.getElementById('editPopup');
-        editPopup.style.display = 'block';
-    }
-    
-
-// Function to close the edit popup
-function closeEditPopup() {
-    var editPopup = document.getElementById('editPopup');
-    editPopup.style.display = 'none';
-}
-
-// Function to save changes from the edit popup
-function saveChanges() {
-    var newUsername = document.getElementById('newUsername').value;
-    var newRealname = document.getElementById('newRealname').value;
-    var newBio = document.getElementById('newBio').value;
-
-    // Update profile information here (e.g., send data to server)
-    
-    // Close the popup after saving changes
-    closeEditPopup();
-}
-
-
     // Handle star clicks for each review section
     handleStarClick(review1Stars);
     handleStarClick(review2Stars);
