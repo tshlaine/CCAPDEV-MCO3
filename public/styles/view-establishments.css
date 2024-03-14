@@ -428,6 +428,10 @@ margin-left: 2px;
 
 }
 
+p{
+    color: #4D2D18;
+}
+
 .reaction {
     display: flex;
     justify-content: center;
@@ -670,4 +674,8 @@ ul li:not(:last-child)::after{
     margin-bottom: -10px;
     opacity: 0.2;
 
+}
+
+a{
+    text-decoration: none;
 }

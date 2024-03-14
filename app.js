@@ -69,23 +69,22 @@ app.get('/other-profile', function(req, res) {
 });
 
 app.get('/reviewpage', (req, res) => {
-    // Ensure slideImages is an array of image paths
-    let slideImagesString = req.query.slideImages || '';
-    let slideImagesArray = slideImagesString.split(', ');
-
     // Ensure category is an array
     let category = req.query.category || [];
+    if (!Array.isArray(category)) {
+        category = [category]; // Convert to array if it's not already
+    }
 
     const cafeDetails = {
         name: req.query.name,
         location: req.query.location,
         description: req.query.description,
         averageRating: req.query.averageRating,
-        slideImages: slideImagesArray, // Use the array of image paths
-        category: category // No need to stringify
+        slideImages1: req.query.slideImages1, // Use the array of image paths
+        slideImages2: req.query.slideImages2, // Use the array of image paths
+        slideImages3: req.query.slideImages3, // Use the array of image paths
+        category: category // Use the array of categories
     };
-
-    console.log("Slide Images:", slideImagesArray); // Log the slideImagesArray
 
     res.render('reviewpage', { 
         cafes: cafes,
@@ -94,6 +93,7 @@ app.get('/reviewpage', (req, res) => {
         users: users 
     });
 });
+
 
 
 app.get('/searchpage', async function(req, res) {
