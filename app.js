@@ -68,11 +68,6 @@ app.get('/other-profile', function(req, res) {
     });
 });
 
-app.get('/profile', function(req, res) {
-    res.render('profile', {
-    });
-});
-
 app.get('/reviewpage', function(req, res) {
     res.render('reviewpage', {
     });
@@ -105,27 +100,32 @@ app.get('/profile', async function(req, res) {
         const db = req.app.locals.db;
         const user = await db.collection('users').findOne({});
         const reviews = await db.collection('reviews').find({ userID: user.inf_id }).toArray();
-        
-        // Match cafeID of reviews and inf_id of cafe
+  
+        // Divide reviews into sets of three
+        const reviewSets = [];
+        for (let i = 0; i < reviews.length; i += 3) {
+            reviewSets.push(reviews.slice(i, i + 3));
+        }
+  
         const cafes = [];
-        for (const review of reviews) {
-            const cafe = await db.collection('cafes').findOne({ inf_id: review.cafeID });
-            if (cafe) {
-                // Add the cafe's logo-image to the review document (para madali for me huhu)
-                review.logoimage = cafe.logoimage;
-                cafes.push(cafe);
+        for (const reviewSet of reviewSets) {
+            for (const review of reviewSet) {
+                const cafe = await db.collection('cafes').findOne({ inf_id: review.cafeID });
+                if (cafe) {
+                    review.logoimage = cafe.logoimage;
+                    cafes.push(cafe);
+                }
             }
         }
         
+        console.log(user);
         const reviewsCount = reviews.length;
         const numberOfDots = Math.ceil(reviewsCount / 3);
-        const dots = Array.from({ length: numberOfDots }, (_, index) => index);
-
-        console.log(reviews);
-        
+        const dots = Array.from({ length: numberOfDots }, (_, index) => index + 1);
+  
         res.render('profile', { 
             sampleUser: user,
-            sampleReviews: reviews,
+            reviewSets: reviewSets,
             cafes: cafes,
             dots: dots
         });
@@ -133,7 +133,9 @@ app.get('/profile', async function(req, res) {
         console.error('Error fetching user profile:', err);
         res.status(500).json({ message: 'Internal server error' });
     }
-});
+  });
+  
+
 
 
 

@@ -9,22 +9,28 @@
 </head>
 
 <body>
-    <div class="header">
-        <img class="logo" src="../../images/Logo.png">
-        <div class="logo-name">
-            <p class="web-name"><span class="Cafe-title">Cafe</span> <span class="St.-title">St.</span></p>
-        </div>
+    <div id="navbar" class="navbar">
+        <img src="../../images/Logo.png" class ="cafestlogo">
+        <a href="#" class="webname">
+            <span class="cafe">Cafe</span>
+            <span class="st"> St.</span>
+        </a>
         <ul>
             <li id="home-link"><a href="/index">Home</a></li>
-            <li><a href="view-establishments.html">View Establishments</a></li>
-            <li><a href="login.html">Log In</a></li>
-        </ul>
-        <div class="user-icon-container">
-            <button class="user-button">
-                <a href="other-profile.html">
-                    <img src="../../images/usericon.png" alt="User Icon" class="user">
-                </a>
-            </button>
+            <li><a href="/view-establishments">View Establishments</a></li>
+            <li><a href="/login">Log In</a></li>
+          </ul>
+          <div class="user-icon-container">
+            <div class="dropdown">
+                <button class="user-button" onclick="toggleDropdown()">
+                    <img src="../../images/usericon.png" alt="User Icon" id="icon" class="user">
+                </button>
+                <div class="dropdown-content" id="dropdownContent">
+                    <a href="/sign-up">Sign Up</a>
+                    
+                    <a href="/profile">View Profile</a>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -75,78 +81,72 @@
     <img class="designdot2" src="../../images/dots.png">
 
     <div class="profile-reviews-container">
+    <img class="designdot3" src="../../images/dots.png">
+    <a id="prevButton" class="prev" onclick="prevSlide()">&#10094;</a>
+    <a id="nextButton" class="next" onclick="nextSlide()">&#10095;</a>
 
-        <img class="designdot3" src="../../images/dots.png">
-        <a id="prevButton" class="prev" onclick="prevSlide()">&#10094;</a>
-        <a id="nextButton" class="next" onclick="nextSlide()">&#10095;</a>
-
-        <div class="dot-container">
+    <div class="dot-container">
         {{#each dots}}
             <span class="dot" onclick="currentSlide({{ this }})"></span>
         {{/each}}
     </div>
 
-        <div id="profile-reviews-set1" class="profile-reviews" data-visible="true">
-            {{#each sampleReviews as |sampleReviews index|}}
-            <div class="review1-container">
-                <img src="{{sampleReviews.logoimage}}" class="review1">
-                <div class="review1-review">
-                    <br>
-                    <span class="review-title">{{ sampleReviews.reviewtitle }}</span><br><br>
-                    <span class="review-text">{{ sampleReviews.reviewbody }}</span>
-                    <div class="star-rating">
-                        {{#each sampleReviews.stars}}
-                            <span class="star">{{ this }}</span>
-                        {{/each}}
-                    </div>
+    <div class="profile-reviews">
+            {{#each reviewSets as |reviewSet index|}}
+                <div class="review-set" id="reviewSet{{ index }}">
+                    {{#each reviewSet as |review|}}
+                        <div class="review1-container">
+                            <img src="{{ review.logoimage }}" class="review1">
+                            <div class="review1-review">
+                                <br>
+                                <span class="review-title">{{ review.reviewtitle }}</span><br><br>
+                                <span class="review-text">{{ review.reviewbody }}</span>
+                                <div class="star-rating">
+                                    {{#each review.stars}}
+                                        <span class="star">{{ this }}</span>
+                                    {{/each}}
+                                </div>
+                            </div>
+                        </div>
+                    {{/each}}
                 </div>
-            </div>
-        {{/each}}
-
+            {{/each}}
         </div>
     </div>
 
-    <script>
-    function loadProfile(event) {
-        var reader = new FileReader();
-        reader.onload = function () {
-            var output = document.getElementById('profilePic');
-            output.src = reader.result;
-        };
-        reader.readAsDataURL(event.target.files[0]);
-    }
+<script>
     
+    function loadProfile(event) {
+        const profilePic = document.getElementById('profilePic');
+        const file = event.target.files[0];
+    
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function() {
+                profilePic.src = reader.result;
+            };
+            reader.readAsDataURL(file);
+        }
+    }
+
     function loadCover(event) {
-        var reader = new FileReader();
-        reader.onload = function () {
-            var output = document.getElementById('coverPic');
-            output.src = reader.result;
-        };
-        reader.readAsDataURL(event.target.files[0]);
+        const coverPic = document.getElementById('coverPic');
+        const file = event.target.files[0];
+        
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function() {
+                coverPic.src = reader.result;
+            };
+            reader.readAsDataURL(file);
+        }
     }
 
-    function openEditPopup() {
-        var editPopup = document.getElementById('editPopup');
-        editPopup.style.display = 'block';
-    }
 
-    function closeEditPopup() {
-        var editPopup = document.getElementById('editPopup');
-        editPopup.style.display = 'none';
-    }
-
-    function saveChanges() {
-        var newUsername = document.getElementById('newUsername').value;
-        var newRealname = document.getElementById('newRealname').value;
-        var newBio = document.getElementById('newBio').value;
-
-        closeEditPopup();
-    }
-
-    let currentSlideIndex = 1;
+    let slideIndex = 1;
 
     function showSlide(slideIndex) {
-        const reviewSets = document.querySelectorAll('.profile-reviews');
+        const reviewSets = document.querySelectorAll('.review-set');
         const dots = document.querySelectorAll('.dot');
 
         reviewSets.forEach((reviewSet, index) => {
@@ -167,17 +167,37 @@
     }
 
     function nextSlide() {
-        currentSlideIndex++;
-        if (currentSlideIndex > 2) {
-            currentSlideIndex = 1;
+        slideIndex++;
+        const totalSlides = document.querySelectorAll('.review-set').length;
+        if (slideIndex > totalSlides) {
+            slideIndex = 1;
         }
-        showSlide(currentSlideIndex);
+        showSlide(slideIndex);
     }
 
     function prevSlide() {
-        currentSlideIndex--;
-        if (currentSlideIndex < 1) {
-            currentSlideIndex =
+        slideIndex--;
+        const totalSlides = document.querySelectorAll('.review-set').length;
+        if (slideIndex < 1) {
+            slideIndex = totalSlides;
+        }
+        showSlide(slideIndex);
+    }
+
+    // Initialize the slides
+    showSlide(slideIndex);
+
+    function openEditPopup() {
+        const editPopup = document.getElementById('editPopup');
+        editPopup.style.display = 'block';
+    }
+
+    function closeEditPopup() {
+        const editPopup = document.getElementById('editPopup');
+        editPopup.style.display = 'none';
+    }
+
+</script>
 
 
 </body>
