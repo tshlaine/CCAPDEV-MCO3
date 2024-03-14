@@ -1,4 +1,4 @@
-db.dropDatabase()
+ db.dropDatabase()
             .then(result => {
                 console.log('Database deleted successfully');
             })
