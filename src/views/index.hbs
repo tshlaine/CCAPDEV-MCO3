@@ -73,13 +73,15 @@
                             {{topThreeCafes.[0].location}}
                             </a>
                         </div>
+                        <div>
                         <p class ="desc">
                            {{topThreeCafes.[0].description}}
                         </p>
+                        </div>
                         <p class="rating-sb">
                             Rating: <span id="i-sb" class="i-sb"> {{topThreeCafes.[0].averageRating}}</span>  out of <span class="total">5</span>
                         </p>
-                    </div>
+                        </div>
                 </button>
                 <a class="view-establishment-sb" href="view-establishments.html">View Establishment</a>
                 <div id="popupsb" class="popupsb">
@@ -128,40 +130,40 @@
                     </div>
                 </div>
             </div>
-            <div class="top2container">
-                <button id="view-tomo" class="top2header" style="background-image: url('{{topThreeCafes.[1].cafeheader }}')" onclick="showSummarytomo()">
-                    <div class="infos-tomo">
-                        <div class="logo-tomo">
+            <div class="top1container">
+                <button id="view-sb" class="top1header" style="background-image: url('{{topThreeCafes.[1].cafeheader }}')" onclick="showSummarysb()">
+                    <div class="infos-sb">
+                        <div class="logo-sb">
                             <img src="{{topThreeCafes.[1].logoimage}}" alt="Logo">
                         </div>
                         <div>
-                            <a class="tomo" href="#">{{topThreeCafes.[1].name}}</a>
+                            <a class="sb" href="#">{{topThreeCafes.[1].name}}</a>
                         </div>
                         <div>
-                            <a class="loc4"  href="{{topThreeCafes.[1].location_link}}">
-                                {{topThreeCafes.[1].location}}
+                            <a class="greencourt"  href="{{topThreeCafes.[1].location_link}}">
+                            {{topThreeCafes.[1].location}}
                             </a>
                         </div>
-                        <p class="rating-tomo">
-                            Rating: <span id="i-tomo" class="i-tomo"> {{topThreeCafes.[1].averageRating}}</span>  out of <span class="total">5</span>
+                        <p class ="desc">
+                           {{topThreeCafes.[1].description}}
                         </p>
-                        <p class ="desct">
-                            {{topThreeCafes.[1].description}}
+                        <p class="rating-sb">
+                            Rating: <span id="i-sb" class="i-sb"> {{topThreeCafes.[1].averageRating}}</span>  out of <span class="total">5</span>
                         </p>
                     </div>
                 </button>
-                <a class="view-establishment-tomo" href="view-establishments.html">View Establishment</a>
-                <div id="popuptomo" class="popuptomo">
-                    <div class="tomocontent">
-                        <div class = "uppersidetomo">
+                <a class="view-establishment-sb" href="/view-establishments">View Establishment</a>
+                <div id="popupsb" class="popupsb">
+                    <div class="sbcontent">
+                        <div class = "uppersidesb">
                             <div class="logo-popup">
                                 <img src="{{topThreeCafes.[1].logoimage}}" alt="Logo">
-                                <a class = "view-all" href="view-establishments.html">View All</a>
-                            </div>
+                                <a class = "view-all" href="/view-establishments">View All</a>
+                                </div>
                             <div class="infos-popup">
-                                <div class="tomo-popup"><a class="name" href="#">{{topThreeCafes.[1].name}}</a></div>
-                                <div class="tomo-popup"><a a class="loc" href="{{topThreeCafes.[1].location_link}}">
-                                    {{topThreeCafes.[1].location}}</a></div>
+                                <div class="name-popup"><a class="name" href="#">{{topThreeCafes.[1].name}}</a></div>
+                                <div class="loc-popup"><a class="loc" href="{{topThreeCafes.[1].location_link}}">
+                                {{topThreeCafes.[1].location}}</a></div>
                             </div>
                         </div>
                         <div class = "lowerside">
@@ -171,56 +173,66 @@
                             <hr>
                             <div class="topreview-container">
                                 <p class="topreview">Top Review</p>
-                                <a class="write" href="reviewpage.html">Write a Review</a>
+                                <a class="write" href="/reviewpage">Write a Review</a>
                             </div>
                             <div class = "comment-container"> 
                                 <img src="../../images/dog.jpg" class="user-icon">
-                                <a class ="username" href="other-profile.html"><h4>puppie</h4></a>
-                                <p class = "comment">Had an amazaing time to drink coffee!</p>
+                                <a class ="username" href="/profile"><h4>Rami</h4></a>
+                                <p class = "comment">Nice Place, Amazing! Lit!</p>
                             </div>
                             <div class="bottom-container">
                                 <button class="helpful">
+                                    <!-- TO EDIT/ ADD LIKE AND DISLIKE, THEN AD WRITE A REVIEW -->
                                     <img src="../../images/thumb.png">
-                                    <span class = "numberofreact">{{topThreeCafes.[1].noOfLike}}</span><button id="closePopupBtntomo" onclick="closeSummarytomo()"><img src="../../images/xicon.png"></button>
+                                    <span class = "numberofreact">{{topThreeCafes.[1].noOfLike}}</span>
                                 </button>
                                 <button class="unhelpful">
+                                    <!-- TO EDIT/ ADD LIKE AND DISLIKE, THEN AD WRITE A REVIEW -->
                                     <img src="../../images/thumbdown.png">
                                     <span class = "numberofreact">{{topThreeCafes.[1].noOfDislike}}</span>
                                 </button>
                             </div>  
+                        
                         </div>
+                        <!-- Close button -->
+                        <button id="closePopupBtnsb" onclick="closeSummarysb()"><img src="../../images/xicon.png"></button>
                     </div>
                 </div>
             </div>
-            <div class="top3container">
-                <button id="view" class="cafe1header" style="background-image: url('{{topThreeCafes.[2].cafeheader }}')" onclick="showSummary()">
-                    <div class="logo-pre">
-                        <img src="{{topThreeCafes.[2].logoimage}}" alt="Logo">
+            <div class="top1container">
+                <button id="view-sb" class="top1header" style="background-image: url('{{topThreeCafes.[2].cafeheader }}')" onclick="showSummarysb()">
+                    <div class="infos-sb">
+                        <div class="logo-sb">
+                            <img src="{{topThreeCafes.[2].logoimage}}" alt="Logo">
+                        </div>
+                        <div>
+                            <a class="sb" href="#">{{topThreeCafes.[2].name}}</a>
+                        </div>
+                        <div>
+                            <a class="greencourt"  href="{{topThreeCafes.[2].location_link}}">
+                            {{topThreeCafes.[2].location}}
+                            </a>
+                        </div>
+                        <p class ="desc">
+                           {{topThreeCafes.[2].description}}
+                        </p>
+                        <p class="rating-sb">
+                            Rating: <span id="i-sb" class="i-sb"> {{topThreeCafes.[2].averageRating}}</span>  out of <span class="total">5</span>
+                        </p>
                     </div>
-                    <div class="infos">
-                        <div class="name1"><a class="name" href="#">{{topThreeCafes.[2].name}}</a></div>
-                        <div class="loc2"><a class="loc6" href="{{topThreeCafes.[2].location_link}}">
-                            {{topThreeCafes.[2].location}}</a></div>
-                            <p class="rating-prelude">
-                                Rating: <span id="i-prelude" class="i-prelude">{{topThreeCafes.[2].averageRating}}</span>  out of <span class="total">5</span>
-                            </p>
-                            <p class ="descp">
-                                {{topThreeCafes.[2].description}}
-                            </p>
-                    </div>
-                </button> 
-                <a class="view-establishment" href="view-establishments.html">View Establishment</a>
-                <div id="popupprelude" class="popupprelude">
-                    <div class="preludecontent">
-                        <div class = "upperside">
+                </button>
+                <a class="view-establishment-sb" href="/view-establishments">View Establishment</a>
+                <div id="popupsb" class="popupsb">
+                    <div class="sbcontent">
+                        <div class = "uppersidesb">
                             <div class="logo-popup">
                                 <img src="{{topThreeCafes.[2].logoimage}}" alt="Logo">
-                                <a class = "view-all" href="view-establishments.html">View All</a>
-                            </div>
+                                <a class = "view-all" href="/view-establishments">View All</a>
+                                </div>
                             <div class="infos-popup">
-                                <div class="prelude"><a class="name" href="#">{{topThreeCafes.[2].name}}</a></div>
-                                <div class="prelude-popup"><a a class="loc" href="{{topThreeCafes.[2].location_link}}">
-                                    {{topThreeCafes.[2].location}}</a></div>
+                                <div class="name-popup"><a class="name" href="#">{{topThreeCafes.[2].name}}</a></div>
+                                <div class="loc-popup"><a class="loc" href="{{topThreeCafes.[2].location_link}}">
+                                {{topThreeCafes.[2].location}}</a></div>
                             </div>
                         </div>
                         <div class = "lowerside">
@@ -230,12 +242,13 @@
                             <hr>
                             <div class="topreview-container">
                                 <p class="topreview">Top Review</p>
-                                <a class="write" href="reviewpage.html">Write a Review</a>
+                                <a class="write" href="/reviewpage">Write a Review</a>
                             </div>
                             <div class = "comment-container"> 
                                 <img src="../../images/dog.jpg" class="user-icon">
-                                <a class ="username" href="#"><h4>mamammia</h4></a>
-                                <p class = "comment">Shesh</p>
+                                <a class ="username" href="/profile"><h4>Rami</h4></a>
+                                <p class = "comment">Nice Place, Amazing! Lit!</p>
+                            </div>
                             <div class="bottom-container">
                                 <button class="helpful">
                                     <!-- TO EDIT/ ADD LIKE AND DISLIKE, THEN AD WRITE A REVIEW -->
@@ -248,13 +261,13 @@
                                     <span class = "numberofreact">{{topThreeCafes.[2].noOfDislike}}</span>
                                 </button>
                             </div>  
+                        
                         </div>
                         <!-- Close button -->
-                        <button id="closePopupBtnprelude" onclick="closeSummary()"><img src="../../images/xicon.png"></button>
+                        <button id="closePopupBtnsb" onclick="closeSummarysb()"><img src="../../images/xicon.png"></button>
                     </div>
                 </div>
             </div>
-        </div>
         </div>
         <p class = "budget">Looking for Budget Friendly Cafe? &#128176;</p>
         <p class="budget1">Cafes that offers snacks and bevarages in a affordable price</p>
@@ -267,22 +280,22 @@
                 {{#each budgetFriendlyCafes}}
                 <div class="cafe2container" id="cafe2">
                     <button id="view-drip" class="cafe2header"  style="background-image: url('{{cafeheader}}')" onclick="showSummarydrip()">
-                        <div class="infos-drip">
-                            <div class="logo-drip">
+                        <div class="infos-sb">
+                            <div class="logo-sb">
                                 <img src="{{logoimage}}" alt="Logo">
                             </div>
                             <div>
-                                <a class="drip" href="#">{{name}}</a>
+                                <a class="sb" href="#">{{name}}</a>
                             </div>
                             <div>
-                                <a class="burgundy" href="{{location_link}}">
+                                <a class="greencourt" href="{{location_link}}">
                                     {{location}}
                                 </a>
                             </div>
-                            <p class="rating-drip">
-                                Rating: <span id="i-drip" class="i-drip"> {{averageRating}}</span>out of <span class="total">5</span>
+                            <p class="rating-sb">
+                                Rating: <span id="i-sb" class="i-sb"> {{averageRating}}</span>out of <span class="total">5</span>
                             </p>
-                            <p class="desct">
+                            <p class="desc">
                                {{description}}
                             </p>
                         </div>
@@ -337,215 +350,82 @@
                 {{/each}}
                 <p class = "Discover">Discover Cafes That Embrace Your Study Sessions &#128218;</p>
                 <p class="student-friendly">Cafe with Quiet ambiance, free Wi-Fi, and delicious drinks to fuel your focus </p>
-                <div class = "cafelists2">
-                    <div class="cafe1containercl2">
-                        <div id="view-tomo" class="cafe1headercl2" onclick="showSummarycloudscape()">
-                            <div class="infos-cloudscape">
-                                <div class="logo-cloudscape">
-                                    <img src="{{studyFriendlyCafes.[0].logoimage}}" alt="Logo">
-                                </div>
-                                <div>
-                                    <a class="cloudscape" href="#">{{studyFriendlyCafes.[0].name}}</a>
-                                </div>
-                                <div>
-                                    <a class="studentplace" href="{{studyFriendlyCafes.[0].location_link}}">
-                                        {{studyFriendlyCafes.[0].location}}
-                                    </a>
-                                </div>
-                                <p class="rating-cloudscape">
-                                    Rating: <span id="i-cloudscape" class="i-cloudscape"> {{studyFriendlyCafes.[0].averageRating}}</span>  out of <span class="total">5</span>
-                                </p>
-                                <p class="descc">
-                                    {{studyFriendlyCafes.[0].description}}
-                                </p>
+                 <div class = "cafelists2">
+            
+                {{#each studyFriendlyCafes}}
+                <div class="cafe2container" id="cafe2">
+                    <button id="view-drip" class="cafe2header"  style="background-image: url('{{cafeheader}}')" onclick="showSummarydrip()">
+                        <div class="infos-sb">
+                            <div class="logo-sb">
+                                <img src="{{logoimage}}" alt="Logo">
                             </div>
+                            <div>
+                                <a class="sb" href="#">{{name}}</a>
+                            </div>
+                            <div>
+                                <a class="greencourt" href="{{location_link}}">
+                                    {{location}}
+                                </a>
+                            </div>
+                            <p class="rating-sb">
+                                Rating: <span id="i-sb" class="i-sb"> {{averageRating}}</span>out of <span class="total">5</span>
+                            </p>
+                            <p class="desc">
+                               {{description}}
+                            </p>
                         </div>
-                        <a class="view-establishment-cloudscape" href="view-establishments.html">View Establishment</a>
-                        <div id="popupcloudscape" class="popupcloudscape">
-                            <div class="cloudscapecontent">
-                                <div class = "uppersidecloudscape">
-                                    <div class="logo-popup">
-                                        <img src="{{studyFriendlyCafes.[0].logoimage}}" alt="Logo">
-                                        <a class = "view-all" href="view-establishments.html">View All</a>
-                                      </div>
-                                      <div class="infos-popup">
-                                        <div class="name-popup"><a class="name" href="#">{{studyFriendlyCafes.[0].name}}</a></div>
-                                        <div class="loc-popup"><a class="loc" href="{{studyFriendlyCafes.[0].location_link}}">
-                                           {{studyFriendlyCafes.[0].location}}
-                                            </div>
-                                </div>
-                                <div class = "lowerside">
-                                    <p class="rating-popup">
-                                        Rating: <span id="i-popup" class="i-popup">{{studyFriendlyCafes.[0].averagRating}}</span>  out of <span class="total"> 5</span>
-                                    </p>
-                                    <hr>
-                                    <div class="topreview-container">
-                                        <p class="topreview">Top Review</p>
-                                        <a class="write" href="reviewpage.html">Write a Review</a>
-                                    </div>
-                                    <div class = "comment-container"> 
-                                        <img src="../../images/dog.jpg" class="user-icon">
-                                        <a class ="username" href="#"><h4>helloword</h4></a>
-                                        <p class = "comment">Love It!</p>
-                                    </div>
-                                    <div class="bottom-container">
-                                        <button class="helpful">
-                                            <!-- TO EDIT/ ADD LIKE AND DISLIKE, THEN AD WRITE A REVIEW -->
-                                            <img src="../../images/thumb.png">
-                                            <span class = "numberofreact">{{studyFriendlyCafes.[0].noOfLike}}</span>
-                                        </button>
-                                        <button class="unhelpful">
-                                            <!-- TO EDIT/ ADD LIKE AND DISLIKE, THEN AD WRITE A REVIEW -->
-                                            <img src="../../images/thumbdown.png">
-                                            <span class = "numberofreact">{{studyFriendlyCafes.[0].noOfDislike}}</span>
-                                        </button>
-                                    </div>  
-                                </div>
-                                <!-- Close button -->
-                                <button id="closePopupBtncloudscape" onclick="closeSummarycloudscape()"><img src="../../images/xicon.png"></button>
+                    </button>
+                    <a class="view-establishment-drip" href="view-establishments.html">View Establishment</a>
+                    <div id="popupdrip" class="popupdrip">
+                        <div class="dripcontent">
+                            <div class = "uppersidedrip">
+                                <div class="logo-popup">
+                                    <img src="{{logoimage}}" alt="Logo">
+                                    <a class = "view-all" href="view-establishments.html">View All</a>
+                                  </div>
+                                  <div class="infos-popup">
+                                    <div class="name-popup"><a class="name" href="#">{{name}}</a></div>
+                                    <div class="loc-popup"><a a class="loc" href="{{location_link}}">
+                                       {{location}}</a></div>
+                                  </div>
                             </div>
-                        </div>
-                    </div>
-                    </div>
-                    <div class="cafe2containercl2" id="cafe2">
-                        <div id="view-obsecure" class="cafe2headercl2" onclick="showSummaryobsecure()">
-                            <div class="infos-obsecure">
-                                <div class="logo-obsecure">
-                                    <img src="{{studyFriendlyCafes.[1].logoimage}}" alt="Logo">
-                                </div>
-                                <div>
-                                    <a class="obsecure" href="#">{{studyFriendlyCafes.[1].name}}</a>
-                                </div>
-                                <div>
-                                    <a class="loc3" href="{{studyFriendlyCafes.[1].location_link}}">
-                                        {{studyFriendlyCafes.[1].location}}</a>
-                                </div>
-                                <p class="rating-obsecure2">
-                                    Rating: <span id="i-obsecure" class="i-obsecure">{{studyFriendlyCafes.[1].averageRating}}</span>  out of <span class="total">5</span>
+                            <div class = "lowerside">
+                                <p class="rating-popup">
+                                    Rating: <span id="i-popup" class="i-popup">{{averageRating}}</span>  out of <span class="total"> 5</span>
                                 </p>
-                                <p class="descd1">
-                                    {{studyFriendlyCafes.[1].description}}
-                                </p>
+                                <hr>
+                                <div class="topreview-container">
+                                    <p class="topreview">Top Review</p>
+                                    <a class="write" href="reviewpage.html">Write a Review</a>
+                                </div>
+                                <div class = "comment-container"> 
+                                    <img src="../../images/dog.jpg" class="user-icon">
+                                    <a class ="username" href="#"><h4>sasa_i</h4></a>
+                                    <p class = "comment">I liked the food!</p>
+                                </div>
+                                <div class="bottom-container">
+                                    <button class="helpful">
+                                        <!-- TO EDIT/ ADD LIKE AND DISLIKE, THEN AD WRITE A REVIEW -->
+                                        <img src="../../images/thumb.png">
+                                        <span class = "numberofreact">{{noOfLike}}</span>
+                                    </button>
+                                    <button class="unhelpful">
+                                        <!-- TO EDIT/ ADD LIKE AND DISLIKE, THEN AD WRITE A REVIEW -->
+                                        <img src="../../images/thumbdown.png">
+                                        <span class = "numberofreact">{{noOfDislike}}</span>
+                                    </button>
+                                </div>  
+                               
                             </div>
-                        </div>
-                        <a class="view-establishment-obsecure" href="view-establishments.html">View Establishment</a>
-                        <div id="popupobsecure" class="popupobsecure">
-                            <div class="obsecurecontent">
-                                <div class = "uppersideobsecure">
-                                    <div class="logo-popup">
-                                        <img src="../../images/obsecurelogo.jpg" alt="Logo">
-                                        <a class = "view-all" href="view-establishments.html">View All</a>
-                                      </div>
-                                      <div class="infos-popup">
-                                        <div class="name-popup"><a class="name" href="#">{{studyFriendlyCafes.[1].name}}</a></div>
-                                        <div class="loc-popup"><a a class="loc"  href="{{studyFriendlyCafes.[1].location_link}}">
-                                           {{studyFriendlyCafes.[1].location}}</a></div>
-                                      </div>
-                                </div>
-                                <div class = "lowerside">
-                                    <p class="rating-popup">
-                                        Rating: <span id="i-popup" class="i-popup">{{studyFriendlyCafes.[1].averageRating}}</span>  out of <span class="total"> 5</span>
-                                    </p>
-                                    
-                                    <hr>
-                                    <div class="topreview-container">
-                                        <p class="topreview">Top Review</p>
-                                        <a class="write" href="reviewpage.html">Write a Review</a>
-                                    </div>
-                                    <div class = "comment-container"> 
-                                        <img src="../../images/dog.jpg" class="user-icon">
-                                        <a class ="username" href="#"><h4>0anonymouaz</h4></a>
-                                        <p class = "comment">Bad Place</p>
-                                    </div>
-                                    <div class="bottom-container">
-                                        <button class="helpful">
-                                            <img src="../../images/thumb.png">
-                                            <span class = "numberofreact">{{studyFriendlyCafes.[1].noOfLike}}</span>
-                                        </button>
-                                        <button class="unhelpful">
-                                            <img src="../../images/thumbdown.png">
-                                            <span class = "numberofreact">{{studyFriendlyCafes.[1].noOfDislike}}</span>
-                                        </button>
-                                    </div>  
-                                </div>
-                                <button id="closePopupBtnobsecure" onclick="closeSummaryobsecure()"><img src="../../images/xicon.png"></button>
-                            </div>
-                        </div>
-                    </div>
-                
-                    <div class="cafe3containercl2">
-                        <div id="view-drip" class="cafe3headercl2" onclick="showSummarydrip()">
-                            <div class="infos-drip">
-                                <div class="logo-drip">
-                                    <img src="{{studyFriendlyCafes.[2].logoimage}}" alt="Logo">
-                                </div>
-                                <div>
-                                    <a class="drip" href="#">{{studyFriendlyCafes.[2].name}}</a>
-                                </div>
-                                <div>
-                                    <a class="burgundy" href="{{studyFriendlyCafes.[2].location_link}}">
-                                        {{studyFriendlyCafes.[2].location}}
-                                    </a>
-                                </div>
-                                <p class="rating-drip">
-                                    Rating: <span id="i-drip" class="i-drip">{{studyFriendlyCafes.[2].averageRating}}</span>  out of <span class="total">5</span>
-                                </p>
-                                <p class="desco">
-                                   {{studyFriendlyCafes.[2].description}}
-                                </p>
-                            </div>
-                        </div>
-                        <a class="view-establishment-drip" href="view-establishments.html">View Establishment</a>
-                        <div id="popupdrip" class="popupdrip">
-                            <div class="dripcontent">
-                                <div class = "uppersidedrip">
-                                    <div class="logo-popup">
-                                        <img src="{{studyFriendlyCafes.[2].logoimage}}" alt="Logo">
-                                        <a class = "view-all" href="view-establishments.html">View All</a>
-                                      </div>
-                                      <div class="infos-popup">
-                                        <div class="name-popup"><a class="name" href="#">{{studyFriendlyCafes.[2].name}}</a></div>
-                                        <div class="loc-popup"><a a class="loc" href="{{studyFriendlyCafes.[2].location_link}}">
-                                            {{studyFriendlyCafes.[2].location}}</a></div>
-                                      </div>
-                                </div>
-                                <div class = "lowerside">
-                                    <p class="rating-popup">
-                                        Rating: <span id="i-popup" class="i-popup">{{studyFriendlyCafes.[2].averageRating}}</span>  out of <span class="total"> 5</span>
-                                    </p>
-                                    <hr>
-                                    <div class="topreview-container">
-                                        <p class="topreview">Top Review</p>
-                                        <a class="write" href="view-establishments.html">Write a Review</a>
-                                    </div>
-                                    <div class = "comment-container"> 
-                                        <img src="../../images/dog.jpg" class="user-icon">
-                                        <a class ="username" href="#"><h4>harshmo</h4></a>
-                                        <p class = "comment">Baddd place, worse</p>
-                                    </div>
-                                    <div class="bottom-container">
-                                        <button class="helpful">
-                                            <!-- TO EDIT/ ADD LIKE AND DISLIKE, THEN AD WRITE A REVIEW -->
-                                            <img src="../../images/thumb.png">
-                                            <span class = "numberofreact">{{studyFriendlyCafes.[2].noOfLike}}</span>
-                                        </button>
-                                        <button class="unhelpful">
-                                            <!-- TO EDIT/ ADD LIKE AND DISLIKE, THEN AD WRITE A REVIEW -->
-                                            <img src="../../images/thumbdown.png">
-                                            <span class = "numberofreact">{{studyFriendlyCafes.[2].noOfDislike}}</span>
-                                        </button>
-                                    </div>  
-                                   
-                                </div>
-                                <!-- Close button -->
-                                <button id="closePopupBtndrip" onclick="closeSummarydrip()"><img src="../../images/xicon.png"></button>
-    
-                            </div>
+                            <!-- Close button -->
+                            <button id="closePopupBtndrip" onclick="closeSummarydrip()"><img src="../../images/xicon.png"></button>
                         </div>
                     </div>
                 </div>
-                    
-                
+                {{/each}}
+            </div> 
+            </div>   
+         </div>                  
     </div>
 </body>
 </html>
