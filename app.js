@@ -118,7 +118,6 @@ app.get('/profile', async function(req, res) {
             }
         }
         
-        console.log(user);
         const reviewsCount = reviews.length;
         const numberOfDots = Math.ceil(reviewsCount / 3);
         const dots = Array.from({ length: numberOfDots }, (_, index) => index + 1);
@@ -134,10 +133,6 @@ app.get('/profile', async function(req, res) {
         res.status(500).json({ message: 'Internal server error' });
     }
   });
-  
-
-
-
 
 app.get('/view-establishments', function(req, res) {
     res.render('view-establishments', {
@@ -165,8 +160,7 @@ MongoClient.connect(uri)
             })
             .catch(err => {
                 console.error('Error deleting database:', err);
-            });
-
+        });
 
         // Insert data into the database
         db.collection('cafes').insertMany(cafes)
