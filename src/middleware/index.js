@@ -3,7 +3,7 @@ const { getUserByUsername } = require("../models/User");
 
 const isGuest = async (req, res, next) => {
   try {
-    const username = req.cookies["mydatabase-users"];
+    const username = req.cookies["apdev-mco-users"];
     if (!username) return next();
 
     const existingUser = await getUserByUsername(username);
@@ -18,7 +18,7 @@ const isGuest = async (req, res, next) => {
 
 const isAuthenticated = async (req, res, next) => {
   try {
-    const username = req.cookies["mydatabase-users"];
+    const username = req.cookies["apdev-mco-users"];
     if (!username) return res.redirect("/login");
 
     const existingUser = await getUserByUsername(username);
