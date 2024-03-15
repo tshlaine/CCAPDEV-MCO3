@@ -3,58 +3,70 @@
   "userID": "b1",
   "cafeID": "a2",
   "caferating": 4,
+  "user":"@heavenly",
   "reviewtitle": "Loyal Customer",
   "reviewbody": "My friend introduced me to this cafe. 2 years later, this has been my spot whenever I work on my academics.",
   "media": null,
   "helpful": 3,
   "unhelpful": 0,
-  "isEdited": false
+  "isEdited": false,
+  "dateandtime": "2024-2-04, 12:05"
 },
 {
   "inf_id": "c2",
   "userID": "b2",
   "cafeID": "a4",
   "caferating": 5,
+  "user":"@ror",
   "reviewtitle": "Great!",
   "reviewbody": "wow! what a great place and such a top-tier service!!!",
   "media": null,
   "helpful": 1,
   "unhelpful": 1,
-  "isEdited": true
+  "isEdited": true,
+   "dateandtime": "2024-1-02, 16:25"
 },
 {
   "inf_id": "c3",
   "userID": "b3",
   "cafeID": "a1",
+  "user":"@mandy",
   "caferating": 3.5,
   "reviewtitle": "Just for Instagram",
   "reviewbody": "The interior design, the food, and the drinks are all pleasing to the eye but it's quite overpriced.",
   "media": null,
   "helpful": 5,
   "unhelpful": 2,
-  "isEdited": false
+  "isEdited": false,
+  "dateandtime": "2023-12-25, 19:42"
+
 },
 {
   "inf_id": "c4",
   "userID": "b4",
   "cafeID": "a3",
   "caferating": 3,
+  "user":"@bebequozz",
   "reviewtitle": "I Love Egg Coffee",
   "reviewbody": "Their egg coffee tastes similar to the one in Vietnam, it's my new favorite !",
   "media": null,
   "helpful": 8,
   "unhelpful": 0,
-  "isEdited": false
+  "isEdited": false,
+  "dateandtime": "2023-4-23, 20:02"
+
 },
 {
   "inf_id": "c5",
   "userID": "b5",
   "cafeID": "a5",
   "caferating": 2,
+  "user":"@krusty_krab",
   "reviewtitle": "Overrated",
   "reviewbody": "Starbucks is really good at marketing, maybe the best in the world. However, their coffee tastes burnt to me, roasting in such large quantities ensures that.",
   "media": null,
   "helpful": 15,
   "unhelpful": 6,
-  "isEdited": true
+  "isEdited": true,
+  "dateandtime": "2023-8-30, 4:00"
 }]

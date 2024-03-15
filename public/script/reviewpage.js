@@ -10,6 +10,8 @@ function toggleDropdown() {
     }
 }
 
+
+
 function togglePopup() {
     var popup = document.getElementById("popup-create");
     if (popup.style.display === "none") {
@@ -119,6 +121,9 @@ function plusSlides(position) {
     dots[slideIndex-1].className += " active";
 }
 
+
+
+
 function currentSlide(index) {
     if (index > slides.length) {
         index = 1;
@@ -134,6 +139,7 @@ function currentSlide(index) {
     slides[index-1].style.display = "block";  
     dots[index-1].className += " active";
 }
+
 
 
 
