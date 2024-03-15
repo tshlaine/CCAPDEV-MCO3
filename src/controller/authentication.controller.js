@@ -1,31 +1,30 @@
-const { getUserByUsername, createUser } = require("../models/User");
+const { getUserByUsername, createUser, User } = require("../models/User");
 
 const register = async (req, res) => {
-  const { fullname, username, password, description } = req.body;
-  const { file } = req;
-  if (!file) {
+  const { avatar, fullName, userName, password, description } = req.body;
+  // const { file } = req;
+  // console.log(req.file);
+  if (!avatar) {
     return res.status(200).json({
       success: false,
       message: "Please provide a profile picture.",
     });
   }
-  const profilepicture = "/uploads/" + req.file.filename;
 
-  if (!fullname || !username || !password)
+  if (!fullName || !userName || !password)
     return res.status(200).json({
       success: false,
       message: "Please provide all required credentials.",
     });
 
-  const user = await getUserByUsername(username);
+  const user = await getUserByUsername(userName);
   if (user)
     return res.status(200).json({
       success: false,
       message: "The username you provided is already taken.",
     });
 
-  // Split fullname
-  const nameParts = fullname.split(" ");
+  const nameParts = fullName.split(" ");
   const firstname = nameParts[0];
   const lastname = nameParts[nameParts.length - 1];
 
@@ -34,10 +33,10 @@ const register = async (req, res) => {
       firstname,
       lastname,
     },
-    username,
+    username: userName,
     password,
     bio: description,
-    profilepicture,
+    profilepicture: avatar,
   });
 
   return res.status(200).json({
@@ -50,9 +49,7 @@ const login = async (req, res) => {
   const { username, password } = req.body;
 
   if (!username || !password)
-    return res
-      .status(200)
-      .json({ success: false, message: "Username or Password is empty!" });
+    return res.status(200).json({ success: false, message: "Username or Password is empty!" });
 
   const user = await getUserByUsername(username);
 
@@ -75,8 +72,8 @@ const login = async (req, res) => {
     path: "/",
   });
 
-  // Send success status code.
   res.status(200).json({ success: true }).end();
+  // return res.redirect("/index");
 };
 
 const logout = (req, res) => {

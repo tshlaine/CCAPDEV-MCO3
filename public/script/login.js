@@ -19,60 +19,82 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Register
-  document
-    .getElementById("registration-form")
-    .addEventListener("submit", function (e) {
-      e.preventDefault();
+  document.getElementById("registration-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+    const avatar = document.getElementById("avatar");
+    const fullName = document.getElementById("fullnameReg").value;
+    const userName = document.getElementById("usernameReg").value;
+    const password = document.getElementById("passwordReg").value;
+    const description = document.getElementById("descriptionReg").value;
 
-      const formData = new FormData(e.target);
+    if (avatar.files.length > 0) {
+      const file = avatar.files[0];
+      const reader = new FileReader();
+      reader.onload = function (event) {
+        const base64String = event.target.result;
+        sendFormDataWithAvatar(base64String, fullName, userName, password, description);
+      };
+      reader.readAsDataURL(file);
+    } else {
+      sendFormDataWithAvatar(null, fullName, userName, password, description);
+    }
+  });
 
-      fetch("/register", {
-        method: "POST",
-        body: formData,
+  function sendFormDataWithAvatar(avatarBase64, fullName, userName, password, description) {
+    fetch("/register", {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+      body: JSON.stringify({
+        avatar: avatarBase64,
+        fullName: fullName,
+        userName: userName,
+        password: password,
+        description: description,
+      }),
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        if (response.success) {
+          alert(response.message);
+          window.location.href = "/login";
+        } else {
+          alert(response.message);
+        }
       })
-        .then((response) => response.json())
-        .then((response) => {
-          if (response.success) {
-            alert(response.message);
-            window.location.href = "/login";
-          } else {
-            alert(response.message);
-          }
-        })
-        .catch((err) => {
-          console.error("Error during login:", err);
-        });
-    });
+      .catch((err) => {
+        console.error("Error during login:", err);
+      });
+  }
 
   // Login
-  document
-    .getElementById("login-form")
-    .addEventListener("submit", function (e) {
-      e.preventDefault();
+  document.getElementById("login-form").addEventListener("submit", function (e) {
+    e.preventDefault();
 
-      const formData = new FormData(e.target);
-      const username = formData.get("username");
-      const password = formData.get("password");
+    const formData = new FormData(e.target);
+    const username = formData.get("username");
+    const password = formData.get("password");
 
-      fetch("/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ username, password }),
+    fetch("/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ username, password }),
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        if (response.success) {
+          openLoginPopUp();
+        } else {
+          alert(response.message);
+        }
       })
-        .then((response) => response.json())
-        .then((response) => {
-          if (response.success) {
-            openLoginPopUp();
-          } else {
-            alert(response.message);
-          }
-        })
-        .catch((err) => {
-          console.error("Error during login:", err);
-        });
-    });
+      .catch((err) => {
+        console.error("Error during login:", err);
+      });
+  });
 
   // After authentication user
   //   setTimeout(() => {
@@ -107,9 +129,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // FUNCTIONS
 toggleForms = () => {
-  document
-    .getElementById("form-container")
-    .classList.toggle("right-panel-active");
+  document.getElementById("form-container").classList.toggle("right-panel-active");
 };
 
 const updatePreview = (input) => {

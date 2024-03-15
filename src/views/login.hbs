@@ -29,24 +29,25 @@
       <div class="form-card register-card">
         <form
           id="registration-form"
-          method="POST" 
-          enctype="multipart/form-data"
+          {{!-- method="POST" 
+          enctype="application/x-www-form-urlencoded" --}}
         >
           <h1 style="color: #ab9a7c; font-family: 'Poppins';">Register</h1>
           <div class="avatar">
             <label for="avatar">
               <img id="avatar-preview" src="/images/user.png" alt="Avatar" />
-              <input type="file" id="avatar" name="profilepicture" accept="image/*" />
+              <input type="file" id="avatar" name="profilepicture" accept="image/*" id="avatar" />
             </label>
           </div>
-          <input type="text" name="fullname" placeholder="Full Name" />
-          <input type="text" name="username" placeholder="Username" />
-          <input type="password" name="password" placeholder="Password" />
+          <input type="text" name="fullnameReg" id="fullnameReg" placeholder="Full Name" />
+          <input type="text" name="usernameReg" id="usernameReg" placeholder="Username" />
+          <input type="password" name="passwordReg" id="passwordReg" placeholder="Password" />
           <textarea
             name="description"
             placeholder="Short Description (optional)"
+            id="descriptionReg"
           ></textarea><br />
-          <button>Register</button>
+          <button type="submit">Register</button>
         </form>
       </div>
 

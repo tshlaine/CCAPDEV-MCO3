@@ -27,10 +27,14 @@ const userSchema = new Schema({
     type: String,
   },
 });
-
+userSchema.set("strictQuery", true);
 const User = model("User", userSchema);
 const getUserByUsername = (username) => User.findOne({ username });
 const getUsers = () => User.find();
-const createUser = (values) =>
-  new User(values).save().then((user) => user.toObject());
-module.exports = { User, getUserByUsername, getUsers, createUser };
+const createUser = (values) => new User(values).save().then((user) => user.toObject());
+module.exports = {
+  User,
+  getUserByUsername,
+  getUsers,
+  createUser,
+};

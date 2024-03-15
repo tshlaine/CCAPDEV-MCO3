@@ -4,13 +4,9 @@ const rawCafe = fs.readFileSync("src/models/cafes.metadata.json");
 const cafes = JSON.parse(rawCafe);
 const cafesSorted = cafes.sort((a, b) => b.averageRating - a.averageRating);
 
-const budgetFriendlyCafes = cafes.filter(
-  (cafe) => cafe.category && cafe.category.includes("Budget-Friendly")
-);
+const budgetFriendlyCafes = cafes.filter((cafe) => cafe.category && cafe.category.includes("Budget-Friendly"));
 
-const studyFriendlyCafes = cafes.filter(
-  (cafe) => cafe.category && cafe.category.includes("Study-Friendly")
-);
+const studyFriendlyCafes = cafes.filter((cafe) => cafe.category && cafe.category.includes("Study-Friendly"));
 
 // Select the top three cafes
 const topThreeCafes = cafesSorted.slice(0, 3);
