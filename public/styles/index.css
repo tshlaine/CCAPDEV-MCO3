@@ -1838,15 +1838,7 @@ hr {
 .popuptomo,
 .popupdrip,
 .popupobsecure,
-.popupsb,
-.popupresponse,
-.popupresponse1,
-.popupresponse3,
-.popupresponse4,
-.popupresponse5,
-.popupresponse6,
-.popupresponse7,
-.popupresponse8 {
+.popupsb {
   z-index: 40;
   display: none;
   position: fixed;
@@ -2035,12 +2027,12 @@ hr {
   background-position: right;
 }
 
-#closePopupBtnobsecure,
-#closePopupBtncloudscape,
-#closePopupBtntomo,
-#closePopupBtndrip,
-#closePopupBtnprelude,
-#closePopupBtnsb {
+.closePopupBtnobsecure,
+.closePopupBtncloudscape,
+.closePopupBtntomo,
+.closePopupBtndrip,
+.closePopupBtnprelude,
+.closePopupBtnsb {
   z-index: 3;
   cursor: pointer;
   position: absolute;
@@ -2052,37 +2044,37 @@ hr {
   margin: 0;
 }
 
-#closePopupBtncloudscape img {
+.closePopupBtncloudscape img {
   width: 30px;
   height: 30px;
 }
 
-#closePopupBtnsb img {
+.closePopupBtnsb img {
   width: 30px;
   height: 30px;
 }
 
-#closePopupBtntomo img {
+.closePopupBtntomo img {
   width: 30px;
   height: 30px;
 }
 
-#closePopupBtnobsecure img {
+.closePopupBtnobsecure img {
   width: 30px;
   height: 30px;
 }
 
-#closePopupBtndrip img {
+.closePopupBtndrip img {
   width: 30px;
   height: 30px;
 }
 
-#closePopupBtnprelude img {
+.closePopupBtnprelude img {
   width: 30px;
   height: 30px;
 }
 
-#closePopupBtnpsb img {
+.closePopupBtnpsb img {
   width: 30px;
   height: 30px;
 }

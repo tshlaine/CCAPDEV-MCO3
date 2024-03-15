@@ -128,16 +128,6 @@ const closePopupBtnprelude = document.getElementById("closePopupBtnprelude");
 const closePopupBtndrip = document.getElementById("closePopupBtnprelude");
 const popupdrip = document.getElementById("popupprelude");
 
-function showSummary() {
-  const popupprelude = document.getElementById("popupprelude");
-  popupprelude.style.display = "block";
-}
-
-function closeSummary() {
-  const popupprelude = document.getElementById("popupprelude");
-  popupprelude.style.display = "none";
-}
-
 function showSummarydrip() {
   const popupprelude = document.getElementById("popupdrip");
   popupprelude.style.display = "block";
@@ -183,20 +173,60 @@ function showSummarycloudscape() {
   popupprelude.style.display = "block";
 }
 
-function closeSummarysb() {
-  const popupprelude = document.getElementById("popupsb");
-  popupprelude.style.display = "none";
-}
-
-function showSummarysb() {
-  const popupprelude = document.getElementById("popupsb");
-  popupprelude.style.display = "block";
-}
-
-window.addEventListener("click", function (event) {
-  if (event.target == popupprelude) {
+function closeSummarysb(index) {
+  const popupprelude = document.getElementById("popupsb-" + index);
+  if (popupprelude) {
     popupprelude.style.display = "none";
   }
+}
+
+function showSummarysb(index) {
+  const popupprelude = document.getElementById("popupsb-" + index);
+  if (popupprelude) {
+    popupprelude.style.display = "block";
+  }
+}
+
+// Event listener to close popup when clicking outside of it
+window.addEventListener("click", function(event) {
+  const popups = document.querySelectorAll(".popupsb");
+  popups.forEach(function(popup) {
+    if (event.target === popup) {
+      popup.style.display = "none";
+    }
+  });
+});
+
+function closePopup(popupId) {
+  const popup = document.getElementById(popupId);
+  if (popup) {
+    popup.style.display = "none";
+  }
+}
+
+
+function showPopup(popupId) {
+  console.log("showPopup called");
+  const popup = document.getElementById(popupId);
+  if (popup) {
+    popup.style.display = "block";
+  }
+}
+function closePopup(popupId) {
+  const popup = document.getElementById(popupId);
+  if (popup) {
+      popup.style.display = "none";
+  }
+}
+
+// Event listener to close popup when clicking outside of it
+window.addEventListener("click", function(event) {
+  const popups = document.querySelectorAll(".popup");
+  popups.forEach(function(popup) {
+    if (event.target === popup) {
+      popup.style.display = "none";
+    }
+  });
 });
 
 window.onscroll = function () {

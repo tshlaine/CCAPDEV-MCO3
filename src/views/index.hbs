@@ -60,7 +60,7 @@
         <p class="rated">The top bets of students around Taft</p>
          <div class = "toprated">
             <div class="top1container">
-                <button id="view-sb" class="top1header" style="background-image: url('{{topThreeCafes.[0].cafeheader }}')" onclick="showSummarysb()">
+               <button id="view-sb-0" class="top1header" style="background-image: url('{{topThreeCafes.[0].cafeheader}}')" onclick="showPopup('popupsb-0')">
                     <div class="infos-sb">
                         <div class="logo-sb">
                             <img src="{{topThreeCafes.[0].logoimage}}" alt="Logo">
@@ -84,7 +84,7 @@
                         </div>
                 </button>
                 <a class="view-establishment-sb" href="/view-establishments">View Establishment</a>
-                <div id="popupsb" class="popupsb">
+                <div id="popupsb-0" class="popupsb">
                     <div class="sbcontent">
                         <div class = "uppersidesb">
                             <div class="logo-popup">
@@ -126,12 +126,13 @@
                         
                         </div>
                         <!-- Close button -->
-                        <button id="closePopupBtnsb" onclick="closeSummarysb()"><img src="../../images/xicon.png"></button>
+                       <button class="closePopupBtnsb" id="closePopupBtnsb-0" onclick="closePopup('popupsb-0')">
+                        <img src="../../images/xicon.png"></button>
                     </div>
                 </div>
             </div>
             <div class="top1container">
-                <button id="view-sb" class="top1header" style="background-image: url('{{topThreeCafes.[1].cafeheader }}')" onclick="showSummarysb()">
+                <button id="view-sb-1" class="top1header" style="background-image: url('{{topThreeCafes.[1].cafeheader}}')" onclick="showPopup('popupsb-1')">
                     <div class="infos-sb">
                         <div class="logo-sb">
                             <img src="{{topThreeCafes.[1].logoimage}}" alt="Logo">
@@ -153,7 +154,7 @@
                     </div>
                 </button>
                 <a class="view-establishment-sb" href="/view-establishments">View Establishment</a>
-                <div id="popupsb" class="popupsb">
+                <div id="popupsb-1" class="popupsb">
                     <div class="sbcontent">
                         <div class = "uppersidesb">
                             <div class="logo-popup">
@@ -195,12 +196,12 @@
                         
                         </div>
                         <!-- Close button -->
-                        <button id="closePopupBtnsb" onclick="closeSummarysb()"><img src="../../images/xicon.png"></button>
+                        <button class="closePopupBtndrip" id="closePopupBtnsb-1" onclick="closePopup('popupsb-1')"><img src="../../images/xicon.png"></button>
                     </div>
                 </div>
             </div>
             <div class="top1container">
-                <button id="view-sb" class="top1header" style="background-image: url('{{topThreeCafes.[2].cafeheader }}')" onclick="showSummarysb()">
+                <button id="view-sb-2" class="top1header" style="background-image: url('{{topThreeCafes.[2].cafeheader}}')" onclick="showPopup('popupsb-2')">
                     <div class="infos-sb">
                         <div class="logo-sb">
                             <img src="{{topThreeCafes.[2].logoimage}}" alt="Logo">
@@ -222,7 +223,7 @@
                     </div>
                 </button>
                 <a class="view-establishment-sb" href="/view-establishments">View Establishment</a>
-                <div id="popupsb" class="popupsb">
+                <div id="popupsb-2" class="popupsb">
                     <div class="sbcontent">
                         <div class = "uppersidesb">
                             <div class="logo-popup">
@@ -264,7 +265,7 @@
                         
                         </div>
                         <!-- Close button -->
-                        <button id="closePopupBtnsb" onclick="closeSummarysb()"><img src="../../images/xicon.png"></button>
+                        <button class="closePopupBtndrip" id="closePopupBtnsb-2" onclick="closePopup('popupsb-2')"><img src="../../images/xicon.png"></button>
                     </div>
                 </div>
             </div>
@@ -279,7 +280,7 @@
                 </div>
                 {{#each budgetFriendlyCafes}}
                 <div class="cafe2container" id="cafe2">
-                    <button id="view-drip" class="cafe2header"  style="background-image: url('{{cafeheader}}')" onclick="showSummarydrip()">
+                   <button id="view-drip-{{@index}}" class="cafe2header" style="background-image: url('{{cafeheader}}')" onclick="showPopup('popupdrip-{{@index}}')">
                         <div class="infos-sb">
                             <div class="logo-sb">
                                 <img src="{{logoimage}}" alt="Logo">
@@ -301,7 +302,7 @@
                         </div>
                     </button>
                     <a class="view-establishment-drip" href="/view-establishments">View Establishment</a>
-                    <div id="popupdrip" class="popupdrip">
+                    <div id="popupdrip-{{@index}}" class="popupdrip">
                         <div class="dripcontent">
                             <div class = "uppersidedrip">
                                 <div class="logo-popup">
@@ -343,7 +344,10 @@
                                
                             </div>
                             <!-- Close button -->
-                            <button id="closePopupBtndrip" onclick="closeSummarydrip()"><img src="../../images/xicon.png"></button>
+                           <button class="closePopupBtndrip" id="closePopupBtndrip-{{@index}}" onclick="closePopup('popupdrip-{{@index}}')">
+                                <img src="../../images/xicon.png">
+                            </button>
+
                         </div>
                     </div>
                 </div>
@@ -354,7 +358,7 @@
             
                 {{#each studyFriendlyCafes}}
                 <div class="cafe2container" id="cafe2">
-                    <button id="view-drip" class="cafe2header"  style="background-image: url('{{cafeheader}}')" onclick="showSummarydrip()">
+                     <button id="view-tomo-{{@index}}" class="cafe2header" style="background-image: url('{{cafeheader}}')" onclick="showPopup('popuptomo-{{@index}}')">
                         <div class="infos-sb">
                             <div class="logo-sb">
                                 <img src="{{logoimage}}" alt="Logo">
@@ -376,7 +380,7 @@
                         </div>
                     </button>
                     <a class="view-establishment-drip" href="/view-establishments">View Establishment</a>
-                    <div id="popupdrip" class="popupdrip">
+                    <div id="popuptomo-{{@index}}" class="popupdrip">
                         <div class="dripcontent">
                             <div class = "uppersidedrip">
                                 <div class="logo-popup">
@@ -417,8 +421,9 @@
                                 </div>  
                                
                             </div>
-                            <!-- Close button -->
-                            <button id="closePopupBtndrip" onclick="closeSummarydrip()"><img src="../../images/xicon.png"></button>
+                             <button class="closePopupBtndrip" id="closePopupBtntomo-{{@index}}" onclick="closePopup('popuptomo-{{@index}}')">
+                                <img src="../../images/xicon.png">
+                            </button>
                         </div>
                     </div>
                 </div>
