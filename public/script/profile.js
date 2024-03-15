@@ -57,41 +57,49 @@ editPopup.style.display = 'none';
 }
 
 function saveChanges() {
-const newUsername = document.getElementById('newUsername').value.trim();
-const newRealname = document.getElementById('newRealname').value.trim();
-const newBio = document.getElementById('newBio').value.trim();
+    const newUsername = document.getElementById('newUsername').value.trim();
+    const newFirstName = document.getElementById('newFirstName').value.trim();
+    const newLastName = document.getElementById('newLastName').value.trim();
+    const newBio = document.getElementById('newBio').value.trim();
 
-// Check if any of the fields are empty
-if (newUsername === '' && newRealname === '' && newBio === '') {
-alert('Please enter at least one value to save.');
-return;
+    // Check if any of the fields are empty
+    if (newUsername === '' && newFirstName === '' && newLastName === '' && newBio === '') {
+        alert('Please enter at least one value to save.');
+        return;
+    }
+
+    // Update username if not empty
+    if (newUsername !== '') {
+        const usernameElement = document.querySelector('.username');
+        usernameElement.textContent = newUsername;
+        localStorage.setItem('username', newUsername);
+    }
+
+    // Update real name if not empty
+    if (newFirstName !== '' || newLastName !== '') {
+        const realnameElement = document.querySelector('.realname');
+        realnameElement.textContent = newFirstName + ' ' + newLastName;
+        localStorage.setItem('realname', newFirstName + ' ' + newLastName);
+    }
+
+    // Update bio if not empty
+    if (newBio !== '') {
+        const bioElement = document.querySelector('.bio');
+        bioElement.textContent = newBio;
+        localStorage.setItem('bio', newBio);
+    }
+
+    // Close the edit popup
+    closeEditPopup();
 }
 
-// Update username if not empty
-if (newUsername !== '') {
-const usernameElement = document.querySelector('.username');
-usernameElement.textContent = newUsername;
-localStorage.setItem('username', newUsername);
-}
 
-// Update real name if not empty
-if (newRealname !== '') {
-const realnameElement = document.querySelector('.realname');
-realnameElement.textContent = newRealname;
-localStorage.setItem('realname', newRealname);
-}
-
-// Update bio if not empty
-if (newBio !== '') {
-const bioElement = document.querySelector('.bio');
-bioElement.textContent = newBio;
-localStorage.setItem('bio', newBio);
-}
-
-// Close the edit popup
-closeEditPopup();
-}
-
+function toggleDropdown() { var dropdownContent =
+    document.getElementById("dropdownContent"); if
+    (dropdownContent.style.display === "block") {
+    dropdownContent.style.display = "none"; } else {
+    dropdownContent.style.display = "block"; } }
+    
 // THIS FUNCTION WILL KEEP THE DATA EVEN AFTER CLOSING THE SERVER, BUT THE DATA WOULD PERSIST EVEN WHEN VIEWING A DIFFERENT USER'S PROFILE PAGE
 
 /*

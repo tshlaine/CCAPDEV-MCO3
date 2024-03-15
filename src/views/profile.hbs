@@ -27,7 +27,7 @@
                     <img src="../../images/usericon.png" alt="User Icon" id="icon" class="user">
                 </button>
                 <div class="dropdown-content" id="dropdownContent">
-                    <a href="/sign-up">Sign Up</a>
+                    <a href="/login?page=signup">Sign Up</a>
                     
                     <a href="/profile">View Profile</a>
                 </div>
@@ -65,15 +65,16 @@
     </div>
 
     <div class="edit-popup" id="editPopup">
-        <div class="popup-content">
-            <span class="close" onclick="closeEditPopup()">&times;</span>
-            <b><h2>Edit Profile</h2></b>
-            <input type="text" id="newUsername" placeholder="New Username">
-            <input type="text" id="newRealname" placeholder="New Real Name">
-            <textarea id="newBio" placeholder="New Bio"></textarea>
-            <button onclick="saveChanges()">Save</button>
-        </div>
+    <div class="popup-content">
+        <span class="close" onclick="closeEditPopup()">&times;</span>
+        <b><h2>Edit Profile</h2></b>
+        <input type="text" id="newUsername" placeholder="Username">
+        <input type="text" id="newFirstName" placeholder="First Name">
+        <input type="text" id="newLastName" placeholder="Last Name">
+        <textarea id="newBio" placeholder="New Bio"></textarea>
+        <button onclick="saveChanges()">Save</button>
     </div>
+</div>
 
     <div class="profile-lower">
         <span class="bio">{{ sampleUser.bio }}</span>
@@ -94,28 +95,33 @@
 
     <div class="profile-reviews">
             {{#each reviewSets as |reviewSet index|}}
-                <div class="review-set" id="reviewSet{{ index }}">
-                    {{#each reviewSet as |review|}}
-                        <div class="review1-container">
-                            
-                            <a href="/establishment?cafeId={{ review.cafeId }}">
-                                <img src="{{ review.logoimage }}" class="review1" alt="Cafe Logo">
-                            </a>
-                    
-                            <div class="review1-review">
-                                <br>
-                                <span class="review-title">{{ review.reviewtitle }}</span><br><br>
-                                <span class="review-text">{{ review.reviewbody }}</span>
-                                <div class="star-rating">
-                                    {{#each review.stars}}
-                                        <span class="star">{{ this }}</span>
-                                    {{/each}}
-                                </div>
-                            </div>
+        <div class="review-set" id="reviewSet{{ index }}">
+            {{#each reviewSet as |review|}}
+                <div class="review1-container">
+                    <a href="/reviewpage?cafeID={{ review.cafeID }}">
+                        <img src="{{ review.logoimage }}" class="review1" alt="Cafe Logo">
+                    </a>
+                    <div class="review1-review">
+                        <br>
+                        <span class="review-title">{{ review.reviewtitle }}</span><br><br>
+                        <span class="review-text">{{ review.reviewbody }}</span>
+                        <div class="star-rating">
+                            {{#if (isInteger review.caferating)}}
+                                {{#times review.caferating}}
+                                    <span class="star">&#9733;</span>
+                                {{/times}}
+                            {{else}}
+                                {{#times (subtract (floor review.caferating) 1)}}
+                                    <span class="star">&#9733;</span>
+                                {{/times}}
+                                <span class="star">&#9733;</span>
+                            {{/if}}
                         </div>
-                    {{/each}}
+                    </div>
                 </div>
             {{/each}}
+        </div>
+    {{/each}}
         </div>
     </div>
 

@@ -6,6 +6,26 @@ const fs = require('fs');
 const router = require("./src/routes");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
+const Handlebars = require('handlebars');
+
+Handlebars.registerHelper('isInteger', function(value) {
+    return Number.isInteger(value);
+});
+
+Handlebars.registerHelper('times', function(n, block) {
+    let accum = '';
+    for(let i = 0; i < n; ++i)
+        accum += block.fn(i);
+    return accum;
+});
+
+Handlebars.registerHelper('subtract', function(a, b) {
+    return a - b;
+});
+
+Handlebars.registerHelper('floor', function(value) {
+    return Math.floor(value);
+});
 
 const app = express();
 const PORT = 3000;
@@ -121,7 +141,7 @@ app.get('/searchpage', async function(req, res) {
 app.get('/profile', async function(req, res) {
     try {
         const db = req.app.locals.db;
-        const user = await db.collection('users').findOne({});
+        const user = await db.collection('users').findOne({}); //JUST FOR TESTING
         const reviews = await db.collection('reviews').find({ userID: user.inf_id }).toArray();
   
         // Divide reviews into sets of three

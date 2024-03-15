@@ -586,15 +586,9 @@ hr {
 }
 
 .star-rating .star {
-  cursor: pointer;
-  color: #000; /* Default color */
+  color: #ffd700; /* Default color */
   font-size: 24px; /* Adjust as needed */
   transition: color 0.2s; /* Smooth transition */
-}
-
-.star-rating .star.checked,
-.star-rating .star:hover {
-  color: #ffd700; /* Color for filled star */
 }
 
 .review-title {
