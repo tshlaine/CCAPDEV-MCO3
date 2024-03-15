@@ -13,5 +13,5 @@ If you are running on a local machine:
    4.2 If there was an error, try downloading the modules.
 4. Run localhost:3000
 5. Enter these credentials or you can register your own account:
-	Username: doggypapi
-    Password: papidoggy
+	Username: tashi
+   Password: ap

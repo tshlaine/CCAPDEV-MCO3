@@ -69,6 +69,8 @@ const studyFriendlyCafes = cafes.filter((cafe) => cafe.category && cafe.category
 // Select the top three cafes
 const topThreeCafes = cafesSorted.slice(0, 3);
 
+const { profilePage } = require("./src/controller/profile.controller");
+
 // Route handler for /index
 app.get("/index", function (req, res) {
 

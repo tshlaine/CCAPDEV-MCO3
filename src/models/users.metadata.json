@@ -18,8 +18,8 @@
   },
   "username": "tashi",
   "password": "ap",
-  "profilepicture": null,
-  "coverpicture": null,
+  "profilepicture": "../../images/doggy.jpg",
+  "coverpicture": "../../images/cover1.jpg",
   "bio": "hello my name is tashi!"
 },
 {
