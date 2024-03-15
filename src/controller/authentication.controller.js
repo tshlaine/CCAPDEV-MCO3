@@ -69,17 +69,17 @@ const login = async (req, res) => {
 
   res.cookie("mydatabase-users", username, {
     maxAge: 24 * 60 * 60 * 1000, //equivalent to one day
-    path: "/",
+    path: "/index",
   });
 
   res.status(200).json({ success: true }).end();
   // return res.redirect("/index");
 };
 
-const logout = (req, res) => {
-  res.clearCookie("mydatabase-users");
-
-  res.redirect("/index");
+async function logout(req,res) {
+  req.session.destroy (() => {
+    res.redirect('/index');
+  });
 };
 
 module.exports = { register, login, logout };
