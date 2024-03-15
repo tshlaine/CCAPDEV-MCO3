@@ -8,6 +8,7 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const Handlebars = require('handlebars');
 
+
 Handlebars.registerHelper('isInteger', function(value) {
     return Number.isInteger(value);
 });
