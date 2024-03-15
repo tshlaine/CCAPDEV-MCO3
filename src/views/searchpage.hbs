@@ -24,9 +24,9 @@
         <p class = "result">Search Results: {{result.length}} out of 6 Cafes</p>
         
         <div class="main">
-            <a href="/reviewpage?name={{name}}&location={{location}}&category={{category}}&description={{description}}&averageRating={{averageRating}}&slideImages={{slideImages}}" class = "box">
+             {{#each result}}
+            <a href="/reviewpage?name={{name}}&location={{location}}&category={{category}}&description={{description}}&averageRating={{averageRating}}&slideImages1={{slideImages1}}&slideImages2={{slideImages2}}&slideImages3={{slideImages3}}" class = "box">
             <div class="review-box">
-                {{#each result}}
                 <div class="unit1" id="unit1-background1"  style="background-image: url('{{cafeheader}}')">
                     <img src="{{logoimage}}" class="cafe-profile">
                     <div class="info">

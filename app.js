@@ -95,6 +95,9 @@ app.get('/reviewpage', (req, res) => {
         category = [category]; // Convert to array if it's not already
     }
 
+    const category1 = category[0]
+    const category2 = category[1]
+
     const cafeDetails = {
         name: req.query.name,
         location: req.query.location,
@@ -103,7 +106,7 @@ app.get('/reviewpage', (req, res) => {
         slideImages1: req.query.slideImages1, // Use the array of image paths
         slideImages2: req.query.slideImages2, // Use the array of image paths
         slideImages3: req.query.slideImages3, // Use the array of image paths
-        category: category // Use the array of categories
+        category1,category2
     };
 
     res.render('reviewpage', { 
