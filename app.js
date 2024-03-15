@@ -99,6 +99,23 @@ app.get('/reviewpage', (req, res) => {
   });
 });
 
+Handlebars.registerHelper('getDate', function(dateAndTime) {
+    // Split the date and time using either a comma or a hyphen
+    const [datePart] = dateAndTime.split(/,|-/);
+    return datePart.trim(); // Return the date part
+});
+
+Handlebars.registerHelper('getTime', function(dateAndTime) {
+    // Split the date and time using either a comma or a hyphen
+    const [, timePart] = dateAndTime.split(/,|-/);
+    return timePart.trim(); // Return the time part
+});
+
+app.get('/delete-review/:reviewId', (req, res) => {
+    // This route handler is just for demonstration purposes
+    // You might want to handle the GET request differently, such as rendering an error page
+    res.status(404).send('Not found');
+});
 
 
 app.get('/searchpage', async function(req, res) {

@@ -47,7 +47,7 @@
                 <input type="text" id="review-words" class="review-words" placeholder="Enter your Review...">
                 <input type="file" id="image-upload" class="image-upload" accept="image/*">
                 <div class="button-container">
-                    <a href="/reviewpage" class="search-anchor">
+                    <a href="/reviewpage?name={{cafe.name}}&location={{cafe.location}}&category={{cafe.category}}&description={{cafe.description}}&averageRating={{cafe.averageRating}}&slideImages1={{cafe.slideImages1}}&slideImages2={{cafe.slideImages2}}&slideImages3={{cafe.slideImages3}}" class="search-anchor">
                         <button type="submit" class="submit">Submit</button>
                     </a>
                     
@@ -106,6 +106,8 @@
         <hr class="divider">
         <p class = "reviews">Reviews</p>
         <div class="review-area">
+        {{#if cafes}}
+        {{#each reviews}}
             <div class="review-box">
                 <button class = "threedot" onclick="toggleDropdown2()"> 
                     <img src="../../images/options.png"> 
@@ -120,13 +122,14 @@
                 <div class="dropdown-content2" id="dropdownContent2">
                     <a href="sign-up.html">Edit</a>
                 
-                    <a href="profile.html">Delete</a>
+                    <a href="/delete-review/{{reviewId}}" class="delete-review" data-review-id="{{reviewId}}">Delete</a>
+
                 </div>
                 <div class="profile-info">
                     <div class="profile-pic">
                         <img src="../../images/dog.jpg" alt="Profile Picture" />
                     </div>
-                    <div class="username"><a href="profile.html">hello_tim</a></div>
+                    <div class="username"><a href="profile.html">{{user}}</a></div>
                 </div>                
                 <div class="review-content">             
                     <div class="ratings">
@@ -152,75 +155,14 @@
                         {{reviewbody}}
                     </div>
                     <div class = "date">
-                        05/05/02024
+                        {{dateandtime}}
                     </div>
                 </div>
             </div>
             <hr class = "div">
-            <div class="review-box">
-                <button class = "threedot" onclick="toggleDropdown2()"> 
-                    <img src="../../images/options.png"> 
-                </button>
-                <div class="reaction">
-                    <button class="helpful"><img src="../../images/thumb.png"></button>
-                    <span class = "numberofreact">{{helpful}}</span>
-                    <button class="unhelpful"><img src="../../images/thumbdown.png"></i></button>
-                    <span class = "numberofreact">{{unhelpful}}</span>
-                </div>
-    
-                <div class="dropdown-content2" id="dropdownContent2">
-                    <a href="sign-up.html">Edit</a>
-                   
-                    <a href="profile.html">Delete</a>
-                </div>
-                <div class="profile-info">
-                    <div class="profile-pic">
-                        <img src="../../images/dog.jpg" alt="Profile Picture" />
-                    </div>
-                    <div class="username"><a href="profile.html">{{username}}</a></div>
-                </div>                
-                <div class="review-content">             
-                    <div class="ratings">
-                        <input type="radio" id="star1" name="rate" value="1">
-                        <label for="star1" title="text">1 star</label>
-    
-                        <input type="radio" id="star2" name="rate" value="2">
-                        <label for="star2" title="text">2 stars</label>
-    
-                        <input type="radio" id="star3" name="rate" value="3">
-                        <label for="star3" title="text">3 stars</label>
-    
-                        <input type="radio" id="star4" name="rate" value="4">
-                        <label for="star4" title="text">4 stars</label>
-    
-                        <input type="radio" id="star5" name="rate" value="5">
-                        <label for="star5" title="text">5 stars</label>
-                    </div>
-                    <div class="title">
-                        {{reviewtitle}}
-                    </div>
-                    <div class="paragraph">
-                        {{reviewbody}}
-                    </div>
-                    <div class="images-container">
-                        <img src="../../images/doggy.jpg" class="img" id="image" onclick="openModal()">
-                        <img src="../../images/doggy.jpg" class="img" id="image" onclick="openModal()">
-                    </div>
-
-                    <div id="myModal" class="modal">
-                      <span class="close"  onclick="closeModal()">&times;</span>
-                      <img class="modal-content" id="modal-image">
-                    </div>
-                    <div class = "date">
-                        05/05/02024
-                    </div>
-                </div>
-            </div>
-        </div>
-        <hr class = "div">
+            {{/each}}
+            {{/if}}
+            
     </div>
-
-    <!-- RETRIEVE CAFE NAME DATA -->
-
 </body>
 </html>
