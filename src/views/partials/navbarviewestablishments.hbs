@@ -16,8 +16,8 @@
           <span class="st"> St.</span>
         </a>
         <ul>
-          <li><a href="/">Home</a></li>
-          <li id="view-establishments-link"><a href="/view-establishments">View Establishments</a></li>
+          <li><a href="/index?username={{username}}">Home</a></li>
+          <li id="view-establishments-link"><a href="/view-establishments?username={{username}}">View Establishments</a></li>
 
           {{#if username}}
             <li><a href="/logout">Log Out</a></li>
@@ -32,10 +32,9 @@
             </button>
             <div class="dropdown-content" id="dropdownContent">
               {{#if username}}
-                <a href="/profile">View Profile</a>
+                <a href="/profile?username={{username}}">View Profile</a>
               {{else}}
                 <a href="/login?page=signup">Sign Up</a>
-                <a href="javascript:void(0)" id="profile-page">View Profile</a>
               {{/if}}
             </div>
           </div>

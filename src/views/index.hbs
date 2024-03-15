@@ -16,7 +16,7 @@
             </p>
             <div class = "button">
                 <button class = "explore"  onclick="scrollToSection()">Explore</button>
-                <button class="suggestion" onclick="window.location.href = '/view-establishments';">Find Suggestions</button>
+                <button class="suggestion" onclick="window.location.href = '/view-establishments?username={{username}}';">Find Suggestions</button>
 
             </div>
         </div>
@@ -24,7 +24,7 @@
         <img class = "designdot2" src="/images/dots.png">
         <img class = "designdot3" src="/images/dots.png">
         <img class = "designdot4" src="/images/dots.png">
-        {{> navbar}}
+        {{> navbar username=username}}
         <div class = "leftpanel">
             <div class="slideshow-container">
                 {{#each cafes}}

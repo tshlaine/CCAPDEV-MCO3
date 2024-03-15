@@ -96,6 +96,8 @@ app.get("/other-profile", function (req, res) {
 });
 
 app.get('/reviewpage', (req, res) => {
+
+const username = req.query.username; // Get username
   // Ensure category is an array
   let category = req.query.category || [];
   if (!Array.isArray(category)) {
@@ -120,7 +122,8 @@ app.get('/reviewpage', (req, res) => {
       cafes: cafes,
       cafe: cafeDetails,
       reviews: reviews,
-      users: users 
+      users: users,
+      username:username
   });
 });
 
@@ -207,11 +210,15 @@ app.get('/profile', async function(req, res) {
 
 
 app.get('/view-establishments', function(req, res) {
+
+    const username = req.query.username; // Get username
+
   res.render('view-establishments', {
       studyFriendlyCafes: studyFriendlyCafes,
       budgetFriendlyCafes: budgetFriendlyCafes,
       cafes: cafes, // Pass all cafes
-      topThreeCafes: topThreeCafes // Pass the top three cafes
+      topThreeCafes: topThreeCafes, // Pass the top three cafes
+      username :username
   });
 });
 
