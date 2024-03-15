@@ -1,1 +1,1 @@
-view-
+isInteger
