@@ -601,3 +601,12 @@ hr {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.edited-badge {
+  font-weight: lighter;
+  font-size: smaller;
+  position: absolute;
+  bottom: 5px;
+  right: 10px; /* Adjust the distance from the right edge */
+  padding: 5px; /* Adjust padding as needed */
+}

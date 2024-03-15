@@ -50,12 +50,15 @@ const topThreeCafes = cafesSorted.slice(0, 3);
 
 // Route handler for /index
 app.get("/index", function (req, res) {
-  res.render("index", {
-    studyFriendlyCafes: studyFriendlyCafes,
-    budgetFriendlyCafes: budgetFriendlyCafes,
-    cafes: cafes, // Pass all cafes
-    topThreeCafes: topThreeCafes, // Pass the top three cafes
-  });
+
+    const username = req.query.username; // Get username
+
+    res.render("index", {
+        studyFriendlyCafes: studyFriendlyCafes,
+        budgetFriendlyCafes: budgetFriendlyCafes,
+        cafes: cafes, // Pass all cafes
+        topThreeCafes: topThreeCafes, // Pass the top three cafes
+    });
 });
 
 app.get("/login", function (req, res) {
@@ -141,43 +144,56 @@ app.get('/searchpage', async function(req, res) {
 
 
 app.get('/profile', async function(req, res) {
-  try {
-      const db = req.app.locals.db;
-      const user = await db.collection('users').findOne({}); //JUST FOR TESTING
-      const reviews = await db.collection('reviews').find({ userID: user.inf_id }).toArray();
-
-      // Divide reviews into sets of three
-      const reviewSets = [];
-      for (let i = 0; i < reviews.length; i += 3) {
-          reviewSets.push(reviews.slice(i, i + 3));
-      }
-
-      const cafes = [];
-      for (const reviewSet of reviewSets) {
-          for (const review of reviewSet) {
-              const cafe = await db.collection('cafes').findOne({ inf_id: review.cafeID });
-              if (cafe) {
-                  review.logoimage = cafe.logoimage;
-                  cafes.push(cafe);
-              }
-          }
-      }
-      
-      const reviewsCount = reviews.length;
-      const numberOfDots = Math.ceil(reviewsCount / 3);
-      const dots = Array.from({ length: numberOfDots }, (_, index) => index + 1);
-
-      res.render('profile', { 
-          sampleUser: user,
-          reviewSets: reviewSets,
-          cafes: cafes,
-          dots: dots
-      });
-  } catch (err) {
-      console.error('Error fetching user profile:', err);
-      res.status(500).json({ message: 'Internal server error' });
-  }
+    try {
+        const db = req.app.locals.db;
+        const username = req.query.username; // Get username
+        
+        // Find the user
+        const matchedUser = users.find(user => user.username === username);
+        
+        if (!matchedUser) {
+            // Error for no user found
+            return res.status(404).send('User not found');
+        }
+        const userInfId = matchedUser.inf_id;
+        
+        // match user inf_id with review user_ID
+        const reviews = await db.collection('reviews').find({ userID: userInfId }).toArray();
+        
+        // Divide reviews into sets of three
+        const reviewSets = [];
+        for (let i = 0; i < reviews.length; i += 3) {
+            reviewSets.push(reviews.slice(i, i + 3));
+        }
+  
+        const cafes = [];
+        for (const reviewSet of reviewSets) {
+            for (const review of reviewSet) {
+                const cafe = await db.collection('cafes').findOne({ inf_id: review.cafeID });
+                if (cafe) {
+                    review.logoimage = cafe.logoimage;
+                    cafes.push(cafe);
+                }
+            }
+        }
+        
+        const reviewsCount = reviews.length;
+        const numberOfDots = Math.ceil(reviewsCount / 3);
+        const dots = Array.from({ length: numberOfDots }, (_, index) => index + 1);
+  
+        res.render('profile', { 
+            sampleUser: matchedUser,
+            reviewSets: reviewSets,
+            cafes: cafes,
+            dots: dots,
+            username: username
+        });
+    } catch (err) {
+        console.error('Error fetching user profile:', err);
+        res.status(500).json({ message: 'Internal server error' });
+    }
 });
+
 
 app.get('/view-establishments', function(req, res) {
   res.render('view-establishments', {

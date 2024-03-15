@@ -17,7 +17,7 @@
             <span class="st"> St.</span>
         </a>
         <ul>
-            <li id="home-link"><a href="/index">Home</a></li>
+            <li id="home-link"><a href="/index?username={{username}}">Home</a></li>
             <li><a href="/view-establishments">View Establishments</a></li>
             <li><a href="/login">Log In</a></li>
           </ul>
@@ -38,19 +38,19 @@
     <div class="cover">
         <div class="cover-img">
             <label for="coverImageUpload" class="edit-cover-pic">
-                <img src="{{ sampleUser.coverpicture }}" id="coverPic" alt="Cover image" class="coverImg">
+                <img src="{{#if sampleUser.coverpicture}}{{ sampleUser.coverpicture }}{{else}}../../images/default_cover_image.jpg{{/if}}" id="coverPic" alt="Cover image" class="coverImg">
             </label>
-            <input id="coverImageUpload" type="file" accept="image/*" onchange="loadCover(event)"
-                style="display: none;">
+            <input id="coverImageUpload" type="file" accept="image/*" onchange="loadCover(event)" style="display: none;">
         </div>
         <div class="profile-img">
             <label for="profileImageUpload" class="edit-profile-pic">
-                <img src="{{ sampleUser.profilepicture }}" id="profilePic" alt="Profile image" class="profile">
+                <img src="{{#if sampleUser.profilepicture}}{{ sampleUser.profilepicture }}{{else}}../../images/default_profile_image.jpg{{/if}}" id="profilePic" alt="Profile image" class="profile">
             </label>
-            <input id="profileImageUpload" type="file" accept="image/*" onchange="loadProfile(event)"
-                style="display: none;">
+            <input id="profileImageUpload" type="file" accept="image/*" onchange="loadProfile(event)" style="display: none;">
         </div>
     </div>
+
+
 
     <div class="profile-upper">
         <img class="designdot" src="../../images/dots.png">
@@ -98,9 +98,9 @@
         <div class="review-set" id="reviewSet{{ index }}">
             {{#each reviewSet as |review|}}
                 <div class="review1-container">
-                    <a href="/reviewpage?cafeID={{ review.cafeID }}">
+                    <!--<a href="/reviewpage?cafeID={{ review.cafeID }}">-->
                         <img src="{{ review.logoimage }}" class="review1" alt="Cafe Logo">
-                    </a>
+                    <!--</a>-->
                     <div class="review1-review">
                         <br>
                         <span class="review-title">{{ review.reviewtitle }}</span><br><br>
@@ -117,6 +117,9 @@
                                 <span class="star">&#9733;</span>
                             {{/if}}
                         </div>
+                        {{#if review.isEdited}}
+                            <div class="edited-badge">Edited</div>
+                        {{/if}}
                     </div>
                 </div>
             {{/each}}
@@ -124,6 +127,24 @@
     {{/each}}
         </div>
     </div>
+
+<script>
+    function getUsername() {
+      return sessionStorage.getItem('username');
+    }
+
+    function getParameterByName(name, url = window.location.href) {
+        name = name.replace(/[[]]/g, "\\$&");
+        const regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+    }
+
+    document.getElementById('usernameDisplay').innerText = username;
+
+    </script>
 
 </body>
 </html>

@@ -69,4 +69,77 @@
   "unhelpful": 6,
   "isEdited": true,
   "dateandtime": "2023-8-30, 4:00"
-}]
+},
+{
+  "inf_id": "c6",
+  "userID": "b1",
+  "cafeID": "a5",
+  "caferating": 2,
+  "reviewtitle": "Not that Good",
+  "reviewbody": "Not worth the spending",
+  "media": null,
+  "helpful": 3,
+  "unhelpful": 0,
+  "isEdited": true
+},
+{
+  "inf_id": "c7",
+  "userID": "b2",
+  "cafeID": "a5",
+  "caferating": 4,
+  "reviewtitle": "Starter for Coffee Lovers",
+  "reviewbody": "If you wanna delve deep into the world of coffee, Starbucks is your go-to!",
+  "media": null,
+  "helpful": 0,
+  "unhelpful": 0,
+  "isEdited": false
+},
+{
+  "inf_id": "c8",
+  "userID": "b2",
+  "cafeID": "a4",
+  "caferating": 1,
+  "reviewtitle": "Not my vibe",
+  "reviewbody": "Just not it",
+  "media": null,
+  "helpful": 0,
+  "unhelpful": 0,
+  "isEdited": false
+},
+{
+  "inf_id": "c9",
+  "userID": "b2",
+  "cafeID": "a6",
+  "caferating": 5,
+  "reviewtitle": "Thank you",
+  "reviewbody": "The staff were extremely friendly, we got to chat for quite a while.",
+  "media": null,
+  "helpful": 21,
+  "unhelpful": 3,
+  "isEdited": true
+},
+{
+  "inf_id": "c10",
+  "userID": "b4",
+  "cafeID": "a1",
+  "caferating": 3,
+  "reviewtitle": "IDK really",
+  "reviewbody": "I'm not really that into coffee, so I guess its a me problem.",
+  "media": null,
+  "helpful": 2,
+  "unhelpful": 4,
+  "isEdited": true
+},
+{
+  "inf_id": "c11",
+  "userID": "b3",
+  "cafeID": "a6",
+  "caferating": 5,
+  "reviewtitle": "Comfort",
+  "reviewbody": "What I drink when I'm stressed.",
+  "media": null,
+  "helpful": 10,
+  "unhelpful": 4,
+  "isEdited": false
+}
+]

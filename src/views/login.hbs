@@ -100,4 +100,21 @@
 
     <!-- Popup --> 
     {{> popup }} 
+
+     <script>
+      const storedUsername = sessionStorage.getItem('username');
+      if (storedUsername) {
+        document.getElementById('username').value = storedUsername;
+      }
+
+      document.getElementById('login-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const username = document.getElementById('username').value;
+
+        sessionStorage.setItem('username', username);
+
+        //CARRY OVER THE USERNAME
+        window.location.href = `/index?username=${encodeURIComponent(username)}`;
+      });
+    </script>
 </html>

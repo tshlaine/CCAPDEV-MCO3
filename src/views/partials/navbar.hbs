@@ -3,7 +3,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Navbar</title>
-
     <style>
       .user-button img { border-radius: 50%; }
     </style>
@@ -33,10 +32,9 @@
             </button>
             <div class="dropdown-content" id="dropdownContent">
               {{#if username}}
-                <a href="/profile">View Profile</a>
+                <a href="/profile?username={{username}}">View Profile</a>
               {{else}}
                 <a href="/login?page=signup">Sign Up</a>
-                <a href="javascript:void(0)" id="profile-page">View Profile</a>
               {{/if}}
             </div>
           </div>
@@ -55,5 +53,6 @@
       document.getElementById('profile-page').addEventListener('click',function(){
       alert('Please login first.'); });
     </script>
+
   </body>
 </html>
