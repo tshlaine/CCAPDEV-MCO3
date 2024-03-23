@@ -72,17 +72,37 @@ const topThreeCafes = cafesSorted.slice(0, 3);
 const { profilePage } = require("./src/controller/profile.controller");
 
 // Route handler for /index
-app.get("/index", function (req, res) {
+app.get("/index", async function (req, res) {
 
-    const username = req.query.username; // Get username
+    const username = req.query.username || null; // Get username
+    const db = req.app.locals.db;
+    const user = await db.collection('users').findOne({ username: username });
 
-    res.render("index", {
-        studyFriendlyCafes: studyFriendlyCafes,
-        budgetFriendlyCafes: budgetFriendlyCafes,
-        cafes: cafes, // Pass all cafes
-        topThreeCafes: topThreeCafes, // Pass the top three cafes
-        username : username
-    });
+    if(!user){
+
+        res.render("index", {
+            studyFriendlyCafes: studyFriendlyCafes,
+            budgetFriendlyCafes: budgetFriendlyCafes,
+            cafes: cafes, // Pass all cafes
+            topThreeCafes: topThreeCafes, // Pass the top three cafes
+            username : username
+        });
+    }
+
+    else{
+
+        const pic = user.profilepicture;
+
+        res.render("index", {
+            studyFriendlyCafes: studyFriendlyCafes,
+            budgetFriendlyCafes: budgetFriendlyCafes,
+            cafes: cafes, // Pass all cafes
+            topThreeCafes: topThreeCafes, // Pass the top three cafes
+            username : username,
+            pic : pic
+        });
+
+    }
 });
 
 app.get("/login", function (req, res) {
