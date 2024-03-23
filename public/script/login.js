@@ -69,13 +69,26 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Login
-  document.getElementById("login-form").addEventListener("submit", function (e) {
+  const loginForm = document.getElementById("login-form");
+  loginForm.addEventListener("submit", function (e) {
     e.preventDefault();
 
     const formData = new FormData(e.target);
     const username = formData.get("username");
     const password = formData.get("password");
 
+    if (username && password) {
+      const storedUsername = sessionStorage.getItem('username');
+      if (storedUsername) {
+        document.getElementById('username').value = storedUsername;
+      }
+
+      sessionStorage.setItem('username', username);
+
+      // CARRY OVER THE USERNAME
+      window.location.href = `/index?username=${encodeURIComponent(username)}`;
+    }
+    
     fetch("/login", {
       method: "POST",
       headers: {

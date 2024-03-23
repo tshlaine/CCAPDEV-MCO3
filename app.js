@@ -10,7 +10,6 @@ const cookieParser = require("cookie-parser");
 const { login, register } = require("./src/controller/authentication.controller");
 const Handlebars = require('handlebars');
 
-
 Handlebars.registerHelper('isInteger', function(value) {
     return Number.isInteger(value);
 });
@@ -46,6 +45,7 @@ const rawComment = fs.readFileSync("src/models/comments.metadata.json");
 const comments = JSON.parse(rawComment);
 
 const uri = "mongodb://localhost:27017/mydatabase";
+const client = new MongoClient(uri, { connectTimeoutMS: 50000 });
 
 const hbs = require("express-handlebars");
 hbs.create({
@@ -165,7 +165,7 @@ app.get('/profile', async function(req, res) {
         const username = req.query.username; // Get username
         
         // Find the user
-        const matchedUser = users.find(user => user.username === username);
+        const matchedUser = await db.collection('users').findOne({ username: username });
         
         if (!matchedUser) {
             // Error for no user found

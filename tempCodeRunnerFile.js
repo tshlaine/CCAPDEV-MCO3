@@ -1,1 +1,1 @@
-isInteger
+
