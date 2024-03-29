@@ -30,8 +30,8 @@
                 {{#each cafes}}
                 <div class="slide">
                     <img src="{{cafeimage}}" class="pics" />
-                    <div><a class="resto" href="#">{{name}}</a></div>
-                    <div><a class="lugar" href="{{locationLink}}">{{location}}</a></div>
+                    <div><span class="resto" href="#">{{name}}</span></div>
+                    <div><span class="lugar" href="{{locationLink}}">{{location}}</span></div>
                 </div>
                 {{/each}}
                 <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
@@ -66,12 +66,12 @@
                             <img src="{{topThreeCafes.[0].logoimage}}" alt="Logo">
                         </div>
                         <div>
-                            <a class="sb" href="#">{{topThreeCafes.[0].name}}</a>
+                            <span class="sb" href="#">{{topThreeCafes.[0].name}}</span>
                         </div>
                         <div>
-                            <a class="greencourt"  href="{{topThreeCafes.[0].location_link}}">
+                            <span class="greencourt">
                             {{topThreeCafes.[0].location}}
-                            </a>
+                            </span>
                         </div>
                         <div>
                         <p class ="desc">
@@ -83,7 +83,7 @@
                         </p>
                         </div>
                 </button>
-                <a class="view-establishment-sb" href="/reviewpage?name={{topThreeCafes.[0].name}}&location={{topThreeCafes.[0].location}}&category={{topThreeCafes.[0].category}}&description={{topThreeCafes.[0].description}}&averageRating={{topThreeCafes.[0].averageRating}}&slideImages1={{topThreeCafes.[0].slideImages1}}&slideImages2={{topThreeCafes.[0].slideImages2}}&slideImages3={{topThreeCafes.[0].slideImages3}}">View Establishment</a>
+                <a class="view-establishment-sb" href="/reviewpage?inf_id={{topThreeCafes.[0].inf_id}}&name={{topThreeCafes.[0].name}}&location={{topThreeCafes.[0].location}}&category={{topThreeCafes.[0].category}}&description={{topThreeCafes.[0].description}}&averageRating={{topThreeCafes.[0].averageRating}}&slideImages1={{topThreeCafes.[0].slideImages1}}&slideImages2={{topThreeCafes.[0].slideImages2}}&slideImages3={{topThreeCafes.[0].slideImages3}}">View Establishment</a>
                 <div id="popupsb-0" class="popupsb">
                     <div class="sbcontent">
                         <div class = "uppersidesb">
@@ -92,7 +92,7 @@
                                 <a class = "view-all" href="/view-establishments">View All</a>
                                 </div>
                             <div class="infos-popup">
-                                <div class="name-popup"><a class="name" href="#">{{topThreeCafes.[0].name}}</a></div>
+                                <div class="name-popup"><span class="name">{{topThreeCafes.[0].name}}</span></div>
                                 <div class="loc-popup"><a class="loc" href="{{topThreeCafes.[0].location_link}}">
                                 {{topThreeCafes.[0].location}}</a></div>
                             </div>
@@ -104,7 +104,7 @@
                             <hr>
                             <div class="topreview-container">
                                 <p class="topreview">Top Review</p>
-                                <a class="write" href="/reviewpage?name={{topThreeCafes.[0].result.name}}&location={{topThreeCafes.[0].result.location}}&category={{topThreeCafes.[0].result.category}}&description={{topThreeCafes.[0].result.description}}&averageRating={{topThreeCafes.[0].averageRating}}&slideImages1={{topThreeCafes.[0].slideImages1}}&slideImages2={{topThreeCafes.[0].slideImages2}}&slideImages3={{topThreeCafes.[0].slideImages3}}">Write a Review</a>
+                                <a class="write" href="/reviewpage?inf_id={{topThreeCafes.[0].inf_id}}&name={{topThreeCafes.[0].result.name}}&location={{topThreeCafes.[0].result.location}}&category1={{topThreeCafes.[0].result.category1}}&category2={{topThreeCafes.[0].result.category2}}&description={{topThreeCafes.[0].result.description}}&averageRating={{topThreeCafes.[0].averageRating}}&slideImages1={{topThreeCafes.[0].slideImages1}}&slideImages2={{topThreeCafes.[0].slideImages2}}&slideImages3={{topThreeCafes.[0].slideImages3}}">Write a Review</a>
                             </div>
                             <div class = "comment-container"> 
                                 <img src="../../images/dog.jpg" class="user-icon">
@@ -138,12 +138,12 @@
                             <img src="{{topThreeCafes.[1].logoimage}}" alt="Logo">
                         </div>
                         <div>
-                            <a class="sb" href="#">{{topThreeCafes.[1].name}}</a>
+                            <span class="sb">{{topThreeCafes.[1].name}}</span>
                         </div>
                         <div>
-                            <a class="greencourt"  href="{{topThreeCafes.[1].location_link}}">
+                            <span class="greencourt" >
                             {{topThreeCafes.[1].location}}
-                            </a>
+                            </span>
                         </div>
                         <p class ="desc">
                            {{topThreeCafes.[1].description}}
@@ -153,7 +153,7 @@
                         </p>
                     </div>
                 </button>
-                <a class="view-establishment-sb" href="/reviewpage?name={{topThreeCafes.[1].name}}&location={{topThreeCafes.[1].location}}&category={{topThreeCafes.[1].category}}&description={{topThreeCafes.[1].description}}&averageRating={{topThreeCafes.[1].averageRating}}&slideImages1={{topThreeCafes.[1].slideImages1}}&slideImages2={{topThreeCafes.[1].slideImages2}}&slideImages3={{topThreeCafes.[1].slideImages3}}">View Establishment</a>
+                <a class="view-establishment-sb" href="/reviewpage?inf_id={{topThreeCafes.[1].inf_id}}&name={{topThreeCafes.[1].name}}&location={{topThreeCafes.[1].location}}&category1={{topThreeCafes.[1].category1}}&category2={{topThreeCafes.[1].category2}}&description={{topThreeCafes.[1].description}}&averageRating={{topThreeCafes.[1].averageRating}}&slideImages1={{topThreeCafes.[1].slideImages1}}&slideImages2={{topThreeCafes.[1].slideImages2}}&slideImages3={{topThreeCafes.[1].slideImages3}}">View Establishment</a>
                 <div id="popupsb-1" class="popupsb">
                     <div class="sbcontent">
                         <div class = "uppersidesb">
@@ -162,7 +162,7 @@
                                 <a class = "view-all" href="/view-establishments">View All</a>
                                 </div>
                             <div class="infos-popup">
-                                <div class="name-popup"><a class="name" href="#">{{topThreeCafes.[1].name}}</a></div>
+                                <div class="name-popup"><span class="name" >{{topThreeCafes.[1].name}}</span></div>
                                 <div class="loc-popup"><a class="loc" href="{{topThreeCafes.[1].location_link}}">
                                 {{topThreeCafes.[1].location}}</a></div>
                             </div>
@@ -174,7 +174,7 @@
                             <hr>
                             <div class="topreview-container">
                                 <p class="topreview">Top Review</p>
-                                <a class="write" href="/reviewpage?name={{topThreeCafes.[1].name}}&location={{topThreeCafes.[1].location}}&category={{topThreeCafes.[1].category}}&description={{topThreeCafes.[1].description}}&averageRating={{topThreeCafes.[1].averageRating}}&slideImages1={{topThreeCafes.[1].slideImages1}}&slideImages2={{topThreeCafes.[1].slideImages2}}&slideImages3={{topThreeCafes.[1].slideImages3}}">Write a Review</a>
+                                <a class="write" href="/reviewpage?inf_id={{topThreeCafes.[1].inf_id}}&name={{topThreeCafes.[1].name}}&location={{topThreeCafes.[1].location}}&category1={{topThreeCafes.[1].category1}}&category2={{topThreeCafes.[1].category2}}&description={{topThreeCafes.[1].description}}&averageRating={{topThreeCafes.[1].averageRating}}&slideImages1={{topThreeCafes.[1].slideImages1}}&slideImages2={{topThreeCafes.[1].slideImages2}}&slideImages3={{topThreeCafes.[1].slideImages3}}">Write a Review</a>
                             </div>
                             <div class = "comment-container"> 
                                 <img src="../../images/dog.jpg" class="user-icon">
@@ -207,12 +207,12 @@
                             <img src="{{topThreeCafes.[2].logoimage}}" alt="Logo">
                         </div>
                         <div>
-                            <a class="sb" href="#">{{topThreeCafes.[2].name}}</a>
+                            <span class="sb">{{topThreeCafes.[2].name}}</span>
                         </div>
                         <div>
-                            <a class="greencourt"  href="{{topThreeCafes.[2].location_link}}">
+                            <span class="greencourt">
                             {{topThreeCafes.[2].location}}
-                            </a>
+                            </span>
                         </div>
                         <p class ="desc">
                            {{topThreeCafes.[2].description}}
@@ -222,7 +222,7 @@
                         </p>
                     </div>
                 </button>
-                <a class="view-establishment-sb" href="/reviewpage?name={{topThreeCafes.[2].name}}&location={{topThreeCafes.[2].location}}&category={{topThreeCafes.[2].category}}&description={{topThreeCafes.[2].description}}&averageRating={{topThreeCafes.[2].averageRating}}&slideImages1={{topThreeCafes.[2].slideImages1}}&slideImages2={{topThreeCafes.[2].slideImages2}}&slideImages3={{topThreeCafes.[2].slideImages3}}">View Establishment</a>
+                <a class="view-establishment-sb" href="/reviewpage?inf_id={{topThreeCafes.[2].inf_id}}&name={{topThreeCafes.[2].name}}&location={{topThreeCafes.[2].location}}&category1={{topThreeCafes.[2].category1}}&category2={{topThreeCafes.[2].category2}}&description={{topThreeCafes.[2].description}}&averageRating={{topThreeCafes.[2].averageRating}}&slideImages1={{topThreeCafes.[2].slideImages1}}&slideImages2={{topThreeCafes.[2].slideImages2}}&slideImages3={{topThreeCafes.[2].slideImages3}}">View Establishment</a>
                 <div id="popupsb-2" class="popupsb">
                     <div class="sbcontent">
                         <div class = "uppersidesb">
@@ -231,7 +231,7 @@
                                 <a class = "view-all" href="/view-establishments">View All</a>
                                 </div>
                             <div class="infos-popup">
-                                <div class="name-popup"><a class="name" href="#">{{topThreeCafes.[2].name}}</a></div>
+                                <div class="name-popup"><span class="name">{{topThreeCafes.[2].name}}</span></div>
                                 <div class="loc-popup"><a class="loc" href="{{topThreeCafes.[2].location_link}}">
                                 {{topThreeCafes.[2].location}}</a></div>
                             </div>
@@ -243,7 +243,7 @@
                             <hr>
                             <div class="topreview-container">
                                 <p class="topreview">Top Review</p>
-                                <a class="write" href="/reviewpage?name={{topThreeCafes.[2].name}}&location={{topThreeCafes.[2].location}}&category={{topThreeCafes.[2].category}}&description={{topThreeCafes.[2].description}}&averageRating={{topThreeCafes.[2].averageRating}}&slideImages1={{topThreeCafes.[2].slideImages1}}&slideImages2={{topThreeCafes.[2].slideImages2}}&slideImages3={{topThreeCafes.[2].slideImages3}}">Write a Review</a>
+                                <a class="write" href="/reviewpage?inf_id={{topThreeCafes.[2].inf_id}}&name={{topThreeCafes.[2].name}}&location={{topThreeCafes.[2].location}}&category1={{topThreeCafes.[2].category1}}&category2={{topThreeCafes.[2].category2}}&description={{topThreeCafes.[2].description}}&averageRating={{topThreeCafes.[2].averageRating}}&slideImages1={{topThreeCafes.[2].slideImages1}}&slideImages2={{topThreeCafes.[2].slideImages2}}&slideImages3={{topThreeCafes.[2].slideImages3}}">Write a Review</a>
                             </div>
                             <div class = "comment-container"> 
                                 <img src="../../images/dog.jpg" class="user-icon">
@@ -286,12 +286,12 @@
                                 <img src="{{logoimage}}" alt="Logo">
                             </div>
                             <div>
-                                <a class="sb" href="#">{{name}}</a>
+                                <span class="sb" href="#">{{name}}</span>
                             </div>
                             <div>
-                                <a class="greencourt" href="{{location_link}}">
+                                <span class="greencourt" >
                                     {{location}}
-                                </a>
+                                </span>
                             </div>
                             <p class="rating-sb">
                                 Rating: <span id="i-sb" class="i-sb"> {{averageRating}}</span>out of <span class="total">5</span>
@@ -301,7 +301,7 @@
                             </p>
                         </div>
                     </button>
-                    <a class="view-establishment-drip" href="/reviewpage?name={{name}}&location={{location}}&category={{category}}&description={{description}}&averageRating={{averageRating}}&slideImages1={{slideImages1}}&slideImages2={{slideImages2}}&slideImages3={{slideImages3}}">View Establishment</a>
+                    <a class="view-establishment-drip" href="/reviewpage?inf_id={{inf_id}}&name={{name}}&location={{location}}&category1={{category1}}&category2={{category2}}&description={{description}}&averageRating={{averageRating}}&slideImages1={{slideImages1}}&slideImages2={{slideImages2}}&slideImages3={{slideImages3}}">View Establishment</a>
                     <div id="popupdrip-{{@index}}" class="popupdrip">
                         <div class="dripcontent">
                             <div class = "uppersidedrip">
@@ -310,7 +310,7 @@
                                     <a class = "view-all" href="/view-establishments">View All</a>
                                   </div>
                                   <div class="infos-popup">
-                                    <div class="name-popup"><a class="name" href="#">{{name}}</a></div>
+                                    <div class="name-popup"><span class="name" href="#">{{name}}</span></div>
                                     <div class="loc-popup"><a class="loc" href="{{location_link}}">
                                        {{location}}</a></div>
                                   </div>
@@ -322,7 +322,7 @@
                                 <hr>
                                 <div class="topreview-container">
                                     <p class="topreview">Top Review</p>
-                                    <a class="write" href="/reviewpage?name={{name}}&location={{location}}&category={{category}}&description={{description}}&averageRating={{averageRating}}&slideImages1={{slideImages1}}&slideImages2={{slideImages2}}&slideImages3={{slideImages3}}">Write a Review</a>
+                                    <a class="write" href="/reviewpage?inf_id={{inf_id}}&name={{name}}&location={{location}}&category1={{category1}}&category2={{category2}}&description={{description}}&averageRating={{averageRating}}&slideImages1={{slideImages1}}&slideImages2={{slideImages2}}&slideImages3={{slideImages3}}">Write a Review</a>
                                 </div>
                                 <div class = "comment-container"> 
                                     <img src="../../images/dog.jpg" class="user-icon">
@@ -364,12 +364,12 @@
                                 <img src="{{logoimage}}" alt="Logo">
                             </div>
                             <div>
-                                <a class="sb" href="#">{{name}}</a>
+                                <span class="sb">{{name}}</span>
                             </div>
                             <div>
-                                <a class="greencourt" href="{{location_link}}">
+                                <span class="greencourt" >
                                     {{location}}
-                                </a>
+                                </span>
                             </div>
                             <p class="rating-sb">
                                 Rating: <span id="i-sb" class="i-sb"> {{averageRating}}</span>out of <span class="total">5</span>
@@ -379,7 +379,7 @@
                             </p>
                         </div>
                     </button>
-                    <a class="view-establishment-drip" href="/reviewpage?name={{name}}&location={{location}}&category={{category}}&description={{description}}&averageRating={{averageRating}}&slideImages1={{slideImages1}}&slideImages2={{slideImages2}}&slideImages3={{slideImages3}}">View Establishment</a>
+                    <a class="view-establishment-drip" href="/reviewpage?inf_id={{inf_id}}&name={{name}}&location={{location}}&location_link={{location_link}}&category1={{category1}}&category2={{category2}}&description={{description}}&averageRating={{averageRating}}&slideImages1={{slideImages1}}&slideImages2={{slideImages2}}&slideImages3={{slideImages3}}">View Establishment</a>
                     <div id="popuptomo-{{@index}}" class="popupdrip">
                         <div class="dripcontent">
                             <div class = "uppersidedrip">
@@ -388,7 +388,7 @@
                                     <a class = "view-all" href="/view-establishments">View All</a>
                                   </div>
                                   <div class="infos-popup">
-                                    <div class="name-popup"><a class="name" href="#">{{name}}</a></div>
+                                    <div class="name-popup"><span class="name">{{name}}</sapn></div>
                                     <div class="loc-popup"><a a class="loc" href="{{location_link}}">
                                        {{location}}</a></div>
                                   </div>
@@ -400,7 +400,7 @@
                                 <hr>
                                 <div class="topreview-container">
                                     <p class="topreview">Top Review</p>
-                                    <a class="write" href="/reviewpage?name={{name}}&location={{location}}&category={{category}}&description={{description}}&averageRating={{averageRating}}&slideImages1={{slideImages1}}&slideImages2={{slideImages2}}&slideImages3={{slideImages3}}">Write a Review</a>
+                                    <a class="write" href="/reviewpage?inf_id={{inf_id}}&name={{name}}&location={{location}}&location_link={{location_link}}&category1={{category1}}&category2={{category2}}&description={{description}}&averageRating={{averageRating}}&slideImages1={{slideImages1}}&slideImages2={{slideImages2}}&slideImages3={{slideImages3}}">Write a Review</a>
                                 </div>
                                 <div class = "comment-container"> 
                                     <img src="../../images/dog.jpg" class="user-icon">

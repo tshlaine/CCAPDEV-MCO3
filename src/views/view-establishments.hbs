@@ -30,9 +30,9 @@
  
         <div class="main">
             {{#each cafes}}
-            <a href="/reviewpage?name={{name}}&location={{location}}&category={{category}}&description={{description}}&averageRating={{averageRating}}&slideImages1={{slideImages1}}&slideImages2={{slideImages2}}&slideImages3={{slideImages3}}" class = "box" data-category= "{{category}}">
+            <a href="/reviewpage?inf_id={{inf_id}}&name={{name}}&location={{location}}&location_link={{location_link}}&category1={{category1}}&category2={{category2}}&description={{description}}&averageRating={{averageRating}}&slideImages1={{slideImages1}}&slideImages2={{slideImages2}}&slideImages3={{slideImages3}}" class = "box" data-category= "{{category}}">
             <div class="review-box" >
-                <div class="unit1" id="unit1-background1">
+                <div class="unit1" id="unit1-background1" style="background-image: url({{cafeheader}});">
                     <img src="{{logoimage}}" class="cafe-profile">
                     <div class="info">
                         <p class="cafe-name">{{name}}</p>

@@ -50,14 +50,24 @@ function openModal() {
   }  
 
 
-function toggleDropdown2() {
-    var dropdownContent2 = document.getElementById("dropdownContent2");
-    if (dropdownContent2.style.display === "block") {
-        dropdownContent2.style.display = "none";
+  function toggleDropdown2(button) {
+    var dropdownContent = button.nextElementSibling;
+    if (dropdownContent.style.display === "block") {
+        dropdownContent.style.display = "none";
     } else {
-        dropdownContent2.style.display = "block";
+        // Hide all dropdowns before showing the clicked one
+        hideAllDropdowns();
+        dropdownContent.style.display = "block";
     }
 }
+
+function hideAllDropdowns() {
+    var dropdowns = document.querySelectorAll("dropdownContent2");
+    dropdowns.forEach(function(dropdown) {
+        dropdown.style.display = "none";
+    });
+}
+
 
 window.addEventListener('scroll', () => {
     const userIcon = document.querySelector('.user-button img');

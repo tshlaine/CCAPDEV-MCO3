@@ -26,7 +26,12 @@ hr {
     font-size: 20px;
     color: #fff;
     margin-left: 90px;
+    text-decoration: none;
     
+}
+
+.loc :hover{
+    text-decoration: underline;
 }
 
 .divider{
@@ -149,6 +154,25 @@ background-color: #717171;
     margin-left: 35px;
 }
 
+.category-review {
+    display: flex;
+    flex-direction: row;
+    color: #4D2D18;
+    margin-top: 10px; /* Adjust margin as needed */
+    margin-left: 0px;
+}
+.category-review div {
+    display: flex; /* Add this line */
+    align-items: center; /* Center text vertically */
+    font-size: 12px;
+    font-weight: 600;
+    height: 30px;
+    background-color: #d1ae8d;
+    padding: 10px 10px;
+    border-radius: 15px;
+    margin-right: 30px;
+}
+
 .hrabout{
     border: none;
     opacity: 0.4;
@@ -249,7 +273,7 @@ background-color: #717171;
 }
 
 .reaction{
-    margin-left: 840px;
+    margin-left: 780px;
     position: absolute;
     margin-top: 7px;
 }
@@ -358,8 +382,8 @@ background-color: #717171;
     margin-top: 10px;
     max-width: 100%;
     height: auto;
-    margin-left: 120px;
-    margin-right: 120px;
+    margin-left: 150px;
+    margin-right: 150px;
     
 }
 
@@ -475,12 +499,16 @@ background-color: #717171;
     margin-top: 30px;
     margin-bottom: 25px;
 
-    scrollbar-width: thin; /* For Firefox */
-    scrollbar-color: #888 #F4E4C9; /* For Firefox */
+    
+    overflow-y: auto; /* Enable vertical scroll if content exceeds the maximum height */
+    padding-right: 20px; /* Add some padding to prevent content from being hidden behind the scrollbar */
+    scrollbar-width: thin; /* Set the width of the scrollbar */
+    scrollbar-color: #888 transparent; /* Set the color of the scrollbar */
+}
 
-    /* For WebKit browsers like Chrome and Safari */
-    scrollbar-width: thin;
-    scrollbar-color: #888 #F4E4C9;
+.message{
+    align-items: center;
+    justify-content: center;
 }
 
 .popup-content::-webkit-scrollbar {
@@ -578,6 +606,7 @@ margin-top: 10px;
 .close {
     width: 30px; 
     height: 30px;
+    position: fixed;
 
 }
 
@@ -705,7 +734,9 @@ margin-top: 10px;
 }
 
 .category1,
-.category2 {
+.category2,
+.category1-review,
+.category2-review {
     width: auto; /* Adjust width dynamically based on content */
 }
 
@@ -864,7 +895,7 @@ margin-top: 10px;
 }
 
 .images-container{
-    margin-top: 5px;
+    margin-top: 40px;
     display: flex;
 
 }
@@ -897,7 +928,7 @@ margin-top: 10px;
   }
   
   .close {
-    position: absolute;
+    position: fixed;
     top: 15px;
     right: 35px;
     color: #f1f1f1;

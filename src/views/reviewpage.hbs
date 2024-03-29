@@ -57,20 +57,20 @@
 
         </div>
         <span class = "namecafe">{{cafe.name}}</span>
-        <span class = "loc"> {{cafe.location}}</span>
+        <a class = "loc" href="{{cafe.location_link}}"> {{cafe.location}}</a>
         <div class = "about">
             <p class = "desc">
                  {{cafe.description}}
             </p>
-            <div class = "category">
-                {{#if cafe.category.[0]}}
+            <div class="category">
+            {{#if cafe.category1}}
                 <div class="category1">
-                    <span>{{cafe.category}}</span>
+                    <span>{{cafe.category1}}</span>
                 </div>
-            
-            {{else if cafe.category.[1]}}
+            {{/if}}
+            {{#if cafe.category2}}
                 <div class="category2">
-                    <span>{{cafe.category}}</span>
+                    <span>{{cafe.category2}}</span>
                 </div>
             {{else}}
                
@@ -78,7 +78,7 @@
         </div>
         <hr class = "hrabout">
         <div class="rating">{{cafe.averageRating}} <span class="outof5">out of 5</span></div>
-        <div class="noofreviews">2 reviews</div>
+        <div class="noofreviews">{{reviewCount}} review/s</div>
         </div>
         <div class="slideshow-container">
         
@@ -107,23 +107,25 @@
         <p class = "reviews">Reviews</p>
         <div class="review-area">
         {{#if cafes}}
-        {{#each reviews}}
+            {{#if reviews}}
+                {{#each reviews}}
             <div class="review-box">
-                <button class = "threedot" onclick="toggleDropdown2()"> 
-                    <img src="../../images/options.png"> 
+               <button class="threedot" onclick="toggleDropdown2(this)">
+                    <img src="../../images/options.png">
                 </button>
-                <div class="reaction">
-                    <button class="helpful"><img src="../../images/thumb.png"></button>
-                    <span class = "numberofreact">{{helpful}}</span>
-                    <button class="unhelpful"><img src="../../images/thumbdown.png"></i></button>
-                    <span class = "numberofreact">{{unhelpful}}</span>
-                </div>
     
                 <div class="dropdown-content2" id="dropdownContent2">
                     <a href="sign-up.html">Edit</a>
                 
                     <a href="/delete-review/{{reviewId}}" class="delete-review" data-review-id="{{reviewId}}">Delete</a>
 
+                </div>
+
+                <div class="reaction">
+                    <button class="helpful"><img src="../../images/thumb.png"></button>
+                    <span class = "numberofreact">{{helpful}}</span>
+                    <button class="unhelpful"><img src="../../images/thumbdown.png"></i></button>
+                    <span class = "numberofreact">{{unhelpful}}</span>
                 </div>
                 <div class="profile-info">
                     <div class="profile-pic">
@@ -154,6 +156,25 @@
                     <div class="paragraph">
                         {{reviewbody}}
                     </div>
+                    <div class="category-review">
+                    {{#if category1review}}
+                        <div class="category1review">
+                            <span>{{category1review}}</span>
+                        </div>
+                    {{/if}}
+                    {{#if category2review}}
+                        <div class="category2review">
+                            <span>{{category2review}}</span>
+                        </div>
+                    {{else}}
+                    
+                    {{/if}}
+                </div>
+                <div class="images-container">
+                    {{#if media}}
+                        <img class="image" src="{{media}}">
+                    {{/if}}
+                </div>
                     <div class = "date">
                         {{dateandtime}}
                     </div>
@@ -161,7 +182,13 @@
             </div>
             <hr class = "div">
             {{/each}}
-            {{/if}}
+          
+    {{else}}
+        <span class="message">No Reviews to Display</span>
+    {{/if}}
+{{else}}
+    <span class="message">No Cafes to Display</span>
+{{/if}}
             
     </div>
 </body>

@@ -62,9 +62,13 @@ app.set("views", path.join(__dirname, "src", "views"));
 app.use(express.static(path.join(__dirname, "public")));
 const cafesSorted = cafes.sort((a, b) => b.averageRating - a.averageRating);
 
-const budgetFriendlyCafes = cafes.filter((cafe) => cafe.category && cafe.category.includes("Budget-Friendly"));
+const budgetFriendlyCafes = cafes.filter((cafe) => 
+    (cafe.category1 === "Budget-Friendly" || cafe.category2 === "Budget-Friendly")
+);
 
-const studyFriendlyCafes = cafes.filter((cafe) => cafe.category && cafe.category.includes("Study-Friendly"));
+const studyFriendlyCafes = cafes.filter((cafe) => 
+    (cafe.category1 === "Study-Friendly" || cafe.category2 === "Study-Friendly")
+);
 
 // Select the top three cafes
 const topThreeCafes = cafesSorted.slice(0, 3);
@@ -121,37 +125,64 @@ app.get("/other-profile", function (req, res) {
   res.render("other-profile", {});
 });
 
-app.get('/reviewpage', (req, res) => {
 
-const username = req.query.username; // Get username
-  // Ensure category is an array
-  let category = req.query.category || [];
-  if (!Array.isArray(category)) {
-      category = [category]; // Convert to array if it's not already
-  }
 
-  const category1 = category[0]
-  const category2 = category[1]
+app.get('/reviewpage', async (req, res) => {
+    try {
+        const db = req.app.locals.db;
 
-  const cafeDetails = {
-      name: req.query.name,
-      location: req.query.location,
-      description: req.query.description,
-      averageRating: req.query.averageRating,
-      slideImages1: req.query.slideImages1, // Use the array of image paths
-      slideImages2: req.query.slideImages2, // Use the array of image paths
-      slideImages3: req.query.slideImages3, // Use the array of image paths
-      category1,category2
-  };
+        // Get the establishment ID from the query parameters
+        const cafeID = req.query.inf_id;
 
-  res.render('reviewpage', { 
-      cafes: cafes,
-      cafe: cafeDetails,
-      reviews: reviews,
-      users: users,
-      username:username
-  });
+
+        // Retrieve establishment details based on the cafeID
+        const establishment = await db.collection('cafes').findOne({  inf_id: cafeID  });
+
+        // If the establishment is found, proceed to fetch reviews
+        if (establishment) {
+            // Retrieve reviews for the specific establishment
+            const reviews = await db.collection('reviews').find({ cafeID }).toArray();
+            const reviewCount = await db.collection('reviews').countDocuments({ cafeID });
+            // Get other query parameters
+            const username = req.query.username;
+
+            // Construct cafeDetails object
+            const cafeDetails = {
+                
+                name: req.query.name,
+                location: req.query.location,
+                location_link: req.query.location_link,
+                description: req.query.description,
+                averageRating: req.query.averageRating,
+                slideImages1: req.query.slideImages1, // Use the array of image paths
+                slideImages2: req.query.slideImages2, // Use the array of image paths
+                slideImages3: req.query.slideImages3, // Use the array of image paths
+                category1: req.query.category1,
+                category2: req.query.category2,
+            };
+
+            // Render the review page template with all the necessary data
+            res.render('reviewpage', { 
+
+                reviews: reviews,
+                username: username,
+                cafes: cafes,
+                cafe: cafeDetails,
+                reviewCount: reviewCount,
+                users: users,
+                username:username
+            });
+        } else {
+            // Handle case where establishment is not found
+            res.status(404).send('Establishment not found');
+        }
+    } catch (error) {
+        console.error(error);
+        // Handle errors appropriately
+        res.status(500).send('Internal Server Error');
+    }
 });
+
 
 
 app.get('/delete-review/:reviewId', (req, res) => {
@@ -238,6 +269,7 @@ app.get('/profile', async function(req, res) {
 app.get('/view-establishments', function(req, res) {
 
     const username = req.query.username; // Get username
+    
 
   res.render('view-establishments', {
       studyFriendlyCafes: studyFriendlyCafes,
