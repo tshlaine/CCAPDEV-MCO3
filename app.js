@@ -290,17 +290,88 @@ app.get('/profile', async function(req, res) {
 });
 
 
-app.get('/view-establishments', function(req, res) {
+app.get('/view-establishments', async function(req, res) {
 
+    const db = req.app.locals.db;
     const username = req.query.username; // Get username
+    const filter = req.query.filter; // Get data filter
+    const user = await db.collection('users').findOne({ username: username });
+    
+    if (user){
 
-    res.render('view-establishments', {
-        studyFriendlyCafes: studyFriendlyCafes,
-        budgetFriendlyCafes: budgetFriendlyCafes,
-        cafes: cafes, // Pass all cafes
-        topThreeCafes: topThreeCafes, // Pass the top three cafes
-        username :username
-    });
+        const pic = user.profilepicture;
+
+        if (filter === "Top-recommendations"){
+            res.render('view-establishments', {
+                cafes: topThreeCafes, // Pass the top three cafes
+                username :username,
+                pic : pic
+            });
+        }
+
+        else if (filter === "Budget-Friendly"){
+            res.render('view-establishments', {
+                cafes: budgetFriendlyCafes, // Pass the budget friendly cafes
+                username :username,
+                pic : pic
+            });
+        }
+
+        else if (filter === "Study-Friendly"){
+            res.render('view-establishments', {
+                cafes: studyFriendlyCafes, // Pass the student friendly cafes
+                username :username,
+                pic : pic
+            });
+        }
+
+        else{
+
+            res.render('view-establishments', {
+                studyFriendlyCafes: studyFriendlyCafes,
+                budgetFriendlyCafes: budgetFriendlyCafes,
+                cafes: cafes, // Pass all cafes
+                topThreeCafes: topThreeCafes, // Pass the top three cafes
+                username :username,
+                pic : pic
+            });
+        }
+    }
+
+    else{
+
+        if (filter === "Top-recommendations"){
+            res.render('view-establishments', {
+                cafes: topThreeCafes, // Pass the top three cafes
+                username :username,
+            });
+        }
+
+        else if (filter === "Budget-Friendly"){
+            res.render('view-establishments', {
+                cafes: budgetFriendlyCafes, // Pass the budget friendly cafes
+                username :username,
+            });
+        }
+
+        else if (filter === "Study-Friendly"){
+            res.render('view-establishments', {
+                cafes: studyFriendlyCafes, // Pass the student friendly cafes
+                username :username,
+            });
+        }
+
+        else{
+
+            res.render('view-establishments', {
+                studyFriendlyCafes: studyFriendlyCafes,
+                budgetFriendlyCafes: budgetFriendlyCafes,
+                cafes: cafes, // Pass all cafes
+                topThreeCafes: topThreeCafes, // Pass the top three cafes
+                username :username,
+            });
+        }
+    }
 });
 
 app.get('/', function(req, res) {
