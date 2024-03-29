@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", function () {
       // CARRY OVER THE USERNAME
       window.location.href = `/index?username=${encodeURIComponent(username)}`;
     }
-    
+    /*
     fetch("/login", {
       method: "POST",
       headers: {
@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", function () {
       })
       .catch((err) => {
         console.error("Error during login:", err);
-      });
+      });*/
   });
 
   // After authentication user

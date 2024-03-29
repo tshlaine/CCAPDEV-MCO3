@@ -611,3 +611,11 @@ hr {
   right: 10px; /* Adjust the distance from the right edge */
   padding: 5px; /* Adjust padding as needed */
 }
+
+.container-title{
+  color: #f1f1f1;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  font-weight: bold;
+  font-size: 24px;
+}

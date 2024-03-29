@@ -2,7 +2,6 @@ const express = require("express");
 const path = require("path");
 const { engine } = require("express-handlebars");
 const { MongoClient } = require("mongodb");
-const mongoose = require("mongoose");
 const fs = require("fs");
 const router = require("./src/routes");
 const bodyParser = require("body-parser");
@@ -45,7 +44,8 @@ const rawComment = fs.readFileSync("src/models/comments.metadata.json");
 const comments = JSON.parse(rawComment);
 
 const uri = "mongodb://localhost:27017/mydatabase";
-const client = new MongoClient(uri, { connectTimeoutMS: 50000 });
+
+const client = new MongoClient(uri);
 
 const hbs = require("express-handlebars");
 hbs.create({
@@ -230,11 +230,18 @@ app.get('/profile', async function(req, res) {
         
         // match user inf_id with review user_ID
         const reviews = await db.collection('reviews').find({ userID: userInfId }).toArray();
+        const comments = await db.collection('comments').find({ userID: userInfId }).toArray();
         
         // Divide reviews into sets of three
         const reviewSets = [];
         for (let i = 0; i < reviews.length; i += 3) {
             reviewSets.push(reviews.slice(i, i + 3));
+        }
+
+        // Divide comments into sets of three
+        const commentSets = [];
+        for (let i = 0; i < comments.length; i += 3) {
+            commentSets.push(comments.slice(i, i + 3));
         }
   
         const cafes = [];
@@ -247,14 +254,31 @@ app.get('/profile', async function(req, res) {
                 }
             }
         }
+
+        const commentCafes = [];
+        for (const commentSet of commentSets) {
+            for (const comment of commentSet) {
+                const user = await db.collection('users').findOne({ inf_id: comment.userID });
+                const review = await db.collection('reviews').findOne({ inf_id: comment.reviewID });
+                const reviewer = await db.collection('users').findOne({ inf_id: review.userID });
+                if (user) {
+                    comment.profilepicture = reviewer.profilepicture;
+                    comment.reviewtitle = review.reviewtitle;
+                    comment.reviewer = reviewer.username;
+                    commentCafes.push(user);
+                }
+            }
+        }
         
-        const reviewsCount = reviews.length;
-        const numberOfDots = Math.ceil(reviewsCount / 3);
+        const pages = reviews.length + 3 + comments.length;
+        const numberOfDots = Math.ceil(pages / 3);
         const dots = Array.from({ length: numberOfDots }, (_, index) => index + 1);
   
         res.render('profile', { 
             sampleUser: matchedUser,
             reviewSets: reviewSets,
+            commentSets: commentSets,
+            commentCafes: commentCafes,
             cafes: cafes,
             dots: dots,
             username: username
@@ -269,15 +293,14 @@ app.get('/profile', async function(req, res) {
 app.get('/view-establishments', function(req, res) {
 
     const username = req.query.username; // Get username
-    
 
-  res.render('view-establishments', {
-      studyFriendlyCafes: studyFriendlyCafes,
-      budgetFriendlyCafes: budgetFriendlyCafes,
-      cafes: cafes, // Pass all cafes
-      topThreeCafes: topThreeCafes, // Pass the top three cafes
-      username :username
-  });
+    res.render('view-establishments', {
+        studyFriendlyCafes: studyFriendlyCafes,
+        budgetFriendlyCafes: budgetFriendlyCafes,
+        cafes: cafes, // Pass all cafes
+        topThreeCafes: topThreeCafes, // Pass the top three cafes
+        username :username
+    });
 });
 
 app.get('/', function(req, res) {

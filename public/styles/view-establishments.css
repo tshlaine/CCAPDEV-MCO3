@@ -517,9 +517,8 @@ button {
 }
 
 .user-button img.scrolled {
-    content: url("../../images/usericon\ dark.png");
     width: 50px;
-    height: 50x;
+    height: 50px;
 }
 
 .logo-name {

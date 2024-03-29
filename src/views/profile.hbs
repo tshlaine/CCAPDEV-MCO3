@@ -92,39 +92,64 @@
         {{/each}}
     </div>
 
-    <div class="profile-reviews">
+        <div class="profile-reviews">
+
             {{#each reviewSets as |reviewSet index|}}
-        <div class="review-set" id="reviewSet{{ index }}">
-            {{#each reviewSet as |review|}}
-                <div class="review1-container">
-                    <!--<a href="/reviewpage?cafeID={{ review.cafeID }}">-->
-                        <img src="{{ review.logoimage }}" class="review1" alt="Cafe Logo">
-                    <!--</a>-->
-                    <div class="review1-review">
-                        <br>
-                        <span class="review-title">{{ review.reviewtitle }}</span><br><br>
-                        <span class="review-text">{{ review.reviewbody }}</span>
-                        <div class="star-rating">
-                            {{#if (isInteger review.caferating)}}
-                                {{#times review.caferating}}
+            <div class="review-set" id="reviewSet{{ index }}">
+
+                <div class = "container-title">Reviews</div>
+                {{#each reviewSet as |review|}}
+                    <div class="review1-container">
+                        <!--<a href="/reviewpage?cafeID={{ review.cafeID }}">-->
+                            <img src="{{ review.logoimage }}" class="review1" alt="Cafe Logo">
+                        <!--</a>-->
+                        <div class="review1-review">
+                            <br>
+                            <span class="review-title">{{ review.reviewtitle }}</span><br><br>
+                            <span class="review-text">{{ review.reviewbody }}</span>
+                            <div class="star-rating">
+                                {{#if (isInteger review.caferating)}}
+                                    {{#times review.caferating}}
+                                        <span class="star">&#9733;</span>
+                                    {{/times}}
+                                {{else}}
+                                    {{#times (subtract (floor review.caferating) 1)}}
+                                        <span class="star">&#9733;</span>
+                                    {{/times}}
                                     <span class="star">&#9733;</span>
-                                {{/times}}
-                            {{else}}
-                                {{#times (subtract (floor review.caferating) 1)}}
-                                    <span class="star">&#9733;</span>
-                                {{/times}}
-                                <span class="star">&#9733;</span>
+                                {{/if}}
+                            </div>
+                            {{#if review.isEdited}}
+                                <div class="edited-badge">Edited</div>
                             {{/if}}
                         </div>
-                        {{#if review.isEdited}}
-                            <div class="edited-badge">Edited</div>
-                        {{/if}}
                     </div>
+                {{/each}}
+            </div>
+            {{/each}}
+
+
+            {{#each commentSets as |commentSet index|}}
+                
+                <div class="review-set comment-set" id="commentSet{{ index }}" style="display: none;">
+
+                    <div class = "container-title">Comments</div>
+                    {{#each commentSet as |comment|}}
+                        <div class="review1-container">
+                            <!--<a href="/reviewpage?cafeID={{ review.cafeID }}">-->
+                                <img src="{{#if comment.profilepicture}}{{ comment.profilepicture }}{{else}}../../images/default_profile_image.jpg{{/if}}" class="review1" alt="Cafe Logo">
+                            <!--</a>-->
+                            <div class="review1-review">
+                                <br>
+                                <span class="review-title">{{ comment.reviewer}}'s "{{ comment.reviewtitle }}"</span><br><br>
+                                <span class="review-text">"{{ comment.textcontent }}"</span>
+                            </div>
+                        </div>
+                    {{/each}}
                 </div>
             {{/each}}
-        </div>
-    {{/each}}
-        </div>
+
+            </div>
     </div>
 
 <script>
