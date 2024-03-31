@@ -83,7 +83,6 @@ app.get("/index", async function (req, res) {
     const user = await db.collection('users').findOne({ username: username });
 
     if(!user){
-
         res.render("index", {
             studyFriendlyCafes: studyFriendlyCafes,
             budgetFriendlyCafes: budgetFriendlyCafes,
@@ -126,6 +125,10 @@ app.get("/other-profile", function (req, res) {
 });
 
 
+Handlebars.registerHelper('lookupUsername', function(userIdToUsernameMap, userid) {
+    return userIdToUsernameMap[userid] || 'Unknown User';
+});
+
 
 app.get('/reviewpage', async (req, res) => {
     try {
@@ -145,7 +148,6 @@ app.get('/reviewpage', async (req, res) => {
             const reviewCount = await db.collection('reviews').countDocuments({ cafeID });
             // Get other query parameters
             const username = req.query.username;
-
             // Construct cafeDetails object
             const cafeDetails = {
                 
@@ -161,7 +163,18 @@ app.get('/reviewpage', async (req, res) => {
                 category2: req.query.category2,
             };
 
+            const userIds = reviews.map(review => review.userID);
+            const users = await db.collection('users').find({ inf_id: { $in: userIds } }).toArray();
+
+            const userIdToUsernameMap = {};
+            users.forEach(user => {
+                userIdToUsernameMap[user.inf_id] = user.username;
+            });
+            console.log('Users:', userIdToUsernameMap); // Log users array to check its content
+            console.log('Users:', users); // Log users array to check its contents
             // Render the review page template with all the necessary data
+
+            const userIdS = Object.entries(userIdToUsernameMap);
             res.render('reviewpage', { 
 
                 reviews: reviews,
@@ -169,8 +182,9 @@ app.get('/reviewpage', async (req, res) => {
                 cafes: cafes,
                 cafe: cafeDetails,
                 reviewCount: reviewCount,
-                users: users,
-                username:username
+       
+                username:username,
+                userIdToUsernameMap: userIdS,
             });
         } else {
             // Handle case where establishment is not found
