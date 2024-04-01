@@ -58,41 +58,43 @@ editPopup.style.display = 'none';
 
 function saveChanges() {
     const newUsername = document.getElementById('newUsername').value.trim();
-    const newFirstName = document.getElementById('newFirstName').value.trim();
-    const newLastName = document.getElementById('newLastName').value.trim();
+    const thisFirstName = document.getElementById('thisFirstName').value.trim();
+    const thisLastName = document.getElementById('thisLastName').value.trim();    
     const newBio = document.getElementById('newBio').value.trim();
 
-    // Check if any of the fields are empty
-    if (newUsername === '' && newFirstName === '' && newLastName === '' && newBio === '') {
-        alert('Please enter at least one value to save.');
+    // Check if username, first name, and last name are empty
+    if (newUsername === '') {
+        alert('Username is required.');
         return;
     }
 
-    // Update username if not empty
-    if (newUsername !== '') {
-        const usernameElement = document.querySelector('.username');
-        usernameElement.textContent = newUsername;
-        localStorage.setItem('username', newUsername);
-    }
+    // Send updated user information to the server
+    fetch('/update-profile', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            newUsername: newUsername,
+            thisFirstName: thisFirstName,
+            thisLastName: thisLastName,
+            newBio: newBio
+        })
+    })
+    .then(response => {
+        if (response.ok) {
+            alert('Profile updated successfully.');
+            window.location.href = '/profile?username=' +  encodeURIComponent(newUsername);
+        } else {
+            throw new Error('Failed to update profile.');
+        }
+    })
+    .catch(error => {
+        console.error('Error updating profile:', error);
+        alert('An error occurred while updating profile. Please try again later.');
+    });
 
-    // Update real name if not empty
-    if (newFirstName !== '' || newLastName !== '') {
-        const realnameElement = document.querySelector('.realname');
-        realnameElement.textContent = newFirstName + ' ' + newLastName;
-        localStorage.setItem('realname', newFirstName + ' ' + newLastName);
-    }
-
-    // Update bio if not empty
-    if (newBio !== '') {
-        const bioElement = document.querySelector('.bio');
-        bioElement.textContent = newBio;
-        localStorage.setItem('bio', newBio);
-    }
-
-    // Close the edit popup
-    closeEditPopup();
 }
-
 
 function toggleDropdown() { var dropdownContent =
     document.getElementById("dropdownContent"); if

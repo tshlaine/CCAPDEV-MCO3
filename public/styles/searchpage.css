@@ -51,6 +51,7 @@ body {
 .dropdown {
     position: relative;
     display: inline-block;
+    z-index: 99999;
     
 }
 
@@ -61,7 +62,7 @@ body {
     background-color: #d1ae8d;
     width:  150px;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.7);
-    z-index: 1;
+    z-index: 99999;
     left: -48px; /* Adjust the position as per your requirement */
     border-radius: 10px;
     border-width: 2px;
@@ -74,31 +75,34 @@ body {
     display: block;
     border: 1px solid transparent; /* Add border */
     width:  113px;
+    z-index: 99999;
 }
 
 .dropdown-content a:hover {
     background-color: #F4E4C9;
     border-radius: 10px;
+    z-index: 99999;
 }
 
 
 .user-icon-container {
-    margin-right: -30px; 
+    margin-right: -30px;
     margin-left: 5px;
     margin-bottom: 10px;
     margin-top: 15px;
-      
-}
-
-.user-button img {
-    width: 50px; 
-    height: 50px;
-}
-
-.user-button img.scrolled {
+  }
+  
+  .user-button img {
     width: 50px;
     height: 50px;
-}
+    border-radius: 50%; /* Make it circular */
+  }
+  
+  .user-button img.scrolled {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%; /* Make it circular */
+  }
 
 .logo-name {
     display: flex;

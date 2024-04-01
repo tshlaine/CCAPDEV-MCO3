@@ -9,6 +9,10 @@ const cookieParser = require("cookie-parser");
 const { login, register } = require("./src/controller/authentication.controller");
 const Handlebars = require('handlebars');
 
+Handlebars.registerHelper('eq', function(a, b) {
+    return a == b;
+});
+
 Handlebars.registerHelper('isInteger', function(value) {
     return Number.isInteger(value);
 });
@@ -137,6 +141,12 @@ app.get('/reviewpage', async (req, res) => {
         // Get the establishment ID from the query parameters
         const cafeID = req.query.inf_id;
 
+        const username = req.query.username;
+        const user = await db.collection('users').findOne({ username: username });
+        let pic = null;
+        if(user){
+            pic = user.profilepicture;
+        }
 
         // Retrieve establishment details based on the cafeID
         const establishment = await db.collection('cafes').findOne({  inf_id: cafeID  });
@@ -146,8 +156,9 @@ app.get('/reviewpage', async (req, res) => {
             // Retrieve reviews for the specific establishment
             const reviews = await db.collection('reviews').find({ cafeID }).toArray();
             const reviewCount = await db.collection('reviews').countDocuments({ cafeID });
-            // Get other query parameters
-            const username = req.query.username;
+
+            const users = await db.collection('users').find({ inf_id: { $in: reviews.map(review => review.userID) } }).toArray();
+            
             // Construct cafeDetails object
             const cafeDetails = {
                 
@@ -163,20 +174,13 @@ app.get('/reviewpage', async (req, res) => {
                 category2: req.query.category2,
             };
 
-            const userIds = reviews.map(review => review.userID);
-            const users = await db.collection('users').find({ inf_id: { $in: userIds } }).toArray();
+            const reviewsWithUsers = reviews.map((review, index) => ({
+                review: review,
+                user: users[index]
+            }));
 
-            const userIdToUsernameMap = {};
-            users.forEach(user => {
-                userIdToUsernameMap[user.inf_id] = user.username;
-            });
-            console.log('Users:', userIdToUsernameMap); // Log users array to check its content
-            console.log('Users:', users); // Log users array to check its contents
-            // Render the review page template with all the necessary data
-
-            const userIdS = Object.entries(userIdToUsernameMap);
             res.render('reviewpage', { 
-
+                reviewsWithUsers: reviewsWithUsers,
                 reviews: reviews,
                 username: username,
                 cafes: cafes,
@@ -184,7 +188,9 @@ app.get('/reviewpage', async (req, res) => {
                 reviewCount: reviewCount,
        
                 username:username,
-                userIdToUsernameMap: userIdS,
+
+                users: users,
+                pic:pic
             });
         } else {
             // Handle case where establishment is not found
@@ -197,8 +203,6 @@ app.get('/reviewpage', async (req, res) => {
     }
 });
 
-
-
 app.get('/delete-review/:reviewId', (req, res) => {
     // This route handler is just for demonstration purposes
     // You might want to handle the GET request differently, such as rendering an error page
@@ -209,17 +213,34 @@ app.get('/delete-review/:reviewId', (req, res) => {
 app.get('/searchpage', async function(req, res) {
   try {
       let query = req.query.query || ''; // If no query parameter is provided, default to an empty string
+    
+      const db = req.app.locals.db;
+      const username = req.query.username;
+      const user = await db.collection('users').findOne({ username: username });
+      let pic = null;
+
+      if(user){
+        pic = user.profilepicture;
+      }
 
       // Check if the query is not empty
       if (query.trim() !== '') {
-          const db = req.app.locals.db;
+
           const result = await db.collection('cafes').find({ name: { $regex: query, $options: 'i' } }).toArray();
           
           // Render the searchpage.hbs template with the search results only
-          return res.render('searchpage', { result: result });
+          return res.render('searchpage', {
+            result: result,
+            username:username,
+            pic:pic
+           });
       } else {
           // If the query is empty, render the search page without any results
-          return res.render('searchpage', { result: [] });
+          return res.render('searchpage', { 
+            result: [],
+            username:username,
+            pic:pic
+         });
       }
   } catch (err) {
       console.error('Error searching cafes by name:', err);
@@ -227,6 +248,81 @@ app.get('/searchpage', async function(req, res) {
   }
 });
 
+app.get('/otherprofile', async function(req, res) {
+    
+    const db = req.app.locals.db;
+    const username = req.query.username;
+    const profileusername = req.query.profileusername;
+
+    const thisuser = await db.collection('users').findOne({ username: username });
+    const profileuser = await db.collection('users').findOne({ username: profileusername });
+
+    const userInfId = profileuser.inf_id;
+
+    let pic = null;
+
+      if(thisuser){
+        pic = thisuser.profilepicture;
+      }
+        
+    // match user inf_id with review user_ID
+    const reviews = await db.collection('reviews').find({ userID: userInfId }).toArray();
+    const comments = await db.collection('comments').find({ userID: userInfId }).toArray();
+
+    // Divide reviews into sets of three
+    const reviewSets = [];
+    for (let i = 0; i < reviews.length; i += 3) {
+        reviewSets.push(reviews.slice(i, i + 3));
+    }
+
+    // Divide comments into sets of three
+    const commentSets = [];
+    for (let i = 0; i < comments.length; i += 3) {
+        commentSets.push(comments.slice(i, i + 3));
+    }
+
+    const cafes = [];
+    for (const reviewSet of reviewSets) {
+        for (const review of reviewSet) {
+            const cafe = await db.collection('cafes').findOne({ inf_id: review.cafeID });
+            if (cafe) {
+                review.logoimage = cafe.logoimage;
+                cafes.push(cafe);
+            }
+        }
+    }
+
+    const commentCafes = [];
+    for (const commentSet of commentSets) {
+        for (const comment of commentSet) {
+            const user = await db.collection('users').findOne({ inf_id: comment.userID });
+            const review = await db.collection('reviews').findOne({ inf_id: comment.reviewID });
+            const reviewer = await db.collection('users').findOne({ inf_id: review.userID });
+            if (user) {
+                comment.profilepicture = reviewer.profilepicture;
+                comment.reviewtitle = review.reviewtitle;
+                comment.reviewer = reviewer.username;
+                commentCafes.push(user);
+            }
+        }
+    }
+    
+    const pages = reviews.length + 3 + comments.length;
+    const numberOfDots = Math.ceil(pages / 3);
+    const dots = Array.from({ length: numberOfDots }, (_, index) => index + 1);
+
+    // Render the 'otherprofile' template and pass in the data
+    res.render('otherprofile', {
+        username,
+        profileuser,
+        reviewSets: reviewSets,
+        commentSets: commentSets,
+        commentCafes: commentCafes,
+        cafes: cafes,
+        dots: dots,
+        pic: pic
+    });
+});
 
 app.get('/profile', async function(req, res) {
     try {
@@ -303,6 +399,28 @@ app.get('/profile', async function(req, res) {
     }
 });
 
+app.post('/update-profile', async (req, res) => {
+    try {
+        const db = req.app.locals.db;
+        const { newUsername, thisFirstName, thisLastName, newBio } = req.body;
+
+        const user = await db.collection('users').findOne({
+            "fullname.firstname": thisFirstName,
+            "fullname.lastname": thisLastName
+        });
+
+        await db.collection('users').updateOne(
+            { "_id": user._id },
+            { $set: { "bio": newBio, "username": newUsername } }
+        );
+
+        res.status(200).send('Profile updated successfully');
+
+    } catch (error) {
+        console.error('Error updating profile:', error);
+        res.status(500).send('Internal Server Error');
+    }
+});
 
 app.get('/view-establishments', async function(req, res) {
 

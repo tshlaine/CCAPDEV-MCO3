@@ -1045,12 +1045,23 @@ margin-top: 10px;
 
 
 .user-icon-container {
-    margin-right: -30px; 
+    margin-right: -30px;
     margin-left: 5px;
     margin-bottom: 10px;
     margin-top: 15px;
-      
-}
+  }
+  
+  .user-button img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%; /* Make it circular */
+  }
+  
+  .user-button img.scrolled {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%; /* Make it circular */
+  }
 
 .image-upload{
     margin-left: 560px;
@@ -1119,7 +1130,6 @@ margin-top: 10px;
 }
 
 .user-button img.scrolled {
-    content: url("../../images/usericon\ dark.png");
     width: 50px;
     height: 50x;
 }

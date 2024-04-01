@@ -24,7 +24,7 @@
         <img class = "designdot2" src="/images/dots.png">
         <img class = "designdot3" src="/images/dots.png">
         <img class = "designdot4" src="/images/dots.png">
-        {{> navbar username=username pic=pic}}
+        {{> navbar username=username}}
         <div class = "leftpanel">
             <div class="slideshow-container">
                 {{#each cafes}}
@@ -52,6 +52,7 @@
             <div class="searchbar"> 
                 <form  action="/searchpage" method="GET">
                     <input type="text" placeholder="Search Cafes" class="type" name="query">
+                    <input type="hidden" name="username" value="{{username}}">
                     <button type="submit" class="search">Search</button>
                 </form>
             </div>

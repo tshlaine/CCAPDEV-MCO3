@@ -108,26 +108,36 @@
         <div class="review-area">
         {{#if cafes}}
             {{#if reviews}}
-                {{#each reviews}}
-            <div class="review-box" >
-               <button class="threedot" onclick="toggleDropdown2(this)">
-                    <img src="../../images/options.png">
-                </button>
-    
-                <div class="dropdown-content2" id="dropdownContent2_{{reviewId}}">
-               <a id="openEditPopup_{{reviewId}}" onclick="toggleEditPopup('{{reviewId}}')">Edit</a>
-               <a class="delete-review" data-review-id="{{reviewId}}" onclick="toggleDeletePopup()">Delete</a>
+                {{#each reviewsWithUsers}}
+            
+                {{#if (eq user.username ../username) }}
+                    <div class="review-box" >
+                        <button class="threedot" onclick="toggleDropdown2(this)">
+                                <img src="../../images/options.png">
+                        </button>
+                {{else}}
+                    <div class="review-box" >
+                        <div class="threedot" style="visibility: hidden;" onclick="toggleDropdown2(this)">
+                            <img src="../../images/options.png">
+                        </div>
+                {{/if}}
+
+                
+                <div class="dropdown-content2" id="dropdownContent2_{{review.reviewId}}">
+               <a id="openEditPopup_{{review.reviewId}}" onclick="toggleEditPopup('{{review.reviewId}}')">Edit</a>
+               <a class="delete-review" data-review-id="{{review.reviewId}}" onclick="toggleDeletePopup()">Delete</a>
                 </div>
+                
 
                 <!-- Delete Popup -->
                <div class="delete-popup" id="deletePopup" style="display: none;">
                 <div class="popup-deletecontent">
-                    <span class="x" onclick="toggleDeletePopup('{{reviewId}}')">
+                    <span class="x" onclick="toggleDeletePopup('{{review.reviewId}}')">
                         <img src="../../images/xicon.png" class="close">
                     </span>
                     <p class="deletenote">Are you sure you want to delete this review?</p>
                     <div class="button-container-delete">
-                        <a href="/delete-review/{{reviewId}}" class="delete-review" data-review-id="{{reviewId}}">
+                        <a href="/delete-review/{{review.reviewId}}" class="delete-review" data-review-id="{{review.reviewId}}">
                             <button>Yes</button>
                         </a>
                         <button class="no-button" onclick="toggleDeletePopup()">No</button>
@@ -136,9 +146,9 @@
             </div>
 
                <!-- Edit Popup -->
-                <div class="popup-edit" id="editPopup_{{reviewId}}" style="display: none;">
+                <div class="popup-edit" id="editPopup_{{review.reviewId}}" style="display: none;">
                     <div class="popup-content-edit">
-                            <span class="x" onclick="toggleEditPopup('{{reviewId}}')">
+                            <span class="x" onclick="toggleEditPopup('{{review.reviewId}}')">
                                     <img src="../../images/xicon.png" class="close">
                                 </span>
                                 <p class="experience">Edit Your Review</p>
@@ -179,16 +189,17 @@
 
                 <div class="reaction">
                     <button class="helpful"><img src="../../images/thumb.png"></button>
-                    <span class = "numberofreact">{{helpful}}</span>
+                    <span class = "numberofreact">{{review.helpful}}</span>
                     <button class="unhelpful"><img src="../../images/thumbdown.png"></i></button>
-                    <span class = "numberofreact">{{unhelpful}}</span>
+                    <span class = "numberofreact">{{review.unhelpful}}</span>
                 </div>
                 <div class="profile-info">
                     <div class="profile-pic">
-                        <img src="../../images/dog.jpg" alt="Profile Picture" />
+                        <img src="{{#if user.profilepicture}}{{user.profilepicture}}{{else}}../../images/default_profile_image.jpg{{/if}}" alt="Profile Picture" />
                     </div>
-                   
-                     <div class="username"><a href="profile.html">{{userIdToUsernameMap.[index]}}</a></div>
+                    
+                    <!-- THE PROFILE LINK LEADS TO YOUR OWN PROFILE, ILL MAKE HBS FOR THE PROFILE OF OTHER USERS-->
+                     <div class="username"><a href="/otherprofile?username={{../username}}&profileusername={{user.username}}">{{user.username}}</a></div>
                     
                 </div>                
                 <div class="review-content">             
@@ -209,32 +220,32 @@
                         <label for="star5" title="text">5 stars</label>
                     </div>
                     <div class="title">
-                        {{reviewtitle}}
+                        {{review.reviewtitle}}
                     </div>
                     <div class="paragraph">
-                        {{reviewbody}}
+                        {{review.reviewbody}}
                     </div>
                     <div class="category-review">
-                    {{#if category1review}}
+                    {{#if review.category1review}}
                         <div class="category1review">
-                            <span>{{category1review}}</span>
+                            <span>{{review.category1review}}</span>
                         </div>
                     {{/if}}
-                    {{#if category2review}}
+                    {{#if review.category2review}}
                         <div class="category2review">
-                            <span>{{category2review}}</span>
+                            <span>{{review.category2review}}</span>
                         </div>
                     {{else}}
                     
                     {{/if}}
                 </div>
                 <div class="images-container">
-                    {{#if media}}
-                        <img class="image" src="{{media}}">
+                    {{#if review.media}}
+                        <img class="image" src="{{review.media}}">
                     {{/if}}
                 </div>
                     <div class = "date">
-                        {{dateandtime}}
+                        {{review.dateandtime}}
                     </div>
                 </div>
             </div>

@@ -15,9 +15,13 @@
             <p class="web-name"><span class="Cafe-title">Cafe</span> <span class="St-title">St.</span></p>
         </a>
         <ul>
-            <li id="home-link"><a href="/index">Home</a></li>
-            <li><a href="/view-establishments">View Establishments</a></li>
-            <li><a href="login.html">Log In</a></li>
+            <li id="home-link"><a href="/index?username={{username}}">Home</a></li>
+            <li><a href="/view-establishments?username={{username}}">View Establishments</a></li>
+            {{#if username}}
+                <li><a href="/logout">Log Out</a></li>
+            {{else}}
+                <li><a href="/login">Log In</a></li>
+            {{/if}}
           </ul>
           <div class="user-icon-container">
             <div class="dropdown">
@@ -25,8 +29,11 @@
                     <img src="{{#if pic}}{{ pic }}{{else}}/images/usericon.png{{/if}}" alt="User Icon" id="icon" class="user" />
                 </button>
                 <div class="dropdown-content" id="dropdownContent">
-                    <a href="sign-up.html">Sign Up</a>
-                    <a href="profile.html">View Profile</a>
+                    {{#if username}}
+                        <a href="/profile?username={{username}}">View Profile</a>
+                    {{else}}
+                        <a href="/login?page=signup">Sign Up</a>
+                    {{/if}}
                 </div>
             </div>
         </div>
