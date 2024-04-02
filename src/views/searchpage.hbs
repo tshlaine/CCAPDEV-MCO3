@@ -26,48 +26,40 @@
         
         <div class="main">
              {{#each result}}
-            <a href="/reviewpage?inf_id={{inf_id}}&name={{name}}&location={{location}}&category1={{category1}}&category2={{category2}}&description={{description}}&averageRating={{averageRating}}&slideImages1={{slideImages1}}&slideImages2={{slideImages2}}&slideImages3={{slideImages3}}" class = "box">
-            <div class="review-box">
-                <div class="unit1" id="unit1-background1"  style="background-image: url('{{cafeheader}}')">
-                    <img src="{{logoimage}}" class="cafe-profile">
-                    <div class="info">
-                        <p class="cafe-name">{{name}}</p>
-                        <p class="cafe-address">{{location}}</p>
+                <a href="/reviewpage?inf_id={{inf_id}}&name={{name}}&location={{location}}&category1={{category1}}&category2={{category2}}&description={{description}}&averageRating={{averageRating}}&slideImages1={{slideImages1}}&slideImages2={{slideImages2}}&slideImages3={{slideImages3}}" class = "box">
+                <div class="review-box">
+                    <div class="unit1" id="unit1-background1"  style="background-image: url('{{cafeheader}}')">
+                        <img src="{{logoimage}}" class="cafe-profile">
+                        <div class="info">
+                            <p class="cafe-name">{{name}}</p>
+                            <p class="cafe-address">{{location}}</p>
+                        </div>
                     </div>
-                </div>
-                <div class="unit2">
-                    <div class="ratings">
-                        <h2>RATINGS:</h2>
-                        <input type="radio" id="star1" name="rate" value="1">
-                        <label for="star1" title="text">1 star</label>
-    
-                        <input type="radio" id="star2" name="rate" value="2">
-                        <label for="star2" title="text">2 stars</label>
-    
-                        <input type="radio" id="star3" name="rate" value="3">
-                        <label for="star3" title="text">3 stars</label>
-    
-                        <input type="radio" id="star4" name="rate" value="4">
-                        <label for="star4" title="text">4 stars</label>
-    
-                        <input type="radio" id="star5" name="rate" value="5">
-                        <label for="star5" title="text">5 stars</label>
-                        <h2>{{averageRating}} out of 5</h2>
+                    <div class="unit2">
+                        <div class="ratings">
+                            <h2>RATINGS:</h2>
+                                <span class="star">&#9733;</span>
+                                <span class="star">&#9733;</span>
+                                <span class="star">&#9733;</span>
+                                <span class="star">&#9733;</span>
+                                <span class="star">&#9733;</span>
+                            <h2 id="averageRatingValue">{{ averageRating }} out of 5</h2>
+                            
+                        </div>
+                        <hr>
+                        <div class="reviews">
+                            <h2>Top Review:</h2>
+                        </div>
                     </div>
-                    <hr>
-                    <div class="reviews">
-                        <h2>Top Review:</h2>
-                    </div>
-                </div>
-                <div class="unit3">
-                    <img src="/images/elgatto.jpg" class="reviewer">
-                    <div class="review-text">
-                        <p>wow! what a great place and such a top tier service!!!</p>
-                    </div>
-                    <div class="reaction">
-                        <button class="like"><img src="/images/dislike_light.png"></button>
-                        <button class="dislike"><img src="/images/like_light.png"></i></button>
-                    </div>
+                    <div class="unit3">
+                        <img src="/images/elgatto.jpg" class="reviewer">
+                        <div class="review-text">
+                            <p>wow! what a great place and such a top tier service!!!</p>
+                        </div>
+                        <div class="reaction">
+                            <button class="like"><img src="/images/dislike_light.png"></button>
+                            <button class="dislike"><img src="/images/like_light.png"></i></button>
+                        </div>
                       {{/each}}
                 </div>
             </div>

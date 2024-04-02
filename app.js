@@ -8,6 +8,8 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const { login, register } = require("./src/controller/authentication.controller");
 const Handlebars = require('handlebars');
+const ObjectId = require('mongodb').ObjectId;
+
 
 Handlebars.registerHelper('eq', function(a, b) {
     return a == b;
@@ -203,11 +205,59 @@ app.get('/reviewpage', async (req, res) => {
     }
 });
 
-app.get('/delete-review/:reviewId', (req, res) => {
-    // This route handler is just for demonstration purposes
-    // You might want to handle the GET request differently, such as rendering an error page
-    res.status(404).send('Not found');
+app.post('/update-review', async (req, res) => {
+    try {
+        const db = req.app.locals.db;
+        const { newBody, newTitle, thisReview, rating } = req.body;
+        
+        // Convert thisReview to ObjectId
+        const reviewId = new ObjectId(thisReview);
+        const ratingDouble = parseFloat(rating);
+
+        const result = await db.collection('reviews').updateOne( 
+            { "_id": reviewId }, {
+                $set: { 
+                    reviewtitle: newTitle,
+                    reviewbody: newBody,
+                    caferating: ratingDouble
+                } 
+            } 
+        );
+
+        if (result.modifiedCount === 1) {
+            res.status(200).send('Review updated successfully');
+        } else {
+            res.status(404).send('Review not found');
+        }
+
+    } catch (error) {
+        console.error('Error updating Review:', error);
+        res.status(500).send('Internal Server Error');
+    }
 });
+
+
+app.post('/delete-review', async (req, res) => {
+    try {
+        const db = req.app.locals.db;
+        const { thisReview } = req.body;
+        
+        // Convert thisReview to ObjectId
+        const reviewId = new ObjectId(thisReview);
+        const result = await db.collection('reviews').deleteOne({ "_id": reviewId });
+
+        if (result.deletedCount === 1) {
+            res.status(200).send('Review deleted successfully');
+        } else {
+            res.status(404).send('Review not found');
+        }
+
+    } catch (error) {
+        console.error('Error deleting Review:', error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
 
 
 app.get('/searchpage', async function(req, res) {
@@ -562,7 +612,7 @@ MongoClient.connect(uri)
             console.error('Error inserting comments into the database:', err);
             client.close(); // Close the MongoDB client if an error occurs
         });
-
+        
         // Start the server after data insertion
         app.listen(PORT, () => {
             console.log(`Server is running on port ${PORT}`);

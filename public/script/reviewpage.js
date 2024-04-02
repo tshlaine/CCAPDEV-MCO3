@@ -12,10 +12,139 @@ function toggleDropdown() {
 
 
 function editReview() {
-    // Implement logic to update the review in the database
+    const newBody = document.getElementById('edit-review-title').value.trim();
+    const newTitle = document.getElementById('edit-review').value.trim();
+    const thisReview = document.getElementById('thisReview').value.trim();
+    const rating = getSelectedRating();
 
-    // Redirect the user back to the page where they were editing the review
-    window.location.href = '/reviewpage'; // Change the URL to the appropriate page
+    // Check if username, first name, and last name are empty
+    if (newTitle === '' || newBody === '') {
+        alert('Fields are required.');
+        return;
+    }
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const inf_id = urlParams.get('inf_id');
+    const name = urlParams.get('name');
+    const location = urlParams.get('location');
+    const location_link = urlParams.get('location_link');
+    const category1 = urlParams.get('category1');
+    const category2 = urlParams.get('category2');
+    const description = urlParams.get('description');
+    const averageRating = urlParams.get('averageRating');
+    const slideImages1 = urlParams.get('slideImages1');
+    const slideImages2 = urlParams.get('slideImages2');
+    const slideImages3 = urlParams.get('slideImages3');
+    const username = urlParams.get('username');
+
+    // Send updated user information to the server
+    fetch('/update-review', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            newTitle: newTitle,
+            newBody: newBody,
+            thisReview: thisReview,
+            rating : rating,
+        })
+    })
+    .then(response => {
+        if (response.ok) {
+            alert('Review updated successfully.');
+            const redirectURL = `/reviewpage?inf_id=${inf_id}&name=${name}&location=${location}&location_link=${location_link}&category1=${category1}&category2=${category2}&description=${description}&averageRating=${averageRating}&slideImages1=${slideImages1}&slideImages2=${slideImages2}&slideImages3=${slideImages3}&username=${username}`;
+            window.location.href = redirectURL;
+        } else {
+            throw new Error('Failed to update review.');
+        }
+    })
+    .catch(error => {
+        console.error('Error updating review:', error);
+        alert('An error occurred while updating review. Please try again later.');
+    });
+
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    // Get all stars in the edit popup
+    var stars = document.querySelectorAll('.popup-edit .ratings-popup input[type="radio"]');
+
+    // Add event listeners to each star
+    stars.forEach(function(star) {
+        star.addEventListener('click', function() {
+            // Remove "active" class from all stars
+            stars.forEach(function(s) {
+                s.nextElementSibling.classList.remove('active');
+            });
+
+            // Add "active" class to clicked star and all preceding stars
+            var clickedIndex = Array.from(stars).indexOf(star);
+            for (var i = 0; i <= clickedIndex; i++) {
+                stars[i].nextElementSibling.classList.add('active');
+            }
+        });
+    });
+});
+
+function toggleDeletePopup(_id) {
+    var popup = document.getElementById("deletePopup_" + _id);
+    if (popup.style.display === "none") {
+        popup.style.display = "block";
+    } else {
+        popup.style.display = "none";
+    }
+}
+
+function deleteReview(reviewId) {
+
+    const thisReview = reviewId.trim();
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const inf_id = urlParams.get('inf_id');
+    const name = urlParams.get('name');
+    const location = urlParams.get('location');
+    const location_link = urlParams.get('location_link');
+    const category1 = urlParams.get('category1');
+    const category2 = urlParams.get('category2');
+    const description = urlParams.get('description');
+    const averageRating = urlParams.get('averageRating');
+    const slideImages1 = urlParams.get('slideImages1');
+    const slideImages2 = urlParams.get('slideImages2');
+    const slideImages3 = urlParams.get('slideImages3');
+    const username = urlParams.get('username');
+
+    fetch('/delete-review', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            thisReview: thisReview
+        })
+    })
+    .then(response => {
+        if (response.ok) {
+            alert('Review deleted successfully.');
+            const redirectURL = `/reviewpage?inf_id=${inf_id}&name=${name}&location=${location}&location_link=${location_link}&category1=${category1}&category2=${category2}&description=${description}&averageRating=${averageRating}&slideImages1=${slideImages1}&slideImages2=${slideImages2}&slideImages3=${slideImages3}&username=${username}`;
+            window.location.href = redirectURL;
+        } else {
+            throw new Error('Failed to delete review.');
+        }
+    })
+    .catch(error => {
+        console.error('Error deleting review:', error);
+        alert('An error occurred while deleting review. Please try again later.');
+    });
+}
+
+
+function getSelectedRating() {
+    const ratingInputs = document.querySelectorAll('input[name="rate"]:checked');
+    if (ratingInputs.length === 1) {
+        return ratingInputs[0].value;
+    }
+    return null; // No rating selected
 }
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -37,6 +166,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 });
+
 
 function togglePopup() {
     var popup = document.getElementById("popup-create");
@@ -261,6 +391,26 @@ function currentSlide(index) {
     dots[index-1].className += " active";
 }
 
+document.addEventListener("DOMContentLoaded", function() {
+    // Get all review boxes
+    var reviewBoxes = document.querySelectorAll('.review-box');
 
+    // Loop through each review box
+    reviewBoxes.forEach(function(box) {
+        // Get the average rating value for this review box
+        var cafeRating = Math.round(parseFloat(box.querySelector('.ratings #cafeRating').textContent));
 
+        // Get all the stars within this review box
+        var stars = box.querySelectorAll('.star');
 
+        // Add active class to stars based on average rating
+        for (var i = stars.length - 1; i >= 0; i--) {
+            if (cafeRating > 0) {
+                stars[i].classList.add('active');
+                cafeRating--;
+            } else {
+                break;
+            }
+        }
+    });
+});

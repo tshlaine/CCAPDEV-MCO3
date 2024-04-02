@@ -28,7 +28,7 @@
         <div class="user-icon-container">
           <div class="dropdown">
             <button class="user-button" onclick="toggleDropdown()">
-              <img src="{{#if pic}}{{ pic }}{{else}}/images/usericon.png{{/if}}" alt="User Icon" id="icon" class="user" />
+              <img src="{{#if pic}}{{ pic }}{{else}}/images/usericon.png{{/if}}" alt="User Icon" id="icon" {{#if pic}}class="non-default"{{else}}class="default"{{/if}}>
             </button>
             <div class="dropdown-content" id="dropdownContent">
               {{#if username}}
