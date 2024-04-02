@@ -188,9 +188,9 @@ function showSummarysb(index) {
 }
 
 // Event listener to close popup when clicking outside of it
-window.addEventListener("click", function(event) {
+window.addEventListener("click", function (event) {
   const popups = document.querySelectorAll(".popupsb");
-  popups.forEach(function(popup) {
+  popups.forEach(function (popup) {
     if (event.target === popup) {
       popup.style.display = "none";
     }
@@ -204,7 +204,6 @@ function closePopup(popupId) {
   }
 }
 
-
 function showPopup(popupId) {
   console.log("showPopup called");
   const popup = document.getElementById(popupId);
@@ -215,14 +214,14 @@ function showPopup(popupId) {
 function closePopup(popupId) {
   const popup = document.getElementById(popupId);
   if (popup) {
-      popup.style.display = "none";
+    popup.style.display = "none";
   }
 }
 
 // Event listener to close popup when clicking outside of it
-window.addEventListener("click", function(event) {
+window.addEventListener("click", function (event) {
   const popups = document.querySelectorAll(".popup");
-  popups.forEach(function(popup) {
+  popups.forEach(function (popup) {
     if (event.target === popup) {
       popup.style.display = "none";
     }

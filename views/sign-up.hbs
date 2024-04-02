@@ -1,0 +1,72 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="assets/ico/favicon.ico" type="image/x-icon" />
+    <title>Sign Up - AnimoEats</title>
+  </head>
+
+  <body class="sign-up-log-in-body">
+    <!-- SIGN UP BODY -->
+    <div class="sign-up-log-in-content">
+      <div class="content">
+        <div class="left">
+          <h1>Sign Up</h1>
+          <form class="sign-up-grid" action="/sign-up" method="post">
+            <input
+              class="name"
+              name="firstName"
+              type="text"
+              placeholder="First Name"
+            />
+            <input
+              class="name"
+              name="lastName"
+              type="text"
+              placeholder="Last Name"
+            />
+            <input
+              class="other"
+              name="emailSignup"
+              type="text"
+              placeholder="Email"
+            />
+            <input
+              class="other"
+              name="passwordSignup"
+              type="password"
+              placeholder="Password"
+            />
+            <button
+              class="button-inside other button"
+              name="submit-sign-up"
+              type="submit"
+              value="Sign Up"
+            >Sign Up</button>
+          </form>
+          <div
+            class="old-new-account"
+            style="display: flex; flex-direction: row-reverse; justify-content: space-between;"
+          >
+            <span>
+              <span>Already have an account?</span>
+              <a href="/login">Log In</a>
+            </span>
+            <span class="error-message" style="color: red;">
+              {{errorMessage}}
+            </span>
+          </div>
+        </div>
+        <div class="right">
+          <a href="/">
+            <img src="assets/svg/animoeats-logo.svg" alt="logo" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

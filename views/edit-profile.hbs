@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="assets/ico/favicon.ico" type="image/x-icon">
+    <title>{{firstName}} {{lastName}}</title>
+</head>
+<body class="edit-prof-body">
+    <img class="logo" src="assets/svg/animoeats-logo.svg" alt="logo">
+    <form class="edit-prof" action="/edit-profile" method="POST" enctype="multipart/form-data">
+        <div class="prof-pic">
+            <img src={{profilePicture}} alt="prof-pic">
+        </div>
+        <div class="prof-pic-right">
+            <h1 class="username">{{firstName}} {{lastName}}</h1>
+            <button class="profPicIn clickable" type="button">Change profile photo</button>
+            <input id="profPicInEdit" style="display: none" name="profilePictureEdit" type="file" accept="image/*">
+        </div>
+        <h1 class="fname">First Name</h1>
+        <div class="fname-field">
+            <label class="label-fname" for="first-name">This field is required.</label>
+            <input type="text" name="firstNameEdit" id="first-name" placeholder="First Name" value="{{firstName}}">
+        </div>
+        <h1 class="lname">Last Name</h1 >
+        <div class="lname-field">
+            <label class="label-uname" for="username">This field is required.</label>
+            <input type="text" name="lastNameEdit" id="username" placeholder="Last Name" value="{{lastName}}">
+        </div>
+        <h1 class="desc">Description</h1>
+        <textarea name="descriptionEdit" id="description">{{description}}</textarea>
+        <button class="add-review-btn" type="submit" value="Save Changes" id="submit">Save Changes</button>
+    </form>
+    <div class="sidebar"></div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script>
+        $('document').ready(function(){
+            $('.sidebar').load('components/side-bar.html');
+
+            setTimeout(function(){
+                $('.side-profile').addClass('selected');
+            },200);
+
+            const pseudoBtn = $('.profPicIn');
+            const picUploadBtn = $('#profPicInEdit');
+            const img = $('.prof-pic img');
+            const reader = new FileReader();
+            pseudoBtn.on('click', function(){
+                picUploadBtn.click();
+            }); 
+            picUploadBtn.on('change', function(){
+                reader.onload = function(e){
+                    img.attr('src', e.target.result);
+                }
+                reader.readAsDataURL(this.files[0]);
+            })
+        });
+    </script>
+</body>
+</html>

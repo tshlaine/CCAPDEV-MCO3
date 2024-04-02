@@ -1,0 +1,40 @@
+[{
+    "userID": "b1",
+    "reviewID": "c2",
+    "textcontent": "That's cool! Haven't tried it but will do soon.",
+    "timestamp": {
+      "$date": "2024-03-05T10:30:12.000Z"
+    }
+  },
+  {
+    "userID": "b2",
+    "reviewID": "c5",
+    "textcontent": "Can’t agree with you more.",
+    "timestamp": {
+      "$date": "2024-03-06T03:53:15.194Z"
+    }
+  },
+  {
+    "userID": "b3",
+    "reviewID": "c1",
+    "textcontent": "I’ve been hanging out in this establishment for months, where do you sit?",
+    "timestamp": {
+      "$date": "2024-03-06T03:57:08.249Z"
+    }
+  },
+  {
+    "userID": "b4",
+    "reviewID": "c4",
+    "textcontent": "Yeah, their egg tasted weird, ugh.",
+    "timestamp": {
+      "$date": "2024-03-01T07:13:22.000Z"
+    }
+  },
+  {
+    "userID": "b5",
+    "reviewID": "c3",
+    "textcontent": "Hello",
+    "timestamp": {
+      "$date": "2024-03-06T04:02:36.812Z"
+    }
+  }]

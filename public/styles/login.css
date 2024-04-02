@@ -14,7 +14,7 @@ body {
   height: 100vh;
   font-family: "Poppins", sans-serif;
   padding-top: 5%;
-  background-image: url(../images/tomo.png);
+  background-image: url(../assets/png/tomo.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -319,7 +319,7 @@ input {
 }
 
 .overlay {
-  background-image: url("../images/cloudscape.png");
+  background-image: url("../assets/png/cloudscape.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 0 0;
@@ -423,7 +423,6 @@ input {
   transition: background-color 0.3s ease-in-out;
 }
 
-
 .webname {
   margin-top: 5px;
   text-decoration: none;
@@ -483,17 +482,18 @@ user-button img {
 
 .go-back {
   font-size: 24px;
-  color: #ab9a7c; 
-  background-color: transparent; 
+  color: #ab9a7c;
+  background-color: transparent;
   position: absolute;
   top: 20px;
   left: 20px;
   text-decoration: none;
-  padding: 10px; 
-  border-radius: 5px; 
-  transition: color 0.3s ease, background-color 0.3s ease; 
+  padding: 10px;
+  border-radius: 5px;
+  transition: color 0.3s ease, background-color 0.3s ease;
 }
 
 .go-back:hover {
   color: #fff;
-  background-color: #ab9a7c; }
+  background-color: #ab9a7c;
+}

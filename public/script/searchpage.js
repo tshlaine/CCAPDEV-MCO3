@@ -19,27 +19,3 @@ window.addEventListener('scroll', () => {
         userIcon.classList.remove('scrolled');
     }
 });
-
-document.addEventListener("DOMContentLoaded", function() {
-    // Get all review boxes
-    var reviewBoxes = document.querySelectorAll('.review-box');
-
-    // Loop through each review box
-    reviewBoxes.forEach(function(box) {
-        // Get the average rating value for this review box
-        var averageRating = Math.round(parseFloat(box.querySelector('.ratings #averageRatingValue').textContent));
-
-        // Get all the stars within this review box
-        var stars = box.querySelectorAll('.star');
-
-        // Add active class to stars based on average rating
-        for (var i = stars.length - 1; i >= 0; i--) {
-            if (averageRating > 0) {
-                stars[i].classList.add('active');
-                averageRating--;
-            } else {
-                break;
-            }
-        }
-    });
-});

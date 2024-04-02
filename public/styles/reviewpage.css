@@ -26,12 +26,7 @@ hr {
     font-size: 20px;
     color: #fff;
     margin-left: 90px;
-    text-decoration: none;
     
-}
-
-.loc :hover{
-    text-decoration: underline;
 }
 
 .divider{
@@ -154,25 +149,6 @@ background-color: #717171;
     margin-left: 35px;
 }
 
-.category-review {
-    display: flex;
-    flex-direction: row;
-    color: #4D2D18;
-    margin-top: 10px; /* Adjust margin as needed */
-    margin-left: 0px;
-}
-.category-review div {
-    display: flex; /* Add this line */
-    align-items: center; /* Center text vertically */
-    font-size: 10px;
-    font-weight: 600;
-    height: 30px;
-    background-color: #d1ae8d;
-    padding: 10px 10px;
-    border-radius: 15px;
-    margin-right: 10px;
-}
-
 .hrabout{
     border: none;
     opacity: 0.4;
@@ -228,103 +204,6 @@ background-color: #717171;
     color: #4D2D18;
 }
 
-.popup-deletecontent {
-    font-family: 'Poppins', sans-serif;
-    font-size: 20px;
-    z-index: 3;
-    overflow-y: auto; /* Enable vertical scrolling */
-    background-color: #F4E4C9;
-    margin: 0 auto; /* Adjusted margin */
-    border: 1px solid #888;
-    width: 500px;
-    height: 200px;
-    border-radius: 10px;
-    margin-top: 150px;
-    margin-bottom: 25px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Align content vertically */
-    align-items: center; /* Align content horizontally */
-}
-
-
-
-.delete-review{
-    display: flex; /* Add this line */
-    align-items: center; /* Center text vertically */
-    font-size: 16px;
-
-    height: 30px;
-  text-decoration: none;
-    padding: 10px 10px;
-    border-radius: 15px;
-    margin-right: 10px;
-}
-
-
-.delete-popup {
-    z-index: 40;
-    display: none;
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center; /* Align popup horizontally */
-    align-items: center; /* Align popup vertically */
-}
-
-
-/* Popup container */
-.popup-edit {
-    z-index: 40;
-    display: none;
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
-/* Popup content */
-.popup-content-edit {
-    font-family: 'Poppins', sans-serif;
-    font-size: 20px; 
-    z-index: 3;
-    overflow-y: auto; /* Enable vertical scrolling */
-    background-color: #F4E4C9;
-    margin: 50px auto;
-    border: 1px solid #888;
-    width: 830px;
-    height: 535px;
-    border-radius: 10px;
-    margin-top: 30px;
-    margin-bottom: 25px;
-}
-
-
-
-/* Close button */
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-
 .review-content{
     margin-top: 50px;
 }
@@ -370,7 +249,7 @@ background-color: #717171;
 }
 
 .reaction{
-    margin-left: 780px;
+    margin-left: 840px;
     position: absolute;
     margin-top: 7px;
 }
@@ -394,9 +273,6 @@ background-color: #717171;
 .ratings:not(:checked) > input {
     position:absolute;
     top:-9999px;
-}
-.ratings-popup label.active {
-    color: yellow; /* Active star color */
 }
 
 .ratings:not(:checked) > label {
@@ -482,8 +358,8 @@ background-color: #717171;
     margin-top: 10px;
     max-width: 100%;
     height: auto;
-    margin-left: 150px;
-    margin-right: 150px;
+    margin-left: 120px;
+    margin-right: 120px;
     
 }
 
@@ -599,16 +475,12 @@ background-color: #717171;
     margin-top: 30px;
     margin-bottom: 25px;
 
-    
-    overflow-y: auto; /* Enable vertical scroll if content exceeds the maximum height */
-    padding-right: 20px; /* Add some padding to prevent content from being hidden behind the scrollbar */
-    scrollbar-width: thin; /* Set the width of the scrollbar */
-    scrollbar-color: #888 transparent; /* Set the color of the scrollbar */
-}
+    scrollbar-width: thin; /* For Firefox */
+    scrollbar-color: #888 #F4E4C9; /* For Firefox */
 
-.message{
-    align-items: center;
-    justify-content: center;
+    /* For WebKit browsers like Chrome and Safari */
+    scrollbar-width: thin;
+    scrollbar-color: #888 #F4E4C9;
 }
 
 .popup-content::-webkit-scrollbar {
@@ -634,37 +506,9 @@ background-color: #717171;
     font-weight: 700;
 }
 
-.edit-review-title{
-    font-family: 'Poppins', sans-serif;
-    width: 730px;
-    margin-left: 50px;
-    margin-right: 50px;
-    padding: 10px;
-    border: 3px solid #d1ae8d;
-    border-radius: 10px;
-    box-sizing: border-box;
-    font-size: 16px;
-    margin-top: -10px;
-}
-
-.edit-review-words{
-    font-family: 'Poppins', sans-serif;
-    width: 730px;
-    height: 150px;
-    margin-left: 50px;
-    margin-right: 50px;
-    padding: 10px;
-    margin-top: -10px;
-    border: 3px solid #d1ae8d;
-    border-radius: 10px;
-    box-sizing: border-box;
-    font-size: 16px;
-    vertical-align: top; /* Align the text input to the top */
-}
-
 .review-title {
     font-family: 'Poppins', sans-serif;
-    width: 730px;
+    width: 700px;
     margin-left: 50px;
     margin-right: 50px;
     padding: 10px;
@@ -677,7 +521,7 @@ background-color: #717171;
 
 .review-words {
     font-family: 'Poppins', sans-serif;
-    width: 730px;
+    width: 700px;
     height: 150px;
     margin-left: 50px;
     margin-right: 50px;
@@ -711,6 +555,13 @@ margin-top: 10px;
 }
 
 
+.button-container{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin-top: -14px;
+    margin-right:52px;
+}
 
 .x{
     z-index: 3;
@@ -727,7 +578,6 @@ margin-top: 10px;
 .close {
     width: 30px; 
     height: 30px;
-    position: fixed;
 
 }
 
@@ -766,6 +616,8 @@ margin-top: 10px;
     color: #4D2D18; /* Text color */
 }
 
+
+
 .note{
     margin-top: 45px;
     position: absolute;
@@ -778,9 +630,7 @@ margin-top: 10px;
     cursor: pointer;
     height: 40px;
     width: 80px;
-    margin-left: 350px;
-    margin-top: -10px;
-    margin-bottom: 20px;
+    
     font-size: 15px;
     background-color: #d1ae8d;
     font-family: 'Poppins', sans-serif;
@@ -789,51 +639,7 @@ margin-top: 10px;
     border-radius: 5px;
 }
 
-.submit-edit{
-    position: absolute;
-    cursor: pointer;
-    height: 40px;
-    width: 80px;
-    margin-left: 350px;
-    margin-top: -20px;
-    margin-bottom: 20px;
-    font-size: 13px;
-    background-color: #d1ae8d;
-    font-family: 'Poppins', sans-serif;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    text-align: center; /* Align text to the center */
-    padding-left: 10px; /* Adjust padding for text alignment */
-    padding-right: 10px; /* Adjust padding for text alignment */
-}
-
-.button-container-delete {
-    display: flex; /* Add this line */
-    align-items: center; /* Center text vertically */
-    font-size: 14px;
-    font-weight: 600;
-    height: 30px;
-    padding: 10px 10px;
-    border-radius: 15px;
-    margin-right: 10px;
-}
-
-.button-container-delete button {
-    padding: 8px 20px;
-    background-color: #d1ae8d;
-    color: #fff;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-}
-
-.button-container-delete button:hover {
-    background-color:  gray;
-}
-
-.submit:hover,
-.submit-edit:hover{
+.submit:hover{
     background-color: gray;
 }
 
@@ -899,9 +705,7 @@ margin-top: 10px;
 }
 
 .category1,
-.category2,
-.category1-review,
-.category2-review {
+.category2 {
     width: auto; /* Adjust width dynamically based on content */
 }
 
@@ -930,10 +734,6 @@ margin-top: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.yellow {
-    color: yellow; /* Change the color to yellow or any other desired color */
 }
 
 .star-holder a {
@@ -1052,38 +852,11 @@ margin-top: 10px;
 
 
 .user-icon-container {
-    margin-right: -30px;
+    margin-right: -30px; 
     margin-left: 5px;
     margin-bottom: 10px;
     margin-top: 15px;
-}
-
-.user-button img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%; /* Make it circular */
-}
-
-.user-button img.default.scrolled {
-    content: url("../../images/usericon\ dark.png");
-    width: 50px;
-    height: 50px;
-    border-radius: 50%; /* Make it circular */
-
-}
-
-.star {
-    float: right;
-    width: 1em;
-    overflow: hidden;
-    white-space: nowrap;
-    font-size: 24px; /* Adjust size as needed */
-    color: gray; /* Default star color */
-}
-
-.star.active {
-    color: yellow; /* Active star color */
-    background-color: transparent;
+      
 }
 
 .image-upload{
@@ -1091,7 +864,7 @@ margin-top: 10px;
 }
 
 .images-container{
-    margin-top: 40px;
+    margin-top: 5px;
     display: flex;
 
 }
@@ -1124,7 +897,7 @@ margin-top: 10px;
   }
   
   .close {
-    position: fixed;
+    position: absolute;
     top: 15px;
     right: 35px;
     color: #f1f1f1;
@@ -1153,6 +926,7 @@ margin-top: 10px;
 }
 
 .user-button img.scrolled {
+    content: url("../../images/usericon\ dark.png");
     width: 50px;
     height: 50x;
 }

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>About</title>
+    <style>
+        .clout div > div{
+            border-radius: 50%;
+            width: 200px;
+            height: 200px;
+            overflow: hidden;
+        }
+        .clout img{   
+            position: relative;
+            left: -10px;
+            top: -10px;
+            width: 100%; 
+            margin: 10px;
+        }
+        .clout .dap img{
+            top: -30px;
+        }
+        .clout .mon img{
+            left: -10px;
+        }
+        .clout {
+            margin-top: 30px;
+            display: grid;
+            row-gap: 20px;
+            width: 100%;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            justify-items: center;
+        }
+
+        .clout p{
+            font-weight: bold;
+            text-align: center;
+        }
+        .box {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body class="about-body">
+    <div class="sidebar"></div>
+    <h1 style="margin-left: 70px">Developers</h1>
+    <div class="clout">
+        <div>
+            <div class="ju">
+                <img src="assets/jpg/profile2.JPG" alt="ju">
+            </div>
+            <p>Carl Justin Delos Reyes</p>
+        </div>
+        <div>
+            <div class="tashi">
+                <img src="assets/jpg/profile4.JPG" alt="tashi">
+            </div>
+            <p>Atasha Dominique Pidlaoan</p>
+        </div>
+        <div>
+            <div class="lee">
+                <img src="assets/jpg/profile1.jpg" alt="lee">
+            </div>
+            <p>Lee Brien Sandoval</p>
+        </div>
+        <div>
+            <div class="matthew">
+                <img src="assets/jpg/profile3.jpg" alt="matthew">
+            </div>
+            <p>Matthew Sanchez</p>
+        </div>
+    </div>
+    <div class="content">
+        <div>
+            <h1 style="color: #8b623b;">Cafe St.</h1>
+            <p>A food store review web application for the food stores near in DLSU. Specifically designed for Lasallians in DLSU-Manila. This project serves as a course requirement in Web Application Development (CCAPDEV).</p>
+        </div>
+        <div class="box">
+            <h1>Features</h1>
+            <ul class="list">
+                <li>View Establishments</li>
+                <ul>
+                    <li>Landing page - unregistered visitors may see a list of establishments that are featured in the web application.</li>
+                    <li>Overall rating and brief description of the establishment must be easily viewed/accessible from the list.</li>
+                </ul>
+                <li>View an establishment's reviews</li>
+                <ul>
+                    <li>Establishment specific - unregistered visitor may see the top reviews.</li>
+                    <li>The user can also see the next set of top reviews.</li>
+                    <li>Reviews can be long, so some of the text in the preview could be truncated.</li>
+                    <li>Clicking the review will let the user view the review in full detail.</li>
+                    <li>Reviews should also include how many registered users found the review helpful/unhelpful.</li>
+                </ul>
+                <li>Register</li>
+                <ul>
+                    <li>A visitor must register if they want to post a review.</li>
+                    <li>Registration - username, password, avatar, and a short description.</li>
+                </ul>
+                <li>Login</li>
+                <ul>
+                    <li>Login page - after registration, user must login.</li>
+                    <li>Once logged in, user can start posting reviews.</li>
+                    <li>The user can set the login info to be remembered by the website.</li>
+                    <li>Once remembered, every login and visit to the website will extend their "remember" period by 3 weeks.</li>
+                </ul>
+                <li>Logout</li>
+                <ul>
+                    <li>Logout function - return to landing page.</li>
+                    <li>Cut short the "remember" period if it exists, and clears any session-related data.</li>
+                </ul>
+                <li>View a user profile</li>
+                <ul>
+                    <li>Profile page (from visitor's POV) - each user has their own page, which shows their profile publicly.</li>
+                    <li>Contains username, profile picture, and short description.</li>
+                    <li>The visitor may see a portion of the user's latest reviews and comments.</li>
+                    <li>The visitor may see the rest of the posts and comments of the user.</li>
+                </ul>
+                <li>Edit profile</li>
+                <ul>
+                    <li>Profile page (from user's POV) - logged-in user can add/modify a profile picture and provide a short description.</li>
+                </ul>
+                <li>Create a review</li>
+                <ul>
+                    <li>Review page - logged in user can create a review on a selected establishment.</li>
+                    <li>Give a title and the body of the review.</li>
+                    <li>Rating must be given by the reviewer.</li>
+                    <li>Users must also be allowed to attach media to their review.</li>
+                    <li>Additional points will be given for allowing markup (e.g., rich text editing) without the risk of cross site-scripting.</li>
+                </ul>
+                <li>Mark as Helpful/Unhelpful</li>
+                <ul>
+                    <li>A logged in user can mark a review as either helpful/unhelpful once.</li>
+                </ul>
+                <li>Edit/Delete a review</li>
+                <ul>
+                    <li>The owner of the review may edit their review at any point.</li>
+                    <li>Edited review will have an indication that it has been edited.</li>
+                    <li>The owner of the post may delte their review.</li>
+                </ul>
+                <li>Search Establishments / Reviews</li>
+                <ul>
+                    <li>Search function - A visitor can search for establishments by similarities in the name or the description.</li>
+                    <li>Entering a search phrase/word, all establishment containing the keyword/phrase will appear.</li>
+                    <li>Visitors may also filter based on its overall rating.</li>
+                    <li>Visitors can search on an establishment based on the review's title or body.</li>
+                </ul>
+                <li>Establishment owner response</li>
+                <ul>
+                    <li>Account role function - establishment owner.</li>
+                    <li>Does not need to be integrated with the register system. Can be created manually by the database admin.</li>
+                    <li>Establishment owner accounts are tied to a single establishment and can respond to reviews.</li>
+                </ul>
+            </ul>
+        </div>
+        <div class="box">
+            <h1>Node Framework Used</h1>
+            <h3>Express</h3>
+            <ul class="list nb">
+                <li>Express.js, commonly known as Express, is a minimal and flexible web application framework for Node.js. It is one of the most popular frameworks for building web applications and APIs with Node.js. Express.js provides a set of robust features and tools that simplify the process of building web servers and handling HTTP requests and responses.</li>
+            </ul>
+        </div>
+        <div class="box">
+            <h1>Packages Used</h1>
+            <ul class="list nb">
+                <li>express-handlebars</li>
+                <li>express-session</li>
+                <li>express-validator</li>
+                <li>multer</li>
+                <li>dotenv</li>
+                <li>cors</li>
+                <li>path</li>
+                <li>mongoose</li>
+                <li>body-parser</li>
+                <li>express-handlebars</li>
+                <li>connect-mongo</li>
+                <li>cookie-parser</li>
+            </ul>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script type="module">
+        $('document').ready(function(){
+            
+            // SIDEBAR FUNCTIONALITY
+            $('.sidebar').load('/side-bar');
+        });
+    </script>
+</body>
+</html>

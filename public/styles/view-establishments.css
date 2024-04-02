@@ -326,18 +326,42 @@ hr{
     font-size: 14px;
 }
 
-.star {
-    float: right;
-    width: 1em;
-    overflow: hidden;
-    white-space: nowrap;
-    font-size: 24px; /* Adjust size as needed */
-    color: gray; /* Default star color */
+.ratings:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
 }
 
-.star.active {
-    color: yellow; /* Active star color */
-    background-color: transparent;
+.ratings:not(:checked) > label {
+    float:right;
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:30px;
+    color:#ccc;
+}
+
+.ratings:not(:checked) > label:before {
+    content: '★ ';
+}
+
+
+
+.ratings > input:checked ~ label {
+    color: #ffc700;    
+}
+
+.ratings:not(:checked) > label:hover,
+.ratings:not(:checked) > label:hover ~ label {
+    color: #deb217;  
+}
+
+.ratings > input:checked + label:hover,
+.ratings > input:checked + label:hover ~ label,
+.ratings > input:checked ~ label:hover,
+.ratings > input:checked ~ label:hover ~ label,
+.ratings > label:hover ~ input:checked ~ label {
+    color: #c59b08;
 }
 
 .unit3 {
@@ -492,14 +516,11 @@ button {
     height: 50px;
 }
 
-.user-button img.default.scrolled {
+.user-button img.scrolled {
     content: url("../../images/usericon\ dark.png");
     width: 50px;
-    height: 50px;
-    border-radius: 50%; /* Make it circular */
-
+    height: 50x;
 }
-
 
 .logo-name {
     display: flex;

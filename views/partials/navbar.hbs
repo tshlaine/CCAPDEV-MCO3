@@ -1,0 +1,62 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Navbar</title>
+    <style>
+      .user-button img { border-radius: 50%; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div id="navbar" class="navbar">
+        <img src="/images/Logo.png" class="cafestlogo" alt="Cafe St. Logo" />
+        <a href="#" class="webname">
+          <span class="cafe">Cafe</span>
+          <span class="st"> St.</span>
+        </a>
+        <ul>
+          <li id="home-link"><a
+              href="/index?username={{username}}"
+            >Home</a></li>
+          <li><a
+              href="/view-establishments?username={{username}}"
+            >Profile</a></li>
+
+          {{#if username}}
+            <li><a href="/logout">Log Out</a></li>
+          {{else}}
+            <li><a href="/login">Log In</a></li>
+          {{/if}}
+        </ul>
+        <div class="user-icon-container">
+          <div class="dropdown">
+            <button class="user-button" onclick="toggleDropdown()">
+              <img src="{{pic}}" alt="User Icon" id="icon" class="user" />
+            </button>
+            <div class="dropdown-content" id="dropdownContent">
+              {{#if username}}
+                <a href="/profile?username={{username}}">View Profile</a>
+              {{else}}
+                <a href="/login?page=signup">Sign Up</a>
+              {{/if}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <script>
+      function toggleDropdown() { var dropdownContent =
+      document.getElementById("dropdownContent"); if
+      (dropdownContent.style.display === "block") {
+      dropdownContent.style.display = "none"; } else {
+      dropdownContent.style.display = "block"; } }
+    </script>
+    <script>
+      document.getElementById('profile-page').addEventListener('click',function(){
+      alert('Please login first.'); });
+    </script>
+
+  </body>
+</html>

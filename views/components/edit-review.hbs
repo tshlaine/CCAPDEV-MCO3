@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Add Page</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="../public/style.css">
+    </head>
+    <body>
+        <div class="compose-container">
+            <div class="compose-header">
+                <h4>Edit Your Review for {{restaurant}}</h4>
+                <span class="close clickable"><strong>x</strong></span>
+            </div>
+            <form action="/submit-edit" method="POST" enctype="multipart/form-data">
+                <div class="compose-subject">
+                    <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+                    width="70.000000pt" height="30.000000pt" viewBox="0 0 2560.000000 512.000000"
+                    preserveAspectRatio="xMidYMid meet" fill="#595959">
+                        <g class="flag-1 green-flag clickable" transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
+                        stroke="none" fill="#595959">
+                        <path d="M4275 5010 c-130 -131 -243 -214 -380 -280 -324 -156 -666 -190
+                        -1305 -130 -118 11 -287 27 -375 36 -674 64 -1079 -1 -1412 -225 -115 -78
+                        -226 -179 -220 -200 3 -9 159 -565 346 -1236 188 -671 348 -1244 357 -1273
+                        l15 -54 52 49 c177 168 395 281 647 336 289 64 556 64 1215 -2 306 -31 566
+                        -44 710 -37 482 25 790 150 1067 434 95 97 118 137 118 207 0 52 8 46 -193
+                        156 -135 73 -335 204 -469 306 -145 110 -307 251 -320 278 -8 18 1 69 45 252
+                        111 453 194 893 246 1294 31 238 14 248 -144 89z"/>
+                        <path d="M158 4241 c-93 -30 -153 -110 -152 -201 1 -40 148 -578 547 -2004
+                        594 -2121 552 -1987 634 -2022 45 -20 75 -18 168 11 109 33 155 83 155 168 0
+                        18 -245 910 -545 1982 -439 1571 -550 1958 -572 1989 -16 22 -46 48 -67 59
+                        -43 23 -126 31 -168 18z"/>
+                        </g>
+
+                        <g class="flag-2 green-flag clickable" transform="translate(512.000000,512.000000) scale(0.100000,-0.100000)"
+                        fill="#000000" stroke="none">
+                        <path d="M4275 5010 c-130 -131 -243 -214 -380 -280 -324 -156 -666 -190
+                        -1305 -130 -118 11 -287 27 -375 36 -674 64 -1079 -1 -1412 -225 -115 -78
+                        -226 -179 -220 -200 3 -9 159 -565 346 -1236 188 -671 348 -1244 357 -1273
+                        l15 -54 52 49 c177 168 395 281 647 336 289 64 556 64 1215 -2 306 -31 566
+                        -44 710 -37 482 25 790 150 1067 434 95 97 118 137 118 207 0 52 8 46 -193
+                        156 -135 73 -335 204 -469 306 -145 110 -307 251 -320 278 -8 18 1 69 45 252
+                        111 453 194 893 246 1294 31 238 14 248 -144 89z"/>
+                        <path d="M158 4241 c-93 -30 -153 -110 -152 -201 1 -40 148 -578 547 -2004
+                        594 -2121 552 -1987 634 -2022 45 -20 75 -18 168 11 109 33 155 83 155 168 0
+                        18 -245 910 -545 1982 -439 1571 -550 1958 -572 1989 -16 22 -46 48 -67 59
+                        -43 23 -126 31 -168 18z"/>
+                        </g>
+
+                        <g class="flag-3 green-flag clickable" transform="translate(1024.000000,512.000000) scale(0.100000,-0.100000)"
+                        fill="#000000" stroke="none">
+                        <path d="M4275 5010 c-130 -131 -243 -214 -380 -280 -324 -156 -666 -190
+                        -1305 -130 -118 11 -287 27 -375 36 -674 64 -1079 -1 -1412 -225 -115 -78
+                        -226 -179 -220 -200 3 -9 159 -565 346 -1236 188 -671 348 -1244 357 -1273
+                        l15 -54 52 49 c177 168 395 281 647 336 289 64 556 64 1215 -2 306 -31 566
+                        -44 710 -37 482 25 790 150 1067 434 95 97 118 137 118 207 0 52 8 46 -193
+                        156 -135 73 -335 204 -469 306 -145 110 -307 251 -320 278 -8 18 1 69 45 252
+                        111 453 194 893 246 1294 31 238 14 248 -144 89z"/>
+                        <path d="M158 4241 c-93 -30 -153 -110 -152 -201 1 -40 148 -578 547 -2004
+                        594 -2121 552 -1987 634 -2022 45 -20 75 -18 168 11 109 33 155 83 155 168 0
+                        18 -245 910 -545 1982 -439 1571 -550 1958 -572 1989 -16 22 -46 48 -67 59
+                        -43 23 -126 31 -168 18z"/>
+                        </g>
+
+                        <g class="flag-4 green-flag clickable" transform="translate(1536.000000,512.000000) scale(0.100000,-0.100000)"
+                        fill="#000000" stroke="none">
+                        <path d="M4275 5010 c-130 -131 -243 -214 -380 -280 -324 -156 -666 -190
+                        -1305 -130 -118 11 -287 27 -375 36 -674 64 -1079 -1 -1412 -225 -115 -78
+                        -226 -179 -220 -200 3 -9 159 -565 346 -1236 188 -671 348 -1244 357 -1273
+                        l15 -54 52 49 c177 168 395 281 647 336 289 64 556 64 1215 -2 306 -31 566
+                        -44 710 -37 482 25 790 150 1067 434 95 97 118 137 118 207 0 52 8 46 -193
+                        156 -135 73 -335 204 -469 306 -145 110 -307 251 -320 278 -8 18 1 69 45 252
+                        111 453 194 893 246 1294 31 238 14 248 -144 89z"/>
+                        <path d="M158 4241 c-93 -30 -153 -110 -152 -201 1 -40 148 -578 547 -2004
+                        594 -2121 552 -1987 634 -2022 45 -20 75 -18 168 11 109 33 155 83 155 168 0
+                        18 -245 910 -545 1982 -439 1571 -550 1958 -572 1989 -16 22 -46 48 -67 59
+                        -43 23 -126 31 -168 18z"/>
+                        </g>
+                        
+                        <g class="flag-5 gray-flag clickable" transform="translate(2048.000000,512.000000) scale(0.100000,-0.100000)"
+                        fill="#000000" stroke="none">
+                        <path d="M4275 5010 c-130 -131 -243 -214 -380 -280 -324 -156 -666 -190
+                        -1305 -130 -118 11 -287 27 -375 36 -674 64 -1079 -1 -1412 -225 -115 -78
+                        -226 -179 -220 -200 3 -9 159 -565 346 -1236 188 -671 348 -1244 357 -1273
+                        l15 -54 52 49 c177 168 395 281 647 336 289 64 556 64 1215 -2 306 -31 566
+                        -44 710 -37 482 25 790 150 1067 434 95 97 118 137 118 207 0 52 8 46 -193
+                        156 -135 73 -335 204 -469 306 -145 110 -307 251 -320 278 -8 18 1 69 45 252
+                        111 453 194 893 246 1294 31 238 14 248 -144 89z"/>
+                        <path d="M158 4241 c-93 -30 -153 -110 -152 -201 1 -40 148 -578 547 -2004
+                        594 -2121 552 -1987 634 -2022 45 -20 75 -18 168 11 109 33 155 83 155 168 0
+                        18 -245 910 -545 1982 -439 1571 -550 1958 -572 1989 -16 22 -46 48 -67 59
+                        -43 23 -126 31 -168 18z"/>
+                        </g>
+                    </svg>
+                    <input type="text" class="subject" name="subject" placeholder="Subject" value="{{subjectValue}}">
+                </div>
+                <textarea class="message" name="message" rows="6" placeholder="Share your thought">{{messageValue}}</textarea>
+                <div class="review-uploads" style="display:none">
+                    <img src="" alt="upload">
+                    <img src="" alt="upload">
+                    <img src="" alt="upload">
+                    <img src="" alt="upload">
+                </div>
+                <div class="add-icons">
+                    {{!-- <img src="../assets/png/attach.png" class="attach clickable" alt="attach"> --}}
+                    <div class = "attach">Images cannot be edited</div>
+                    <button name="submit-create-review" type="submit" value="Submit" class="clickable"><img src="../assets/png/post.png"  class="send clickable" alt="send"></button>
+                </div>
+
+                <input type="text" name="rating" value="{{ratingValue}}" class="review-rating" style="display:none;">
+                <input type="text" name="reviewId" value="{{reviewId}}" style="display:none;">
+                <input id="revUpload2" style="display: none" name="revUploads" type="file" accept="image/*" multiple>
+            </form>
+        </div>
+        <!-- JQuery Lib -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+        <script src="../src/index.js"></script>
+        <script>
+            var rating = {{ratingValue}};
+            setInterval(function(){
+                $('form svg .flag-1').on('click', function(){
+                    rating = 1;
+                    $('form .review-rating').val(1);
+                })
+                $('form svg .flag-2').on('click', function(){
+                    rating = 2;
+                    $('form .review-rating').val(2);
+                })
+                $('form svg .flag-3').on('click', function(){
+                    rating = 3;
+                    $('form .review-rating').val(3);
+                })
+                $('form svg .flag-4').on('click', function(){
+                    rating = 4;
+                    $('form .review-rating').val(4);
+                })
+                $('form svg .flag-5').on('click', function(){
+                    rating = 5;
+                    $('form .review-rating').val(5);
+                })
+
+                for(var i = 0; i < 5; i++){
+                    if(i < rating){
+                        if(rating < 3){
+                            $('form svg .flag-' + (i + 1)).css('fill', '#800037');
+                        } else {
+                            $('form svg .flag-' + (i + 1)).css('fill', '#008037');
+                        }
+                    }else{
+                        $('form svg .flag-' + (i + 1)).css('fill', '#595959');
+                    }
+                }
+            }, 100);
+
+            const pseudoBtn2 = $('.compose-container form .add-icons .attach');
+            const picUploadBtn2 = $('#revUpload2');
+            const img2 = $('.review-uploads');
+            const reader2 = new FileReader();
+            function handleImagePreview(file) {
+                const reader2 = new FileReader();
+                const imgElement2 = document.createElement('img');
+                imgElement2.classList.add('img-preview');
+
+                reader2.onload = function(e) {
+                    imgElement2.src = e.target.result;
+                }
+
+                reader2.readAsDataURL(file);
+
+                return imgElement2;
+            }
+
+            pseudoBtn2.on('click', function(){
+                picUploadBtn2.click();
+            });
+
+            picUploadBtn2.on('change', function(){
+                var files = [...this.files].slice(0,4);
+                //console.log(files);
+                img2.empty(); // Clear previous previews
+
+                // Loop through selected files and create image previews for each one
+                for (let i = 0; i < 4; i++) {
+                    const file = files[i];
+                    const imgElement = handleImagePreview(file);
+                    img2.append(imgElement);
+                }
+                img2.css('display', 'flex');
+            });
+
+            // Close "compose review" window
+            $(document).on('click', '.close.clickable', function() {
+                $('.cover-edit').fadeOut(function() {
+                    $(this).remove();
+                });
+
+                $('.edit-card').fadeOut(function() {
+                    $(this).remove();
+                });
+
+                $('body').css('overflow', 'initial');
+            });
+        </script>
+    </body>
+</html>

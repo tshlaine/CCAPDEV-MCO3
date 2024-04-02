@@ -97,7 +97,6 @@
   background-color: rgba(209, 174, 141, 0.8);
 }
 
-
 .dot-container {
   margin-left: 50px;
   position: relative;
@@ -161,8 +160,8 @@
   position: absolute;
   font-size: 10px;
   text-decoration: none;
-  margin-top: 43px;
-  bottom: 30px;
+  margin-top: 38px;
+  bottom: 40px;
   left: 38px;
   width: 300px;
 }
@@ -271,7 +270,6 @@
   transition: background-color 0.3s ease-in-out;
 }
 
-
 ul {
   margin-left: 350px;
   list-style: none;
@@ -364,12 +362,10 @@ ul li:not(:last-child)::after {
   height: 50px;
 }
 
-.user-button img.default.scrolled {
+.user-button img.scrolled {
   content: url("../../images/usericon\ dark.png");
   width: 50px;
-  height: 50px;
-  border-radius: 50%; /* Make it circular */
-
+  height: 50x;
 }
 
 .upperpanel {
@@ -377,7 +373,7 @@ ul li:not(:last-child)::after {
   position: absolute;
   width: 100%;
   height: 500px;
-  margin-top: 60px;
+  /* margin-top: 60px; */
   margin-left: -10px;
 }
 
@@ -670,10 +666,11 @@ hr {
 
 .cafelists2 {
   display: flex;
-  margin-top: 550px;
+  margin-top: 700px;
   position: absolute;
   margin-left: 0px;
   margin-right: 50px;
+  flex-flow: row wrap;
 }
 
 .lowernavbar {
@@ -950,7 +947,7 @@ hr {
   margin-top: 590px;
   position: absolute;
   margin-bottom: 50px;
-  margin-left: 0px;
+  margin-left: 15px;
   font-weight: 800;
 }
 
@@ -961,7 +958,7 @@ hr {
   font-size: 17px;
   margin-top: 640px;
   margin-bottom: 50px;
-  margin-left: 0px;
+  margin-left: 15px;
 }
 
 .cafe2headercl2 {
@@ -1183,7 +1180,6 @@ hr {
 }
 
 .logo-tomo {
-
   position: relative;
 }
 
@@ -1291,7 +1287,6 @@ hr {
   margin-left: 80px;
   margin-right: 110px;
   align-content: center;
-  
 }
 
 .logo-sb img {
@@ -1438,12 +1433,10 @@ hr {
   font-size: 13px;
   text-decoration: none;
   margin-top: 5px;
- 
-
 }
 
 .sb {
-  position:relative;
+  position: relative;
   font-weight: 800;
   font-family: "Poppins", sans-serif;
   color: #4d2d18;
@@ -1640,7 +1633,7 @@ hr {
 
 .view-establishment-sb {
   font-weight: bold;
-  
+
   color: #4d2d18;
   font-family: "Poppins", sans-serif;
   font-size: 12px;
@@ -1662,6 +1655,7 @@ hr {
   background-color: #d1ae8d;
 }
 
+.resto:hover,
 .location:hover,
 .name:hover,
 .loc:hover,
@@ -1679,7 +1673,9 @@ hr {
 .studentplace:hover,
 .view-establishment-cloudscape:hover,
 .view-establishment-tomo:hover,
-.view-establishment-sb:hover {
+.view-establishment-sb:hover,
+.sb:hover,
+.greencourt:hover {
   text-decoration: underline;
   color: white;
 }

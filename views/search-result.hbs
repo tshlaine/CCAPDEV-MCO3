@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+     <link rel="icon" type="image/png" href="/assets/Cafe St Logo.PNG">
+    <title>Search</title>
+</head>
+<body class="search-result">
+    <div class="sidebar"></div>
+    
+    <div class="resto-result">
+        <div class="header">
+            <h1>Restaurants</h1>
+            <label for="filter">Filter by rating</label>
+            <select name="filter" id="filter-rating">
+                <option value="5">5.0</option>
+                <option value="4">4.0 &amp; Up</option>
+                <option value="3">3.0 &amp; Up</option>
+                <option value="2">2.0 &amp; Up</option>
+                <option value="1">1.0 &amp; Up</option>
+                <option value="0" selected>All</option>
+            </select>
+        </div>
+        <div class="results">
+            <p>No restaurants matched.</p>
+        </div>
+    </div>
+    <div class="review-result">
+        <div class="header">
+            <h1>Reviews</h1>
+        </div>
+        <div class="results">
+            <p>No reviews matched.</p>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script type="module">
+        $(document).ready(function() {
+            $('.sidebar').load('/side-bar');
+
+            var searchQuery = '{{ search }}';
+            var restaurants = [{{{restaurants}}}];
+            var reviews = [{{{reviews}}}];
+            restaurants = restaurants[0];
+            reviews = reviews[0];
+            console.log(reviews);
+            console.log(restaurants);
+            console.log(restaurants.length);
+            if (restaurants.length > 0){
+                $('.resto-result .results').empty();
+                for (let i = 0; i < restaurants.length; i++) {
+                    $('.resto-result .results').append($('<a class="store-prev-cards '+i+'" href="/"></a>').load('/store-prev', {post: restaurants[i], cardNum: i}));
+                }
+            } else {
+                $('.resto-result .results').empty();
+                $('.resto-result .results').append($('<p>No restaurants matched.</p>'));
+            }
+
+            if (reviews.length > 0){
+                $('.review-result .results').empty();
+                for (let i = 0; i < reviews.length; i++) {
+                    $('.review-result .results').append($('<a class="rev-con-self '+i+'" href="/"></a>').load('/review-card', {post: reviews[i], cardNum: i}));
+                }
+            } else {
+                $('.review-result .results').empty();
+                $('.review-result .results').append($('<p>No reviews matched.</p>'));
+            }
+
+            function fetchData(filterText, searchQuery) {
+                fetch('/filter', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ filterText, searchQuery }),
+                }).then(res => res.json())
+                .then(result => {
+                    if (result.length > 0){
+                        $('.resto-result .results').empty();
+                        for (let i = 0; i < result.length; i++) {
+                            $('.resto-result .results').append($('<a class="store-prev-cards '+i+'" href="/"></a>').load('/store-prev', {post: result[i], cardNum: i}));
+                        }
+                    } else {
+                        $('.resto-result .results').empty();
+                        $('.resto-result .results').append($('<p>No restaurants matched.</p>'));
+                    }
+                })
+            }
+
+            $('.resto-result select').change(function() {
+                var filterText = $(this).val();
+                console.log(filterText);
+                console.log(searchQuery);
+                fetchData(filterText, searchQuery);
+            })
+        });
+    </script>
+</body>
+</html>

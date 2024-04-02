@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="icon" href="assets/ico/favicon.ico" type="image/x-icon">
+    <title>{{storeName}}</title>
+    
+</head>
+<body>
+    <div class="sidebar"></div>
+
+    <div class="store-container">
+        <div class="left">
+            <div class="left-top"></div>
+            <button class="add-review-btn left-bot clickable">+ Add Review</button>
+        </div>
+        <div class="center"></div>
+        <div class="right"></div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script type="module">
+        $(document).ready(function(){
+            $(".sidebar").load("/side-bar");
+
+            var restaurantInfo = {{{ restaurantInfo }}};
+
+            $(".store-container .left-top").load('/resto-card', {post: restaurantInfo});
+
+            var listOfReviews = [{{{ reviews }}}];
+            listOfReviews = listOfReviews[0];
+            for (let i = 0; i < listOfReviews.length; i++){
+                $('.store-container .right').append($('<div class="rev-con-self '+ (i+1) +'"></div>').load('/review-card', {post: listOfReviews[i], cardNum: i+1}));
+            }
+
+            // SHOW COMPOSE REVIEW CARD 
+            var viewer = "{{viewer}}";
+            var isOwner = {{isOwner}};
+            if(viewer){
+                $(".add-review-btn").on("click", function (){
+                    $('body').append($('<div class="cover" style="position: absolute; top: 0; z-index: 4; width: 100vw; height: 100vh; background-color: black; opacity: 0.5; display: none;"></div>'))
+                    setTimeout(function(){
+                        $('body').append($('<div class="compose" style="display: none; position: relative; z-index: 5;"></div>').load('/create-review', {post: restaurantInfo}))
+                    }, 100);
+
+                    setTimeout(function(){
+                        $('.cover').fadeIn();
+                        $('.compose').fadeIn();
+                    }, 100);
+                    
+                    setTimeout(function(){
+                        let x = $('.compose-header span');
+                        
+                        x.on('click', function(){
+                            $('.cover').remove();
+                            $('.compose').remove();
+                            $('body').css("display","initial");
+                        });
+                    }, 300);
+                })
+
+                if (isOwner){
+                    setTimeout(function(){
+                        $('.review-card .reply').css('display',"flex");
+                        $('.add-review-btn').css('display', "none");
+                    }, 300);
+                }
+            } else {
+                $(".add-review-btn").on("click", function (){
+                    window.location.href = "/login";
+                })
+            }
+        });
+    </script>
+</body>
+</html>
