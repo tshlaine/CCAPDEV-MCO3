@@ -14,13 +14,11 @@ import MongoStore from "connect-mongo";
 import multer from "multer";
 import cookieParser from "cookie-parser";
 import { check } from "express-validator";
-/**
- * Import local dependencies
- */
-/**** MODELS ****/
+
+/* MODELS */
 // import { connectToMongo } from "./db/conn.js";
 import Review from "./models/Review.js";
-/**** CONTROLLERS ****/
+/* CONTROLLERS */
 import componentsControl from "./controllers/componentsControl.js";
 import indexControl from "./controllers/indexControl.js";
 import signUpControl from "./controllers/signUpControl.js";
@@ -31,9 +29,7 @@ import forgotPasswordControl from "./controllers/forgotPasswordControl.js";
 import storeControl from "./controllers/storeControl.js";
 import searchControl from "./controllers/searchControl.js";
 import { insertUsers } from "./data/users.data.js";
-/**
- * Initiliaze express app
- */
+
 const app = express();
 
 /**
@@ -48,7 +44,7 @@ app.engine("hbs", exphbs.engine({ extname: "hbs" }));
 app.set("view engine", "hbs");
 app.set("views", "./views");
 
-/**** FILE UPLOAD ****/
+/* FILE UPLOAD */
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     let subFolder = "";
@@ -83,7 +79,7 @@ const uploadReview = multer({
   },
 });
 
-/**** SESSION ****/
+/* SESSION */
 const sessionStore = MongoStore.create({
   mongoUrl: "mongodb+srv://apdevmco:group4@cluster0.jwd8ijh.mongodb.net/",
   ttl: 21 * 24 * 60 * 60,
@@ -96,9 +92,9 @@ app.use(
     saveUninitialized: true,
     store: sessionStore,
     cookie: {
-      maxAge: 0, // Set the cookie to expire when the browser is closed
+      maxAge: 0, 
       expires: false,
-      httpOnly: true, // Set HttpOnly flag
+      httpOnly: true, 
     },
   })
 );
@@ -110,7 +106,7 @@ app.use(
 /**
  * Controller
  */
-/**** COMPONENTS ****/
+/* COMPONENTS */
 app.get("/side-bar", componentsControl.showSideBar);
 app.get("/location-card", componentsControl.showLocationCard);
 app.post("/store-prev", componentsControl.showStorePrev);
@@ -149,21 +145,21 @@ app.post(
   ],
   signUpControl.submitSignUpForm
 );
-/**** LOG IN ****/
+/* LOG IN */
 app.get("/login", logInControl.showLogInForm);
 app.post(
   "/login",
   [check("emailLogin").isEmail()],
   logInControl.submitLogInForm
 );
-/**** FORGOT PASSWORD ****/
+/* FORGOT PASSWORD */
 app.get("/forgot-password", forgotPasswordControl.showForgotPassword);
 app.post("/forgot-password", forgotPasswordControl.submitForgotPassword);
-/**** LOG OUT ****/
+/* LOG OUT */
 app.get("/logout", logOutControl.endSession);
-/**** PROFILE ****/
+/* PROFILE */
 app.get("/profile/:userName", profileControl.showProfile);
-/**** EDIT PROFILE ****/
+/* EDIT PROFILE */
 app.get("/edit-profile", profileControl.showEditProfile);
 app.post(
   "/edit-profile",
@@ -175,9 +171,9 @@ app.post(
   ],
   profileControl.submitEditProfile
 ); //FILE UPLOAD
-/**** STORE ****/
+/* STORE */
 app.get("/store/:restaurantName", storeControl.showStore);
-/**** SEARCH RESULT ****/
+/* SEARCH RESULT */
 app.post("/search", searchControl.showSearch);
 app.post("/filter", searchControl.filterControl);
 app.put("/like", async (req, res) => {
