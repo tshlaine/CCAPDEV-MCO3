@@ -7,7 +7,7 @@ const profileControl = {
     const user2 = req.params.userName;
     await User.findOne({
       email: user2,
-    }).then(async (user) => {
+    }).then(async user => {
       var userLoggedIn = req.session.user;
 
       var userSesh = null;
@@ -43,6 +43,7 @@ const profileControl = {
         path: "restaurant",
         select: "bannerPic name",
       });
+
       reviewsByUser.sort((a, b) => {
         return b.helpfulCount - a.helpfulCount;
       });
@@ -55,7 +56,7 @@ const profileControl = {
 
       const totalImages = reviewsByUser.reduce((total, review) => {
         // Iterate through each image property in the 'images' object and check if it's not null
-        Object.values(review.images).forEach((image) => {
+        Object.values(review.images).forEach(image => {
           if (image != "") {
             total++;
           }
@@ -63,7 +64,7 @@ const profileControl = {
         return total;
       }, 0);
 
-      reviewsByUser = reviewsByUser.map((review) => {
+      reviewsByUser = reviewsByUser.map(review => {
         return {
           allData: JSON.stringify(review),
           _id: review._id,
@@ -81,11 +82,13 @@ const profileControl = {
           user: review.user,
           restaurant: review.restaurant,
           reply: review.reply,
+          isSelf,
           likeList: review.likeList,
           dislikeList: review.dislikeList,
         };
       });
-      res.render("profile", {
+      await res.render("profile", {
+        currentIndex: req.query.index,
         firstName: user?.firstName,
         lastName: user?.lastName,
         email: user?.email,
@@ -97,7 +100,7 @@ const profileControl = {
         biography: user?.biography,
         profilePic: user?.profilePic,
         reviews: reviewsByUser,
-        isSelf: isSelf,
+        isSelf: "isSelf",
       });
     });
   },

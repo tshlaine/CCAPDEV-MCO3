@@ -215,6 +215,7 @@
             <path d="M6.55566 14.888V1.00003" stroke="white" stroke-width="2" />
           </svg>
           <span class="dislike-count">{{unhelpfulCount}}</span>
+             {{#if resto.isSelf}}
            <div class="edit_delete" >
             <svg
               data-value="{{resto.allData}}"
@@ -257,6 +258,7 @@
               />
             </svg>
           </div>
+          {{/if}}
         </div>
         <div class="buttons-right">
           {{!-- <div class="date">
