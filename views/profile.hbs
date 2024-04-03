@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="/styles/profile.css">
     <script src="/script/profile.js" defer></script>
     <link rel="stylesheet" href="../../style.css">
-    <link rel="icon" type="image/png" href="/assets/Cafe St Logo.PNG">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <script>
         function sample(id,rating){
@@ -66,6 +65,7 @@
                 <span class="helpful-count bold">{{helpfulCount}}</span>&nbsp;people found their reviews helpful
                 <br>Member since &nbsp;<span class="member-since-date bold">{{dateMade}}</span>
              <br><br>
+             {{#if isSelf}}
             <button type="button" class="add-review-btn" onclick="openEditPopup()">
                 Edit Profile
             </button>
@@ -74,6 +74,8 @@
                     Log Out
                 </button>
             </a>
+            {{/if}}
+
         </div>
     </div>
 
