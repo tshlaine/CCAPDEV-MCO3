@@ -30,13 +30,20 @@ span {
 }
 
 .logo {
-  width: 10%;
-  min-width: 150px;
-  max-width: 250px;
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  z-index: 3;
+  display: inline-block; /* Display as inline-block */
+  vertical-align: middle; /* Vertically align to middle */
+  margin-right: 5px; /* Adjust margin as needed */
+}
+
+.logo img {
+  width: 100px; /* Set width of the logo image */
+  height: auto; /* Maintain aspect ratio */
+}
+
+.developers {
+  display: inline-block; /* Display as inline-block */
+  vertical-align: middle; /* Vertically align to middle */
+  margin: 0; /* Remove default margin */
 }
 
 .sidebar {
