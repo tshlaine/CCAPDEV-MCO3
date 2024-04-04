@@ -29,7 +29,7 @@ Owner Credentials:
    - Username: tomo@gmail.com
    - Username: starbucks@gmail.com
    - Username: bean@gmail.com
-     Password for all owners: ap
+   - Password for all owners: ap
 
 User Credential:
    - Username: lee_sandoval@dlsu.edu.ph
