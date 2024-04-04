@@ -2,14 +2,14 @@
 ## Introduction
 - Welcome to Cafe St!, a comprehensive cafe review web application that showcases Cafe's around (DLSU) Manila. Developed as part of the Web Application Development course (CCAPDEV) at DLSU.
 
-## Contributors
+## Developers
 - Delos Reyes, Carl
 - Pidlaoan, Atasha Dominique
 - Sandoval, Lee Brien
 - Sanchez, Matthew
 
 
-## Web App Setup Instructions
+## Web App Setup
 (Optional) Go to  (deployed link)
 1. Download the files and make sure all the files are in the same folder.
 2. Open your terminal
@@ -19,6 +19,6 @@
 - If there was an error, try downloading the modules.
 5. Run localhost:3000 or click the link that can be seen at 4.1
 6. Enter these credentials or you can register your own account:
-   Username: lee_sandoval@dlsu.edu.ph
-   Password: lbvs
+   - Username: lee_sandoval@dlsu.edu.ph
+   - Password: lbvs
 
