@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/styles/index.css">
     <script src="/script/index.js" defer></script>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/png" href="/assets/Cafe St Logo.PNG">
+    <link rel="icon" type="image/png" href="/./assets/png/attach.png">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <script>
         
@@ -60,10 +60,7 @@
             <p class = "tagline">Find the best cafe for you,<br>
                 <span class="dlsu">around De La Salle University</span>
             </p>
-            <div class = "button">
-                <button class = "explore"  onclick="scrollToSection()">Explore</button>
-
-            </div>
+            
         </div>
         <img class = "designdot" src="/./assets/png/dots.png">
         <img class = "designdot2" src="/./assets/png/dots.png">
@@ -93,9 +90,13 @@
             </div>
         </div>
     </div>
+    <div class = "button">
+                <button class = "explore"  onclick="scrollToSection()">Explore</button>
+
+            </div>
                 <p class = "Discover">Discover Cafes That Embrace Your Study Sessions &#128218;</p>
                 <p class="student-friendly">Cafe with Quiet ambiance, free Wi-Fi, and delicious drinks to fuel your focus </p>
-                 <div class = "cafelists2">
+                 <div id="cafelists2" class = "cafelists2">
             
                 {{#each restaurants}}
                 

@@ -119,7 +119,12 @@ window.addEventListener("scroll", () => {
 });
 
 function scrollToSection() {
-  document.getElementById("lowerpanel").scrollIntoView({ behavior: "smooth" });
+  const cafelist = document.getElementById("cafelists2");
+  if (cafelist) {
+      cafelist.scrollIntoView({ behavior: "smooth" });
+  } else {
+      console.log("Element 'cafelists2' not found");
+  }
 }
 
 const view = document.getElementById("view");
