@@ -15,10 +15,10 @@
 2. Open your terminal
 3. Run npm install (To install the necessary modules)
 4. Run npm start
-   4.1 It will display a message "App started at http://localhost:3000"
-   4.2 If there was an error, try downloading the modules.
-4. Run localhost:3000 or click the link that can be seen at 4.1
-5. Enter these credentials or you can register your own account:
+- It will display a message "App started at http://localhost:3000"
+- If there was an error, try downloading the modules.
+5. Run localhost:3000 or click the link that can be seen at 4.1
+6. Enter these credentials or you can register your own account:
    Username: lee_sandoval@dlsu.edu.ph
    Password: lbvs
 
