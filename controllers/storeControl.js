@@ -36,13 +36,19 @@ const storeControl = {
       });
 
       const userSesh = req.session.user;
+      var isStoreOwner = false;
       var isOwner = false;
       var viewer = null;
 
       if (userSesh) {
         if (userSesh.restaurant == restaurant._id) {
-          isOwner = true;
+          isStoreOwner = true;
         }
+
+        if (userSesh.isOwner == true){
+          isOwner = true
+        }
+
         viewer = userSesh._id;
       }
 
@@ -50,6 +56,7 @@ const storeControl = {
         storeName: restaurant.name,
         restaurantInfo: JSON.stringify(restaurant),
         reviews: JSON.stringify(reviews),
+        isStoreOwner : isStoreOwner,
         isOwner: isOwner,
         viewer: viewer,
       });

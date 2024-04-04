@@ -38,30 +38,37 @@
             // SHOW COMPOSE REVIEW CARD 
             var viewer = "{{viewer}}";
             var isOwner = {{isOwner}};
+            var isStoreOwner = {{isStoreOwner}};
+            
             if(viewer){
-                $(".add-review-btn").on("click", function (){
-                    $('body').append($('<div class="cover" style="position: absolute; top: 0; z-index: 4; width: 100vw; height: 100vh; background-color: black; opacity: 0.5; display: none;"></div>'))
-                    setTimeout(function(){
-                        $('body').append($('<div class="compose" style="display: none; position: relative; z-index: 5;"></div>').load('/create-review', {post: restaurantInfo}))
-                    }, 100);
+                if(!isOwner){
+                    $(".add-review-btn").on("click", function (){
+                        $('body').append($('<div class="cover" style="position: absolute; top: 0; z-index: 4; width: 100vw; height: 100vh; background-color: black; opacity: 0.5; display: none;"></div>'))
+                        setTimeout(function(){
+                            $('body').append($('<div class="compose" style="display: none; position: relative; z-index: 5;"></div>').load('/create-review', {post: restaurantInfo}))
+                        }, 100);
 
-                    setTimeout(function(){
-                        $('.cover').fadeIn();
-                        $('.compose').fadeIn();
-                    }, 100);
-                    
-                    setTimeout(function(){
-                        let x = $('.compose-header span');
+                        setTimeout(function(){
+                            $('.cover').fadeIn();
+                            $('.compose').fadeIn();
+                        }, 100);
                         
-                        x.on('click', function(){
-                            $('.cover').remove();
-                            $('.compose').remove();
-                            $('body').css("display","initial");
-                        });
-                    }, 300);
-                })
+                        setTimeout(function(){
+                            let x = $('.compose-header span');
+                            
+                            x.on('click', function(){
+                                $('.cover').remove();
+                                $('.compose').remove();
+                                $('body').css("display","initial");
+                            });
+                        }, 300);
+                    })
+                } else{
 
-                if (isOwner){
+                    $(".add-review-btn").hide();
+                }
+
+                if (isStoreOwner){
                     setTimeout(function(){
                         $('.review-card .reply').css('display',"flex");
                         $('.add-review-btn').css('display', "none");
