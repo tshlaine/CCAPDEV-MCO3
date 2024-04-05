@@ -82,7 +82,7 @@ const profileControl = {
           user: review.user,
           restaurant: review.restaurant,
           reply: review.reply,
-          isSelf,
+          isSelf: isSelf,
           likeList: review.likeList,
           dislikeList: review.dislikeList,
         };
