@@ -32,6 +32,8 @@ Owner Credentials:
    - Password for all owners: ap
 
 User Credential:
-   - Username: lee_sandoval@dlsu.edu.ph
-   - Password: lbvs
+   - Username: atasha_pidlaoan@dlsu.edu.ph
+   - Password: ap
 
+Github Repository
+   https://github.com/tshlaine/CCAPDEV-MCO3.git
