@@ -100,7 +100,7 @@ const profileControl = {
         biography: user?.biography,
         profilePic: user?.profilePic,
         reviews: reviewsByUser,
-        isSelf: "isSelf",
+        isSelf: isSelf,
       });
     });
   },
