@@ -65,6 +65,8 @@ const logInControl = {
       } else {
         res.render("login", {
           errorMessage: "Invalid credentials",
+          alertMessage: "Credentials Error. Plese check you email and password"
+          
         });
       }
     } catch (error) {
