@@ -10,7 +10,7 @@
 
 
 ## Web App Setup
-(Optional) Go to  (deployed link)
+Deployed website: https://cafe-st.onrender.com
 1. Download the files and make sure all the files are in the same folder.
 2. Open your terminal
 3. In your command prompt or terminal, run the “npm install” command. After which, run the “npm start” command.
