@@ -3,6 +3,17 @@ import Restaurant from "../models/Restaurant.js";
 import User from "../models/User.js";
 import { validationResult } from "express-validator";
 
+const saveRestaurantAveRating = async (restaurant_id) => {
+  const reviews = await Review.find({ restaurant: restaurant_id });
+  let total = reviews.reduce(
+    (accumulator, currentValue) => accumulator + currentValue.rating,
+    0
+  );
+
+  const aveRating = total / reviews.length;
+  await Restaurant.findByIdAndUpdate(restaurant_id, { aveRating });
+};
+
 const componentsControl = {
   showSideBar(req, res) {
     const user = req.session.user;
@@ -163,16 +174,6 @@ const componentsControl = {
         restaurantId: restaurantId,
       });
   },
-  async saveRestaurantAveRating(restaurant_id) {
-    const reviews = await Review.find({ restaurant: restaurant_id });
-    let total = reviews.reduce(
-      (accumulator, currentValue) => accumulator + currentValue.rating,
-      0
-    );
-  
-    const aveRating = total / reviews.length;
-    await Restaurant.findByIdAndUpdate(restaurant_id, { aveRating });
-  },
   async submitCreateRev(req, res) {
     const resto = await Restaurant.findById(req.body.restaurantId, "name");
     const errors = validationResult(req);
@@ -218,7 +219,7 @@ const componentsControl = {
       console.log(data);
       try {
         await Review.insertMany([data]);
-        await saveRestaurantAveRating(req.body.restaurantId)
+        await saveRestaurantAveRating(req.body.restaurantId);
         res.redirect("/store/" + resto_name);
       } catch (error) {
         console.error(error);
@@ -243,7 +244,7 @@ const componentsControl = {
     try {
       const rev = await Review.findById(req.body.reviewId);
       // SAVE ALL NEW VALUES TO VARIABLES
-      const isValidValue = value => value !== null && value !== "";
+      const isValidValue = (value) => value !== null && value !== "";
       let madeChange = false;
       // CHECK IF THE VALUES ARE NULL OR SAME WITH CURRENT ENTRIES, SAVE CHANGES IF NOT
       // postTitle
@@ -290,7 +291,8 @@ const componentsControl = {
     }
   },
   async deleteRev(req, res) {
-    try { 
+    try {
+      const rev = Review.findById(req.body.reviewId);
       await Review.findByIdAndDelete(req.body.reviewId).exec();
       await saveRestaurantAveRating(rev.restaurant);
       res.redirect("back");
