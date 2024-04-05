@@ -13,7 +13,7 @@ const saveRestaurantAveRating = async (restaurant_id) => {
       0
     );
 
-    const aveRating = total / reviews.length;
+    const aveRating = (total / reviews.length).toFixed(1);
     await Restaurant.findByIdAndUpdate(restaurant_id, { aveRating });
   }
 };
