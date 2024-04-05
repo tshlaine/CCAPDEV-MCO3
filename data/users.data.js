@@ -105,6 +105,7 @@ const users = [
     __v: 0,
     restaurant: null,
   },
+  
 ];
 
 export const insertUsers = (db) => {
@@ -117,3 +118,5 @@ export const insertUsers = (db) => {
       console.error("Error inserting users into the database:", err);
     });
 };
+
+
