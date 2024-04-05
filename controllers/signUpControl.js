@@ -3,7 +3,7 @@ import { validationResult } from "express-validator";
 
 const signUpControl = {
   showSignUpForm(req, res) {
-    res.render("sign-up");
+    res.render("login");
   },
 
   async submitSignUpForm(req, res) {
@@ -33,6 +33,7 @@ const signUpControl = {
       try {
         await newUser.save();
         res.render("login", {
+          isReg: true,
           errorMessage: "Sign up successful. Please log in.",
         });
       } catch (error) {
@@ -41,7 +42,10 @@ const signUpControl = {
       }
     } else {
       console.log("SIGN UP AGAIN");
-      res.render("sign-up", { errorMessage: "Invalid credentials" });
+      res.render("login", {
+        isReg: true,
+        errorMessage: "Invalid credentials",
+      });
     }
   },
 };

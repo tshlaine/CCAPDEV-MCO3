@@ -64,13 +64,13 @@ const logInControl = {
           });
       } else {
         res.render("login", {
+          isReg: false,
           errorMessage: "Invalid credentials",
-          alertMessage: "Credentials Error. Plese check you email and password"
-          
         });
       }
     } catch (error) {
       res.render("login", {
+        isReg: false,
         errorMessage: "Invalid credentials",
       });
     }

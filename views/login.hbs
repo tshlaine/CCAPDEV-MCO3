@@ -4,7 +4,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login/Register</title>
-    <link rel="icon" type="image/png" href="/./assets/cafelogo.png">
+    <link rel="icon" type="image/png" href="/assets/Cafe St Logo.PNG" />
     <link rel="stylesheet" href="/styles/login.css" />
     <link
       rel="stylesheet"
@@ -28,12 +28,18 @@
 
     <div class="card" id="form-container">
       <div class="form-card register-card">
+        
         <form
           id="registration-form" action="/sign-up"
           method="POST" 
           {{!-- enctype="application/x-www-form-urlencoded" --}}
         >
           <h1 style="color: #ab9a7c; font-family: 'Poppins';">Register</h1>
+             {{#if isReg }}
+            <span class="error-message" style="color: red;">
+              {{errorMessage}}
+            </span>
+            {{/if}}
           
             <input class = "name" name ="firstName" type="text" placeholder="First Name">
                     <input class = "name" name="lastName" type="text" placeholder="Last Name">
@@ -46,6 +52,11 @@
       <div class="form-card login-card">
         <form method="POST" id="login-form" action ="/login">
           <h1 style="color: #ab9a7c; font-family: 'Poppins';">Login</h1>
+        {{#unless isReg}}
+        <span class="error-message" style="color: red;">
+        {{errorMessage}}
+        </span>
+        {{/unless}}
           <input
             class="form-control"
             name="emailLogin"
