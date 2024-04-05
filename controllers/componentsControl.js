@@ -5,13 +5,17 @@ import { validationResult } from "express-validator";
 
 const saveRestaurantAveRating = async (restaurant_id) => {
   const reviews = await Review.find({ restaurant: restaurant_id });
-  let total = reviews.reduce(
-    (accumulator, currentValue) => accumulator + currentValue.rating,
-    0
-  );
+  if (reviews.length === 0) {
+    await Restaurant.findByIdAndUpdate(restaurant_id, { aveRating: 0 });
+  } else {
+    let total = reviews.reduce(
+      (accumulator, currentValue) => accumulator + currentValue.rating,
+      0
+    );
 
-  const aveRating = total / reviews.length;
-  await Restaurant.findByIdAndUpdate(restaurant_id, { aveRating });
+    const aveRating = total / reviews.length;
+    await Restaurant.findByIdAndUpdate(restaurant_id, { aveRating });
+  }
 };
 
 const componentsControl = {
@@ -292,7 +296,7 @@ const componentsControl = {
   },
   async deleteRev(req, res) {
     try {
-      const rev = Review.findById(req.body.reviewId);
+      const rev = await Review.findById(req.body.reviewId);
       await Review.findByIdAndDelete(req.body.reviewId).exec();
       await saveRestaurantAveRating(rev.restaurant);
       res.redirect("back");
