@@ -31,8 +31,13 @@
 
             var listOfReviews = [{{{ reviews }}}];
             listOfReviews = listOfReviews[0];
+            if(listOfReviews.length == 0){
+                $('.store-container .right').append($('<div class="note"> No Reviews Added </div>'));
+            }
+            else{
             for (let i = 0; i < listOfReviews.length; i++){
                 $('.store-container .right').append($('<div class="rev-con-self '+ (i+1) +'"></div>').load('/review-card', {post: listOfReviews[i], cardNum: i+1}));
+            }
             }
 
             // SHOW COMPOSE REVIEW CARD 

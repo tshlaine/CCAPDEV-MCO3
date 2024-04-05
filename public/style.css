@@ -9,6 +9,12 @@
   font-size: 16px;
 }
 
+.note{
+  justify-content: center;
+  padding: 200px;
+  color: white;
+}
+
 * {
   margin: 0;
   padding: 0;
